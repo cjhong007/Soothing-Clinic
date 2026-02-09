@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上掛號 - 舒眠身心醫學診所</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; background-color: #f8fafc; }
+        .form-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #334155; }
+        input, textarea, select { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; box-sizing: border-box; }
+        button { background-color: #2563eb; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; width: 100%; }
+        button:hover { background-color: #1d4ed8; }
+        #message { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; }
+        .success { background-color: #dff0d8; color: #3c763d; border: 1px solid #d6e9c6; }
+        .error { background-color: #f2dede; color: #a94442; border: 1px solid #ebccd1; }
+    </style>
+</head>
+<body>
+    <div class="form-card">
+        <h2 style="text-align: center; color: #1e293b;">線上掛號預約</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label>電話</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label>預約日期</label>
+                <input type="date" id="date" required>
+            </div>
+            <div class="form-group">
+                <label>時段</label>
+                <select id="time_slot">
+                    <option value="morning">早診 (09:00 - 12:00)</option>
+                    <option value="afternoon">午診 (14:00 - 17:00)</option>
+                    <option value="evening">晚診 (18:00 - 21:00)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>主要症狀說明</label>
+                <textarea id="symptoms" rows="3"></textarea>
+            </div>
+            <button type="submit" id="submitBtn">送出掛號</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        // 請確保這裡填入您正確的診所專案 Supabase 資訊
+        const SUPABASE_URL = 'https://drrgysqembjwulmbdium.supabase.co'; 
+        const SUPABASE_KEY = 'sb_publishable_sDMz4fLWAnot6Lrej6WJ4A_Ksw0-vwX'; 
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const bookingForm = document.getElementById('bookingForm');
+        const messageDiv = document.getElementById('message');
+        const submitBtn = document.getElementById('submitBtn');
+
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = "處理中...";
+
+            const { data, error } = await _supabase
+                .from('bookings')
+                .insert([{
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    booking_date: document.getElementById('date').value,
+                    time_slot: document.getElementById('time_slot').value,
+                    symptoms: document.getElementById('symptoms').value
+                }]);
+
+            if (error) {
+                messageDiv.className = 'error';
+                messageDiv.innerText = '掛號失敗：' + error.message;
+                submitBtn.disabled = false;
+                submitBtn.innerText = "送出掛號";
+            } else {
+                messageDiv.className = 'success';
+                messageDiv.innerHTML = '<h3>掛號資料已送出！</h3><p>診所人員將儘速與您聯繫確認。</p>';
+                bookingForm.reset();
+                submitBtn.innerText = "已送出";
+            }
+            messageDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
