@@ -61,34 +61,46 @@
         const messageDiv = document.getElementById('message');
         const submitBtn = document.getElementById('submitBtn');
 
-        bookingForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.innerText = "處理中...";
+// 請將此段落覆蓋 booking.html 中對應的部份
+bookingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.innerText = "處理中...";
 
-            const { data, error } = await _supabase
-                .from('bookings')
-                .insert([{
-                    name: document.getElementById('name').value,
-                    phone: document.getElementById('phone').value,
-                    booking_date: document.getElementById('date').value,
-                    time_slot: document.getElementById('time_slot').value,
-                    symptoms: document.getElementById('symptoms').value
-                }]);
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const date = document.getElementById('date').value;
+    const time_slot = document.getElementById('time_slot').value;
+    const symptoms = document.getElementById('symptoms').value;
 
-            if (error) {
-                messageDiv.className = 'error';
-                messageDiv.innerText = '掛號失敗：' + error.message;
-                submitBtn.disabled = false;
-                submitBtn.innerText = "送出掛號";
-            } else {
-                messageDiv.className = 'success';
-                messageDiv.innerHTML = '<h3>掛號資料已送出！</h3><p>診所人員將儘速與您聯繫確認。</p>';
-                bookingForm.reset();
-                submitBtn.innerText = "已送出";
+    // 修改處：將 .from('bookings') 改為 .from('appointments')
+    const { data, error } = await _supabase
+        .from('appointments') 
+        .insert([
+            {
+                name: name,         // 請確認 Supabase 欄位名是 name 還是 patient_name
+                phone: phone,       
+                booking_date: date, 
+                time_slot: time_slot,
+                symptoms: symptoms 
             }
-            messageDiv.style.display = 'block';
-        });
+        ]);
+
+    if (error) {
+        console.error('Error:', error);
+        messageDiv.className = 'error';
+        messageDiv.innerText = '掛號失敗：' + error.message;
+        submitBtn.disabled = false;
+        submitBtn.innerText = "重新送出";
+    } else {
+        // ... 成功後的處理邏輯 ...
+        messageDiv.className = 'success';
+        messageDiv.innerHTML = '<h3>掛號資料已送出！</h3><p>診所人員將與您聯繫。</p>';
+        bookingForm.reset();
+        submitBtn.innerText = "已完成";
+    }
+    messageDiv.style.display = 'block';
+});
     </script>
 </body>
 </html>
