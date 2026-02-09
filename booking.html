@@ -78,7 +78,7 @@ bookingForm.addEventListener('submit', async (e) => {
         .from('appointments') 
         .insert([
             {
-                name: patient_name,         // 請確認 Supabase 欄位名是 name 還是 patient_name
+                patient_name: name,         // 請確認 Supabase 欄位名是 name 還是 patient_name
                 phone: phone,       
                 booking_date: date, 
                 time_slot: time_slot,
