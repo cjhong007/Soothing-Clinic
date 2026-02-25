@@ -9,7 +9,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <style>
+<style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: linear-gradient(135deg, #fdfbf7 0%, #eef7ff 100%);
@@ -18,40 +18,27 @@
         }
         .eng-font { font-family: 'Montserrat', sans-serif; }
         
-        /* --- 玻璃擬態 --- */
+        /* --- 修正後的卡片樣式 (安全版，不當機) --- */
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85); /* 改用微透明純白底色 */
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        } /* 👈 補上這個救命的大括號！ */
 
         .gradient-text {
             background: linear-gradient(to right, #2563eb, #0ea5e9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
-        /* --- 淡入動畫 --- */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-        
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* 背景裝飾球動畫 */
+        /* --- 裝飾球動畫 (降低效能消耗) --- */
         @keyframes blob {
             0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+            33% { transform: translate(15px, -25px) scale(1.05); }
+            66% { transform: translate(-10px, 10px) scale(0.95); }
             100% { transform: translate(0px, 0px) scale(1); }
         }
-        .animate-blob { animation: blob 7s infinite; }
+        .animate-blob { animation: blob 10s infinite; }
         .animation-delay-2000 { animation-delay: 2s; }
     </style>
 </head>
@@ -184,7 +171,7 @@
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold text-slate-800 mb-8">門診時間表</h2>
             <div class="glass-card p-4 rounded-3xl shadow-lg inline-block transform hover:scale-[1.01] transition duration-500">
-                <img src="images/schedule-art.jpg" alt="舒眠診所門診表" class="w-full h-auto rounded-xl">
+                <img src="images/schedule-art.jpg" alt="舒眠診所門診表" class="w-full aspect-auto object-contain rounded-xl">
             </div>
             <p class="mt-6 text-slate-500">
                 週六採隔週看診制，來診前請先確認。<br>週二下午院長於臺北榮總看診。
@@ -260,7 +247,7 @@
             <div class="flex flex-col md:flex-row gap-12 items-center">
                 <div class="w-full md:w-1/2">
                     <div class="border-4 border-slate-700 rounded-2xl overflow-hidden shadow-2xl bg-white">
-                        <img src="images/map-sketch.jpg" alt="診所地圖" class="w-full h-auto object-contain">
+                        <img src="images/map-sketch.jpg" alt="診所地圖" class="w-full aspect-video object-cover rounded-xl">
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 space-y-8">
@@ -295,4 +282,5 @@
     </body>
 
 </html>
+
 
