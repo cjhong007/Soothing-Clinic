@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Send a Ping Request
         run: |
-          curl -i -X POST "https://vclxksxybwvllshmqlpa.supabase.co/rest/v1/rpc/get_server_time" \
+          curl -i -X POST "https://drrgysqembjwulmbdium.supabase.co/rest/v1/rpc/get_server_time" \
           -H "apikey: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
           -H "Content-Type: application/json"
