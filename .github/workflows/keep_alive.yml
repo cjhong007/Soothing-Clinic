@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send a Ping Request
-        run: https://drrgysqembjwulmbdium.supabase.co
-          curl -i -X POST [貼上您的Project URL]/rest/v1/rpc/get_server_time \
+        run: |
+          curl -i -X POST "https://vclxksxybwvllshmqlpa.supabase.co/rest/v1/rpc/get_server_time" \
           -H "apikey: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
           -H "Content-Type: application/json"
