@@ -1,0 +1,175 @@
+/* article-style.css - 舒眠診所衛教文章專用樣式 */
+
+/* --- 定義色彩變數 (方便日後統一修改) --- */
+:root {
+    --bg-color-main: #FAF9F6; /* 柔和米白背景 */
+    --text-color-primary: #2C3E50; /* 深藍灰文字，比純黑柔和 */
+    --text-color-secondary: #546E7A; /* 次要文字顏色 */
+    --accent-color-blue: #607D8B; /* 莫蘭迪藍灰，用於標題強調 */
+    --accent-color-warm: #D4A373; /* 溫暖的大地橘，用於醫師叮嚀 */
+    --box-shadow-soft: 0 4px 12px rgba(0,0,0,0.05); /* 柔和陰影 */
+}
+
+/* --- 基礎設定 --- */
+body {
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color-main);
+    color: var(--text-color-primary);
+    line-height: 1.75; /* 增加行高，提升易讀性 */
+    margin: 0;
+    padding: 0;
+}
+
+/* --- 文章容器 --- */
+.article-container {
+    max-width: 800px; /* 限制文章寬度，避免單行字數過多 */
+    margin: 40px auto; /* 居中顯示 */
+    padding: 30px;
+    background-color: #ffffff; /* 文章區域用純白背景凸顯 */
+    border-radius: 12px; /* 圓角設計 */
+    box-shadow: var(--box-shadow-soft);
+}
+
+/* --- 排版與標題 --- */
+h1.article-title {
+    color: var(--text-color-primary);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+h2.section-title {
+    color: var(--accent-color-blue);
+    font-size: 1.6rem;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #eee; /* 標題下方的裝飾線 */
+    display: flex;
+    align-items: center;
+}
+
+/* 標題前的小圖示裝飾 (選用) */
+h2.section-title::before {
+    content: "🔹"; 
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+h3, h4 {
+    color: var(--text-color-primary);
+    margin-top: 1.5em;
+}
+
+p {
+    margin-bottom: 1.5em;
+    font-size: 1.1rem; /* 稍微加大字體 */
+}
+
+ul, ol {
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+}
+
+li {
+    margin-bottom: 0.8em;
+}
+
+strong {
+    color: var(--text-color-primary);
+    font-weight: 700;
+    /* 可以加上一點螢光筆效果 */
+    background: linear-gradient(to top, #ffe0b2 40%, transparent 40%);
+}
+
+/* --- 重點特色：洪醫師真心話區塊 --- */
+.doctor-note-block {
+    background-color: #FFF8F0; /* 極淡的暖色背景 */
+    border-left: 6px solid var(--accent-color-warm); /* 左側強調線條 */
+    padding: 25px 30px;
+    margin: 35px 0;
+    border-radius: 0 12px 12px 0;
+    position: relative;
+    font-style: italic;
+}
+
+/* 增加一個聽診器或愛心的小圖示在區塊左上角 */
+.doctor-note-block::before {
+    content: "🩺"; /* 聽診器 Emoji */
+    font-size: 2rem;
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.doctor-note-title {
+    font-weight: bold;
+    color: var(--accent-color-warm);
+    display: block;
+    margin-bottom: 10px;
+    font-style: normal;
+}
+
+/* --- 圖片佔位符樣式 --- */
+.image-placeholder-box {
+    background-color: #f0f2f5;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    color: #888;
+    margin: 30px 0;
+    font-weight: bold;
+}
+.image-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-color-secondary);
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+/* --- 底部行動呼籲 (CTA) --- */
+.article-cta-box {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: var(--accent-color-blue);
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color-warm);
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #c49060; /* 滑鼠懸停變深色 */
+}
+
+/* --- RWD 手機版適配 --- */
+@media (max-width: 768px) {
+    .article-container {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+    h1.article-title {
+        font-size: 1.8rem;
+    }
+    .doctor-note-block::before {
+        left: -10px; /* 手機版調整圖示位置 */
+    }
+}
