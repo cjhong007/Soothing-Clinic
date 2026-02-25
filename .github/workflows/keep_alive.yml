@@ -9,17 +9,9 @@ jobs:
   ping_supabase:
     runs-on: ubuntu-latest
     steps:
-      - name: Debug URL Info
-        run: |
-          echo "URL length: ${#URL}"
-          # 只印出前 8 個字檢查格式是否正確 (如 https://)
-          echo "URL prefix: ${URL:0:8}"
-        env:
-          URL: ${{ secrets.SUPABASE_URL }}
-
       - name: Send a Ping Request
-        run: |
-          curl -v -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/rpc/get_server_time" \
+        run: https://drrgysqembjwulmbdium.supabase.co
+          curl -i -X POST [貼上您的Project URL]/rest/v1/rpc/get_server_time \
           -H "apikey: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
           -H "Content-Type: application/json"
