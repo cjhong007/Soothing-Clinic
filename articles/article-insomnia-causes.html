@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../css/article-style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-50">
 
-<nav class="fixed top-0 left-0 w-full z-50 bg-white/95 shadow-sm border-b border-slate-100 transition-all duration-300">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/95 shadow-sm border-b border-slate-100 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <div class="flex flex-col">
@@ -42,119 +43,103 @@
 
     <main class="max-w-3xl mx-auto px-6 md:px-8 text-lg text-slate-700 bg-white shadow-sm md:rounded-2xl border border-slate-100" style="margin-top: 120px; margin-bottom: 80px; padding-top: 60px; padding-bottom: 60px;">
 
-        <h1 class="article-title">為什麼我會睡不好？</h1>
-        <a href="The_Sleep_Detective.pdf" class="nav-highlight">簡易圖文版</a>
-        <p class="text-slate-500 font-medium">洪成志醫師 撰文 <span class="mx-2">|</span> 2026/2/25</p>
-        <hr style="border: 0; height: 1px; background: #eee; margin: 30px 0;">
+        <div class="mb-10 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4 leading-snug">為什麼我會睡不好？</h1>
+            <a href="The_Sleep_Detective.pdf" class="inline-block text-blue-600 hover:text-blue-800 font-medium mb-2 transition">👉 點此觀看簡易圖文版</a>
+            <p class="text-slate-500 font-medium">洪成志醫師 撰文 <span class="mx-2">|</span> 2026/2/25</p>
+            <div class="w-16 h-1 bg-blue-500 mx-auto mt-6 rounded-full"></div>
+        </div>
 
-        <p>很多病友來到診間，帶著極大的期望問我：「醫師，能不能幫我排個檢查，找出我睡不好的原因？」或者認為：「不是有睡眠實驗室嗎？用儀器測一下不就知道了？」</p>
+        <p class="mb-8 leading-relaxed">很多病友來到診間，帶著極大的期望問我：「醫師，能不能幫我排個檢查，找出我睡不好的原因？」或者認為：「不是有睡眠實驗室嗎？用儀器測一下不就知道了？」</p>
 
-        <h2 class="section-title">🛑 破解迷思：儀器不是萬能的</h2>
-        <p>事實上，目前醫學上 <strong>並沒有任何儀器可以直接「找出」失眠的原因</strong>。</p>
-        <ul>
-            <li><strong>睡眠實驗室在做什麼？</strong> 睡眠生理檢查（PSG）核心目標是偵測「睡眠呼吸中止症」或肢體抽動問題。</li>
-            <li><strong>呼吸中止症只是冰山一角：</strong> 它只佔失眠原因的一小部分。</li>
-            <li><strong>大多數失眠測不出來：</strong> 壓力、情緒、壞習慣導致的失眠，無法靠儀器診斷，而是要靠醫師與您的深度對談。</li>
+        <h2 class="text-2xl md:text-3xl font-bold text-blue-700 mt-12 mb-6 pb-2 border-b-2 border-blue-50">🛑 破解迷思：儀器不是萬能的</h2>
+        <p class="mb-4 leading-relaxed">事實上，目前醫學上 <strong>並沒有任何儀器可以直接「找出」失眠的原因</strong>。</p>
+        <ul class="list-disc pl-6 mb-10 space-y-4 text-slate-700 bg-slate-50 p-6 rounded-xl border border-slate-100">
+            <li><strong class="text-slate-800 text-xl">睡眠實驗室在做什麼？</strong><br>睡眠生理檢查（PSG）核心目標是偵測「睡眠呼吸中止症」或肢體抽動問題。</li>
+            <li><strong class="text-slate-800 text-xl">呼吸中止症只是冰山一角：</strong><br>它只佔失眠原因的一小部分。</li>
+            <li><strong class="text-slate-800 text-xl">大多數失眠測不出來：</strong><br>壓力、情緒、壞習慣導致的失眠，無法靠儀器診斷，而是要靠醫師與您的深度對談。</li>
         </ul>
 
-        <h2 class="section-title">📊 視覺化解析：為什麼「睡不好」有時是正常的？</h2>
-        <p>在尋找原因前，我們必須先理解：<strong>睡眠不是「關機」，而是一連串複雜的週期轉換。</strong></p>
+        <h2 class="text-2xl md:text-3xl font-bold text-blue-700 mt-12 mb-6 pb-2 border-b-2 border-blue-50">📊 視覺化解析：為什麼「睡不好」有時是正常的？</h2>
+        <p class="mb-6 leading-relaxed">在尋找原因前，我們必須先理解：<strong>睡眠不是「關機」，而是一連串複雜的週期轉換。</strong></p>
 
-        <h3>1. 認識你的睡眠結構</h3>
-        <p>睡眠並非一覺到底，而是由非快速動眼期（NREM，分為三階段）與快速動眼期（REM）組成的循環。請參考下圖，健康的睡眠應該包含這些階段的交替：</p>
+        <h3 class="text-xl font-bold text-slate-800 mt-8 mb-3 flex items-center gap-2">
+            <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-sm">1</span> 認識你的睡眠結構
+        </h3>
+        <p class="mb-6 leading-relaxed">睡眠並非一覺到底，而是由非快速動眼期（NREM，分為三階段）與快速動眼期（REM）組成的循環。請參考下圖，健康的睡眠應該包含這些階段的交替：</p>
 
-<img src="../images/sleep-structure.jpg" alt="睡眠結構圖" class="w-full max-w-2xl mx-auto rounded-lg shadow-md my-6">
+        <img src="../images/sleep-structure.jpg" alt="睡眠結構圖" class="w-full max-w-2xl mx-auto rounded-xl shadow-md my-6 aspect-video object-cover">
         
-        <p class="image-caption">▲ 睡眠結構圖：健康的睡眠是由不同深度的階段循環組成。</p>
+        <p class="text-center text-sm text-slate-500 mb-8">▲ 睡眠結構圖：健康的睡眠是由不同深度的階段循環組成。</p>
 
-        <ul>
+        <ul class="list-disc pl-6 mb-10 space-y-3">
             <li><strong>淺層睡眠（N1, N2）：</strong> 佔了大部分時間。</li>
             <li><strong>深層睡眠（N3）：</strong> 身體修復、免疫力提升的關鍵期，也是我們覺得「睡得沉」的階段。</li>
             <li><strong>快速動眼期（REM）：</strong> 整理記憶、處理情緒（做夢）的時期。</li>
         </ul>
 
-        <h3>2. 老人 vs 年輕人：生理時鐘的自然衰老</h3>
-        <p>很多長輩抱怨「早醒」或「睡不深」，其實這往往是生理結構的改變。透過下圖比較，我們可以清楚看到年齡對睡眠的影響：</p>
+        <h3 class="text-xl font-bold text-slate-800 mt-8 mb-3 flex items-center gap-2">
+            <span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-sm">2</span> 老人 vs 年輕人：生理時鐘的自然衰老
+        </h3>
+        <p class="mb-6 leading-relaxed">很多長輩抱怨「早醒」或「睡不深」，其實這往往是生理結構的改變。透過下圖比較，我們可以清楚看到年齡對睡眠的影響：</p>
 
-<img src="../images/young_old-sleep.jpg" alt="年輕人與老年人睡眠圖比較" class="w-full max-w-2xl mx-auto rounded-lg shadow-md my-6">
-
+        <img src="../images/young_old-sleep.jpg" alt="年輕人與老年人睡眠圖比較" class="w-full max-w-2xl mx-auto rounded-xl shadow-md my-6 aspect-video object-cover">
         
-        <p class="image-caption">▲ 年齡對比圖：隨著年紀增長，深層睡眠自然減少，醒來次數增加。</p>
+        <p class="text-center text-sm text-slate-500 mb-8">▲ 年齡對比圖：隨著年紀增長，深層睡眠自然減少，醒來次數增加。</p>
 
-        <p>從圖中我們可以發現長者(Elderly)睡眠的幾個特徵：</p>
-        <ul>
+        <p class="mb-4">從圖中我們可以發現長者睡眠的幾個特徵：</p>
+        <ul class="list-disc pl-6 mb-8 space-y-3">
             <li><strong>結構破碎化（醒來次數變多）：</strong> 隨著年齡增長，醒來(Awake）區域變多了。這就是為什麼長輩更容易被微小的聲音吵醒，並覺得自己「沒睡好」。</li>
-            <li><strong>深層睡眠減少：</strong> 老年人的 N3（深層睡眠）階段明顯比年輕人(Young Adult)少很多。</li>
+            <li><strong>深層睡眠減少：</strong> 老年人的 N3（深層睡眠）階段明顯比年輕人少很多。</li>
             <li><strong>生理時鐘提前：</strong> 老人家傾向早睡早起，如果您晚上 8 點就坐在沙發打瞌睡，凌晨 3 點醒來其實是正常的生理反應，並非真的失眠。</li>
         </ul>
 
-        <blockquote class="doctor-note-block">
-            <span class="doctor-note-title">洪醫師觀點：</span>
-            如果您因為年齡增長而睡眠變淺，但白天精神尚可，這可能只是正常的生理變化，不需要過度恐慌，也不一定需要依賴藥物。
+        <blockquote class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-xl my-8 shadow-sm">
+            <span class="block font-bold text-yellow-800 text-lg mb-2">💡 洪醫師觀點：</span>
+            <span class="text-yellow-900 leading-relaxed">如果您因為年齡增長而睡眠變淺，但白天精神尚可，這可能只是正常的生理變化，不需要過度恐慌，也不一定需要依賴藥物。</span>
         </blockquote>
 
-        <h2 class="section-title">🕵️ 除了年齡，原因還在哪裡？</h2>
-        <p>理解了正常的生理變化後，若您的失眠依然嚴重，原因往往是大腦與生活模式發出的「綜合警報」，我們可以歸納為以下三大類：</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-blue-700 mt-12 mb-6 pb-2 border-b-2 border-blue-50">🕵️ 除了年齡，原因還在哪裡？</h2>
+        <p class="mb-6 leading-relaxed">理解了正常的生理變化後，若您的失眠依然嚴重，原因往往是大腦與生活模式發出的「綜合警報」，我們可以歸納為以下三大類：</p>
 
-        <h3>1. 心理與情緒因素：大腦的「過熱」狀態</h3>
-        <ul>
+        <h3 class="text-xl font-bold text-slate-800 mt-8 mb-3">1. 心理與情緒因素：大腦的「過熱」狀態</h3>
+        <ul class="list-disc pl-6 mb-6 space-y-2">
             <li><strong>焦慮與憂鬱：</strong> 負面情緒讓神經系統維持在高張力狀態。</li>
             <li><strong>對失眠的焦慮：</strong> 越想睡，越擔心明天沒體力，這種心理壓力反而變成了失眠的「強心針」。</li>
         </ul>
 
-        <h3>2. 生活方式與知識誤區：不經意的小習慣</h3>
-        <ul>
+        <h3 class="text-xl font-bold text-slate-800 mt-8 mb-3">2. 生活方式與知識誤區：不經意的小習慣</h3>
+        <ul class="list-disc pl-6 mb-6 space-y-2">
             <li><strong>酒精迷思：</strong> 很多人以為喝酒好睡，其實酒精會破壞睡眠結構，讓後半夜更容易醒來。</li>
             <li><strong>作息不規律：</strong> 混亂的生理時鐘讓大腦不知道何時該休息。</li>
         </ul>
 
-        <h3>3. 醫學因素：身體的連鎖反應</h3>
-        <ul>
+        <h3 class="text-xl font-bold text-slate-800 mt-8 mb-3">3. 醫學因素：身體的連鎖反應</h3>
+        <ul class="list-disc pl-6 mb-10 space-y-2">
             <li><strong>生理不適：</strong> 如慢性疼痛、胃食道逆流、內分泌失調（甲狀腺亢進、更年期症候群）等，都會干擾睡眠。</li>
         </ul>
 
-        <blockquote class="doctor-note-block">
-            <span class="doctor-note-title">🩺 洪醫師的真心話：</span>
-            「最好的『睡眠檢查儀器』，其實就是您的<strong>生活觀察</strong>與<strong>詳細病史</strong>。在『舒眠』診所，我們不依賴冰冷的機器，而是透過深度的對談，陪您區分哪些是『自然的衰老』，哪些是『可以被治療的疾病』。理解睡眠結構，是找回好眠的第一步。」
+        <blockquote class="bg-blue-50 border-l-4 border-blue-500 p-6 md:p-8 rounded-r-xl my-10 shadow-sm">
+            <span class="block font-bold text-blue-800 text-xl mb-3">🩺 洪醫師的真心話：</span>
+            <span class="text-blue-900 leading-relaxed text-lg">「最好的『睡眠檢查儀器』，其實就是您的<strong>生活觀察</strong>與<strong>詳細病史</strong>。在『舒眠』診所，我們不依賴冰冷的機器，而是透過深度的對談，陪您區分哪些是『自然的衰老』，哪些是『可以被治療的疾病』。理解睡眠結構，是找回好眠的第一步。」</span>
         </blockquote>
 
-        <div class="article-cta-box">
-            <h3>還是找不到睡不好的原因嗎？</h3>
-            <p>別讓失眠獨自困擾您。讓專業團隊陪您一起找出答案。</p>
-            <a href="../index.html#booking" class="cta-button">預約洪醫師門診諮詢</a>
+        <div class="mt-12 bg-slate-800 text-white p-8 rounded-2xl text-center shadow-lg">
+            <h3 class="text-2xl font-bold mb-3">還是找不到睡不好的原因嗎？</h3>
+            <p class="text-slate-300 mb-6">別讓失眠獨自困擾您。讓專業團隊陪您一起找出答案。</p>
+            <a href="../index.html#booking" class="inline-block bg-gradient-to-r from-blue-500 to-cyan-400 text-white font-bold py-3 px-8 rounded-full shadow-md hover:scale-105 transition transform duration-300">
+                預約洪醫師門診諮詢
+            </a>
         </div>
 
     </main>
 
-    <footer class="site-footer">
-    <div class="container">
-        <p>地址：台北市自強街 141 巷 17 號 | 電話：02-XXXX-XXXX</p>
-        <p>&copy; 2024 舒眠身心醫學診所 All Rights Reserved.</p>
-    </div>
-</footer>
-</body> </html>
+    <footer class="bg-slate-900 text-white py-10">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="mb-4 text-slate-300">地址：臺北市北投區自強街 141 巷 17 號</p>
+            <p class="text-slate-500 text-sm">&copy; 2026 舒眠身心醫學診所 Soothing Sleep & Mind Clinic. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
