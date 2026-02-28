@@ -14,10 +14,11 @@
     
     <style>
         body { font-family: 'Noto Sans TC', sans-serif; background-color: #fcfcfc; color: #475569; }
-        .article-content h2 { color: #1e293b; font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; border-left: 4px solid #14b8a6; padding-left: 1rem; }
-        .article-content p { margin-bottom: 1.25rem; line-height: 1.8; text-align: justify; }
+        .article-content h2 { color: #115e59; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; border-left: 5px solid #14b8a6; padding-left: 1rem; }
+        .article-content p { margin-bottom: 1.5rem; line-height: 1.9; text-align: justify; font-size: 1.05rem; }
         .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-        .article-content li { margin-bottom: 0.75rem; }
+        .article-content li { margin-bottom: 0.75rem; line-height: 1.8; font-size: 1.05rem; }
+        .highlight { color: #0f766e; font-weight: 700; background-color: #f0fdfa; padding: 0 4px; border-radius: 4px; }
     </style>
 </head>
 <body class="antialiased">
@@ -28,15 +29,14 @@
             <div class="flex justify-between items-center py-4">
                 <a href="../index.html" class="flex flex-col">
                     <span class="font-bold text-2xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
-                    <span class="text-xs text-teal-500 font-medium tracking-wider">SOOTHING SLEEP & MIND CLINIC</span>
+                    <span class="text-xs text-teal-600 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
                 </a>
                 <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600 items-center">
-                    <a href="../index.html#about" class="hover:text-teal-600">關於院長</a>
+                    <a href="../index.html#about" class="hover:text-teal-600 transition">關於院長</a>
                     <a href="../index.html#articles" class="text-teal-600">衛教專區</a>
-                    <a href="../index.html#environment" class="hover:text-teal-600">診所環境</a>
-                    <a href="../index.html#schedule" class="hover:text-teal-600">門診時間</a>
-                    <a href="#contact" class="hover:text-blue-600 transition">交通資訊</a>
-                    <a href="../booking.html" class="bg-teal-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-teal-700 transition">線上預約</a>
+                    <a href="../index.html#environment" class="hover:text-teal-600 transition">診所環境</a>
+                    <a href="../index.html#schedule" class="hover:text-teal-600 transition">門診時間</a>
+                    <a href="../booking.html" class="bg-teal-600 text-white px-6 py-2 rounded-full shadow-md hover:bg-teal-700 transition">線上預約</a>
                 </div>
             </div>
         </div>
@@ -44,27 +44,43 @@
 
     <main class="pt-32 pb-20 px-6">
         <article class="max-w-3xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8 leading-tight">為什麼全身不舒服檢查卻正常？認識「自律神經失調」與「恐慌」</h1>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-800 mb-8 leading-tight text-center">為什麼全身不舒服檢查卻正常？<br>帶您認識「自律神經失調」與「恐慌」</h1>
             
-            <div class="article-content">
-                <p>您是否曾有過檢查都正常，但身體卻莫名疲倦、胸悶、心悸的痛苦？其實這可能是您的神經系統失去了平衡。</p>
-                <h2>什麼是自律神經系統？</h2>
-                <p>自律神經就像汽車的「油門」與「煞車」。交感神經負責應急（油門），副交感神經負責放鬆（煞車）。當兩者失去平衡，就會產生失調症狀。</p>
+            <div class="article-content mt-10">
+                <p>您是否曾有過檢查都正常，但身體卻莫名疲倦、胸悶、心悸的痛苦？其實這可能不是器官病變，而是您的神經系統失去了平衡。</p>
+                
+                <h2>什麼是自律神經系統？人體的油門與煞車</h2>
+                <p>自律神經不受意識控制，而是自動維持心跳、呼吸與消化。它主要由兩個相互拮抗的系統組成：</p>
+                <ul class="list-disc">
+                    <li><strong>交感神經系統 (SNS)：</strong> 身體的「油門」。負責應急，讓心跳加快、肌肉緊繃，使人處於應戰狀態。</li>
+                    <li><strong>副交感神經系統 (PNS)：</strong> 身體的「煞車」。負責放鬆與修復，讓心跳變慢、促進消化，讓體力得以回補。</li>
+                </ul>
+
                 <h2>破除「壓力太大」的迷思</h2>
-                <p>這是一個生理失調的真實狀態，很多病患發病前生活平順，並非「想太多」或「太脆弱」。</p>
-                <h2>這背後可能是什麼疾病？</h2>
-                <ol>
-                    <li><strong>恐慌症：</strong>警報系統突然當機狂踩油門。</li>
-                    <li><strong>廣泛性焦慮症：</strong>神經長期處於高度緊繃。</li>
-                    <li><strong>憂鬱症：</strong>常伴隨大腦調節失靈引發的身體不適。</li>
+                <p>許多人誤以為這是因為「想太多」或「抗壓性低」，但這其實是常見的誤解。在門診中，許多病患生活平順，卻突然發生自律神經失調。<strong>這是一種真實的生理狀態，是失調的神經系統讓您感到壓力與恐慌，而非壓力引發了失調。</strong></p>
+
+                <h2>醫學上找不到「自律神經失調」這個病名？</h2>
+                <p>精確來說，自律神經失調是一個「現象」或「症狀群」，而非最終的病因。這背後通常隱藏著其他需要專業鑑定診斷的疾病：</p>
+                <ol class="list-decimal">
+                    <li><span class="highlight">恐慌症 (Panic Disorder)：</span> 警報系統無預警當機，導致身體突然狂踩油門，出現強烈窒息感與恐懼。</li>
+                    <li><span class="highlight">廣泛性焦慮症：</span> 神經系統長期處於高壓、無法關掉油門的緊繃狀態。</li>
+                    <li><span class="highlight">憂鬱症：</span> 大腦傳導物質失衡，常伴隨嚴重的身體不適、疲累與胸悶。</li>
+                    <li><span class="highlight">身體症狀障礙症：</span> 大腦過度解讀生理訊號，進而反向刺激交感神經。</li>
                 </ol>
+
+                <p>當平衡被打破，身體各器官就會產生各種不適（如頭暈、手腳發麻、胃食道逆流、睡眠障礙）。在舒眠身心醫學診所，我們致力於找出背後的根源，協助您重新找回失落的平衡。</p>
             </div>
 
-            <div class="mt-12 p-8 bg-teal-50 rounded-2xl">
-                <h3 class="font-bold text-teal-800 mb-2">舒眠身心醫學診所</h3>
-                <p class="text-teal-700">📍 台北市北投區自強街141巷17號</p>
+            <div class="mt-16 p-8 bg-teal-50 rounded-2xl border border-teal-100">
+                <h3 class="font-bold text-teal-900 text-xl mb-3">舒眠身心醫學診所</h3>
+                <p class="text-teal-800 mb-1">🏥 臺北市北投區自強街141巷17號</p>
+                <p class="text-teal-700 text-sm italic">透過專業精神醫學評估，陪您關閉錯誤的警報系統，找回平靜生活。</p>
             </div>
         </article>
     </main>
+
+    <footer class="bg-slate-50 py-10 border-t border-slate-200 text-center">
+        <p class="text-slate-500 text-sm">© 2026 舒眠身心醫學診所. All rights reserved.</p>
+    </footer>
 </body>
 </html>
