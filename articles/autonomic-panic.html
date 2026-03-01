@@ -13,155 +13,112 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Noto Sans TC', sans-serif; background-color: #f8fafc; color: #334155; line-height: 1.8; }
-        .article-content h2 { color: #0f766e; font-size: 1.8rem; font-weight: 700; margin-top: 3.5rem; margin-bottom: 1.5rem; border-left: 6px solid #14b8a6; padding-left: 1.25rem; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: #ffffff; color: #334155; line-height: 1.8; }
+        .article-content h2 { color: #0f766e; font-size: 1.8rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1.5rem; border-bottom: 2px solid #14b8a6; padding-bottom: 0.5rem; }
         .article-content h3 { color: #134e4a; font-size: 1.4rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
         .article-content p { margin-bottom: 1.5rem; text-align: justify; font-size: 1.15rem; }
         
-        /* --- 核心優化：網格佈局消除空曠感 --- */
-        .symptom-grid { 
-            display: grid; 
-            grid-template-cols: repeat(2, 1fr); /* 手機版 2 欄 */
-            gap: 1rem; 
-            margin: 2.5rem 0; 
-        }
-        @media (min-width: 768px) {
-            .symptom-grid { grid-template-cols: repeat(4, 1fr); } /* 電腦版 4 欄，視覺最飽滿 */
-        }
-        .symptom-box { 
-            background: #ffffff; 
-            border: 1px solid #ccfbf1; 
-            border-radius: 12px; 
-            padding: 1.5rem 1rem; 
-            text-align: center; 
-            color: #0f766e; 
-            font-weight: 700; 
-            font-size: 1.15rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        .symptom-box:hover {
-            transform: translateY(-3px);
-            border-color: #14b8a6;
-            background-color: #f0fdfa;
-        }
-
-        /* --- 原因區塊優化 --- */
-        .reason-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 2rem;
+        /* 橫列症狀排版 */
+        .symptom-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
             margin: 2rem 0;
         }
-        .reason-list li { 
-            position: relative; 
-            padding-left: 2rem; 
-            margin-bottom: 1.25rem; 
+        .symptom-tag {
+            background-color: #f0fdfa;
+            color: #0f766e;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            border: 1px solid #ccfbf1;
+            font-weight: 500;
             font-size: 1.1rem;
-            display: flex;
-            align-items: flex-start;
-        }
-        .reason-list li::before { 
-            content: "✔"; 
-            position: absolute; 
-            left: 0; 
-            color: #14b8a6; 
-            font-weight: 900;
-            font-size: 1.2rem;
         }
 
-        .scenario-card { background: #ffffff; border-radius: 16px; padding: 1.5rem; border: 1px solid #e2e8f0; margin-bottom: 1.5rem; }
-        .doctor-note { background: #f0fdfa; border-radius: 16px; padding: 2rem; border: 1px solid #ccfbf1; margin: 3rem 0; }
+        /* 橫列原因排版 */
+        .reason-row {
+            border-top: 1px solid #e2e8f0;
+            margin-top: 1rem;
+        }
+        .reason-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            font-size: 1.15rem;
+        }
+        .reason-item strong { color: #0d9488; margin-right: 12px; min-width: 140px; }
+
+        .scenario-box { border-left: 4px solid #e2e8f0; padding-left: 1.5rem; margin-bottom: 2rem; }
     </style>
 </head>
 <body class="antialiased">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <nav class="fixed w-full z-50 bg-white/95 shadow-sm border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center py-4">
-                <a href="../index.html" class="flex flex-col">
-                    <span class="font-bold text-2xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
-                    <span class="text-xs text-teal-600 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
-                </a>
-                <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
-                    <a href="../index.html#about" class="hover:text-blue-600 transition">關於院長</a>
-                    <a href="../index.html#articles" class="text-blue-600 font-bold">衛教專區</a>
-                    <a href="../index.html#environment" class="hover:text-blue-600 transition">診所環境</a>
-                    <a href="../index.html#faq" class="hover:text-blue-600 transition">看診須知</a>
-                    <a href="../index.html#schedule" class="hover:text-blue-600 transition">門診時間</a>
-                    <a href="#contact" class="hover:text-blue-600 transition">交通資訊</a>
-                    <a href="https://linktr.ee/SoothingClinic" target="_blank" class="bg-teal-600 text-white px-6 py-2 rounded-full hover:bg-teal-700 transition shadow-md">掛號與連結</a>
-                </div>
-            </div>
+    <nav class="fixed w-full z-50 bg-white shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex flex-col">
+                <span class="font-bold text-2xl text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-xs text-teal-600 font-medium uppercase tracking-widest">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="https://linktr.ee/SoothingClinic" target="_blank" class="bg-teal-600 text-white px-6 py-2 rounded-full font-bold">預約與連結</a>
         </div>
     </nav>
 
     <main class="pt-32 pb-20 px-6">
-        <article class="max-w-5xl mx-auto">
-            <header class="text-center mb-16">
-                <h1 class="text-3xl md:text-5xl font-bold text-slate-800 mb-6 leading-tight">自律神經失調是什麼？<br><span class="text-teal-600">其實是一種身心調節失衡的表現</span></h1>
-            </header>
+        <article class="max-w-4xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-bold text-slate-800 mb-10 leading-tight">自律神經失調是什麼？<br><span class="text-teal-600">其實是一種身心調節失衡的表現</span></h1>
 
             <div class="article-content">
                 <p>在門診中，我們常遇到患者反覆就醫、檢查正常卻痛苦萬分。這篇文章想告訴你，你的痛苦是真實的，這通常代表身體的調節系統暫時失去了彈性。</p>
 
                 <h2>在社群與診間常見的真實情境</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="scenario-card">
-                        <h3 class="mt-0 text-teal-800">情境一｜檢查正常但不舒服</h3>
-                        <p class="italic text-slate-500">「看了很多科都說正常，但頭暈心悸一直在。」</p>
-                        <p class="font-bold text-slate-700">👉 原因：焦慮體質或長期壓力</p>
-                    </div>
-                    <div class="scenario-card">
-                        <h3 class="mt-0 text-teal-800">情境二｜突然像快死掉</h3>
-                        <p class="italic text-slate-500">「突然心快跳出來、手腳發麻，以為要心臟病。」</p>
-                        <p class="font-bold text-slate-700">👉 原因：恐慌發作</p>
-                    </div>
+                <div class="scenario-box">
+                    <p><strong>情境一｜檢查正常但不舒服：</strong> 「看了很多科都說正常，但頭暈心悸一直在。」👉 <span class="text-teal-600 font-bold">原因：焦慮體質或長期壓力</span></p>
+                </div>
+                <div class="scenario-box">
+                    <p><strong>情境二｜突然像快死掉：</strong> 「突然心快跳出來、手腳發麻，以為要心臟病。」👉 <span class="text-teal-600 font-bold">原因：恐慌發作</span></p>
+                </div>
+                <div class="scenario-box">
+                    <p><strong>情境三｜很累卻睡不好：</strong> 「身體很疲倦，但大腦停不下來，半夜一直醒。」👉 <span class="text-teal-600 font-bold">原因：過度喚醒型失眠</span></p>
+                </div>
+                <div class="scenario-box">
+                    <p><strong>情境四｜全身輪流不舒服：</strong> 「腸胃不好、肩頸很緊、呼吸卡卡，但檢查都正常。」👉 <span class="text-teal-600 font-bold">原因：長期焦慮與壓力累積</span></p>
+                </div>
+                <div class="scenario-box">
+                    <p><strong>情境五｜難以形容的身體異感：</strong> 「身體裡有種奇怪感覺，說不上來，但覺得不對勁。」👉 <span class="text-teal-600 font-bold">原因：涉及神經感覺處理或早期精神症狀</span></p>
                 </div>
 
                 <h2>被說成自律神經失調的常見症狀</h2>
-                <p class="text-center text-slate-500">這些症狀真實存在、反覆出現，但各項臨床檢查多半顯示正常。</p>
+                <p>這些症狀真實存在、反覆出現，但臨床檢查多半顯示正常：</p>
                 
-                <div class="symptom-grid">
-                    <div class="symptom-box">心悸</div>
-                    <div class="symptom-box">頭暈</div>
-                    <div class="symptom-box">胸悶</div>
-                    <div class="symptom-box">呼吸不順</div>
-                    <div class="symptom-box">喉嚨卡卡</div>
-                    <div class="symptom-box">腸胃不適</div>
-                    <div class="symptom-box">手腳發麻</div>
-                    <div class="symptom-box">忽冷忽熱</div>
-                    <div class="symptom-box">慢性疲勞</div>
-                    <div class="symptom-box">睡眠障礙</div>
+                <div class="symptom-row">
+                    <span class="symptom-tag">心悸</span><span class="symptom-tag">頭暈</span><span class="symptom-tag">胸悶</span><span class="symptom-tag">呼吸不順</span><span class="symptom-tag">喉嚨卡卡</span>
+                    <span class="symptom-tag">腸胃不適</span><span class="symptom-tag">手腳發麻</span><span class="symptom-tag">忽冷忽熱</span><span class="symptom-tag">慢性疲勞</span><span class="symptom-tag">睡眠障礙</span>
                 </div>
 
                 <h2>自律神經失衡背後常見的真正原因</h2>
-                <div class="reason-card">
-                    <p class="mb-6 font-bold text-slate-700">當深入評估時，最常見的原因並非器官損壞，而是以下因素引發：</p>
-                    <ul class="reason-list">
-                        <li><div><strong>焦慮症 / 恐慌症：</strong> 身體的警報系統過於敏感。</div></li>
-                        <li><div><strong>憂鬱症：</strong> 大腦情緒調節物質功能暫時失靈。</div></li>
-                        <li><div><strong>睡眠障礙：</strong> 長期缺乏深度修復，導致神經系統耗竭。</div></li>
-                        <li><div><strong>長期壓力反應：</strong> 身體長期處於「戰鬥模式」無法卸載壓力。</div></li>
-                        <li><div><strong>神經敏感體質：</strong> 天生對生理訊號與環境刺激較為敏銳。</div></li>
-                    </ul>
+                <div class="reason-row">
+                    <div class="reason-item"><strong>焦慮症 / 恐慌症</strong> 身體的警報系統過於敏感。</div>
+                    <div class="reason-item"><strong>憂鬱症</strong> 大腦情緒調節物質功能暫時失靈。</div>
+                    <div class="reason-item"><strong>睡眠障礙</strong> 長期缺乏深度修復，導致神經系統耗竭。</div>
+                    <div class="reason-item"><strong>長期壓力反應</strong> 身體長期處於「戰鬥模式」無法卸載壓力。</div>
+                    <div class="reason-item"><strong>神經敏感體質</strong> 天生對生理訊號與環境刺激較為敏銳。</div>
                 </div>
 
-                <div class="doctor-note">
+                <div class="mt-12 p-8 bg-teal-50 border-l-4 border-teal-600">
                     <h3 class="mt-0">洪醫師的關鍵觀念</h3>
-                    <p>自律神經失衡通常是「可逆的」。這不是壞掉，而是過度疲勞的保護訊號。透過專業的診斷與正確的調節，神經系統具有強大的復原彈性，可以重新找回平衡。</p>
+                    <p class="mb-0">自律神經失衡通常是「可逆的」。這不是壞掉，而是過度疲勞的保護訊號。透過專業的診斷與正確的調節，神經系統具有強大的復原彈性，可以重新找回平衡。</p>
                 </div>
 
                 <div class="text-center mt-12">
-                    <a href="https://linktr.ee/SoothingClinic" target="_blank" class="inline-block bg-teal-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl hover:bg-teal-700 transition transform hover:-translate-y-1">預約完整專業評估</a>
+                    <a href="https://linktr.ee/SoothingClinic" target="_blank" class="inline-block bg-teal-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-lg">預約完整專業評估</a>
                 </div>
             </div>
         </article>
     </main>
 
-    <footer class="bg-slate-900 py-12 text-center text-slate-400">
+    <footer class="bg-slate-100 py-10 text-center text-slate-500">
         <p>© 2026 舒眠身心醫學診所 | 臺北市北投區自強街141巷17號</p>
     </footer>
 </body>
