@@ -17,9 +17,38 @@
         .article-content h2 { color: #0f766e; font-size: 1.8rem; font-weight: 700; margin-top: 3.5rem; margin-bottom: 1.5rem; border-left: 6px solid #14b8a6; padding-left: 1.25rem; }
         .article-content h3 { color: #134e4a; font-size: 1.4rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
         .article-content p { margin-bottom: 1.5rem; text-align: justify; font-size: 1.1rem; }
+        
         .scenario-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .symptom-grid { display: grid; grid-template-cols: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 2rem 0; }
-        .symptom-item { background: #fff; border: 1px solid #ccfbf1; border-radius: 8px; padding: 10px; text-align: center; color: #0f766e; font-weight: 500; }
+        
+        /* 修正後的症狀排版樣式：格狀佈局，消除空曠感 */
+        .symptom-grid { 
+            display: grid; 
+            grid-template-cols: repeat(2, minmax(0, 1fr)); /* 預設雙欄 */
+            gap: 1rem; /* 格子間距 */
+            margin: 2rem 0 3rem 0; 
+        }
+        /* 電腦版 (md以上) 改為三欄，視覺最飽滿 */
+        @media (min-width: 768px) {
+            .symptom-grid { grid-template-cols: repeat(3, minmax(0, 1fr)); }
+        }
+        .symptom-item { 
+            background: #ffffff; 
+            border: 1px solid #ccfbf1; 
+            border-radius: 0.75rem; 
+            padding: 1.25rem; 
+            text-align: center; 
+            color: #134e4a; 
+            font-weight: 500; 
+            font-size: 1.1rem;
+            box-shadow: 0 2px 4px 0 rgba(13, 148, 136, 0.05); /* 淡淡的湖水綠陰影 */
+            transition: all 0.3s ease;
+        }
+        .symptom-item:hover {
+            border-color: #5eead4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px 0 rgba(13, 148, 136, 0.1);
+        }
+
         .doctor-note { background-color: #f0fdfa; border-radius: 1rem; padding: 1.5rem; border: 1px solid #ccfbf1; margin: 2rem 0; }
         .highlight-teal { color: #0d9488; font-weight: 700; }
         .check-list li { position: relative; padding-left: 1.8rem; margin-bottom: 0.8rem; font-size: 1.1rem; }
@@ -87,10 +116,17 @@
 
                 <h2>被說成自律神經失調的常見症狀</h2>
                 <p>這些症狀的共同點是：<span class="highlight-teal">✔ 真實存在 ✔ 反覆出現 ✔ 檢查多半正常</span></p>
+                
                 <div class="symptom-grid">
-                    <div class="symptom-item">心悸</div><div class="symptom-item">頭暈</div><div class="symptom-item">胸悶</div>
-                    <div class="symptom-item">呼吸不順</div><div class="symptom-item">喉嚨卡卡</div><div class="symptom-item">腸胃不適</div>
-                    <div class="symptom-item">手腳麻</div><div class="symptom-item">忽冷忽熱</div><div class="symptom-item">慢性疲勞</div>
+                    <div class="symptom-item">心悸</div>
+                    <div class="symptom-item">頭暈</div>
+                    <div class="symptom-item">胸悶</div>
+                    <div class="symptom-item">呼吸不順</div>
+                    <div class="symptom-item">喉嚨卡卡</div>
+                    <div class="symptom-item">腸胃不適</div>
+                    <div class="symptom-item">手腳麻</div>
+                    <div class="symptom-item">忽冷忽熱</div>
+                    <div class="symptom-item">慢性疲勞</div>
                     <div class="symptom-item">失眠</div>
                 </div>
 
