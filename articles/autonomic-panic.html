@@ -15,11 +15,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/article-style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        .symptom-tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
+        .symptom-tag { background-color: #f0fdfa; color: #0f766e; padding: 4px 14px; border-radius: 99px; border: 1px solid #ccfbf1; font-size: 1rem; font-weight: 500; }
+        .treatment-box { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; }
+    </style>
 </head>
 <body class="bg-slate-50">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <nav class="fixed top-0 left-0 w-full z-50 bg-white/95 shadow-sm border-b border-slate-100 transition-all duration-300">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-white/95 shadow-sm border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center py-4">
                 <a href="../index.html" class="flex flex-col">
@@ -27,67 +33,65 @@
                     <span class="text-xs text-blue-500 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
                 </a>
                 <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600 items-center">
-                    <a href="../index.html#about" class="hover:text-blue-600 transition">關於院長</a>
+                    <a href="../index.html#about" class="hover:text-blue-600">關於院長</a>
                     <a href="../index.html#articles" class="text-blue-600 font-bold">衛教專區</a>
-                    <a href="../index.html#environment" class="hover:text-blue-600 transition">診所環境</a>
-                    <a href="../index.html#schedule" class="hover:text-blue-600 transition">門診時間</a>
-                    <a href="../booking.html" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2.5 rounded-full shadow-lg">線上預約</a>
+                    <a href="../index.html#environment" class="hover:text-blue-600">診所環境</a>
+                    <a href="../index.html#schedule" class="hover:text-blue-600">門診時間</a>
+                    <a href="../booking.html" class="bg-blue-600 text-white px-6 py-2 rounded-full shadow-md">線上預約</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="max-w-4xl mx-auto px-6 md:px-8 bg-white shadow-sm md:rounded-2xl border border-slate-100" style="margin-top: 120px; margin-bottom: 80px; padding: 60px 40px;">
-        <header class="mb-10 text-center">
-            <h1 class="text-3xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">解開「自律神經失調」的迷思：<br>這 7 種受苦的靈魂，其實需要的治療大不同</h1>
+        <header class="mb-12">
+            <h1 class="text-2xl md:text-4xl font-bold text-slate-900 mb-8 leading-tight">解開「自律神經失調」的迷思：<br>這 7 種受苦的靈魂，其實需要的治療大不同</h1>
             
-            <div class="flex items-center justify-center gap-4 text-slate-500 border-b border-slate-100 pb-8 mx-auto max-w-md">
+            <div class="flex items-center gap-4 text-slate-500 border-b border-slate-100 pb-8">
                 <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">洪</div>
                 <div class="text-left">
                     <p class="font-bold text-slate-800 text-lg">洪成志 醫師</p>
-                    <p class="text-sm">發佈日期：2026-03-01 · 閱讀時間約 8 分鐘</p>
+                    <p class="text-sm">發佈日期：2026-03-01</p>
                 </div>
             </div>
         </header>
 
-        <article class="prose prose-slate max-w-none text-lg leading-relaxed text-slate-700">
-            <p class="mb-6">在臉書群組或論壇中，每天都有無數人問著：「我自律神經失調好痛苦，誰能救救我？」有人說吃中藥，有人說運動。但事實是，每個人的「失調」背後藏著截然不同的病因。單一的療法，治不好所有的痛。</p>
+        <div class="article-content text-lg leading-relaxed text-slate-700">
+            <p class="mb-6">在臉書群組中，每天都有人問著：「我自律神經失調好痛苦，誰能救救我？」事實是，每個人的「失調」背後藏著截然不同的病因。單一療法治不好所有的痛。</p>
 
-            <h2 class="text-2xl font-bold text-slate-800 border-b-2 border-slate-100 pb-2 mt-12 mb-6">一、 為什麼「自律神經失調」成了大眾的擋箭牌？</h2>
-            <p>自律神經管理著我們的心跳、呼吸、消化與免疫，當它亂掉時，會產生各種「檢查不出來」的症狀。因為社會對精神疾病仍有標籤化，許多病友更傾向使用這張「溫柔的招牌」。</p>
-
-            <h2 class="text-2xl font-bold text-slate-800 border-b-2 border-slate-100 pb-2 mt-12 mb-6">二、 各種受苦靈魂的真實面貌與治療對策</h2>
-
-            <div class="p-6 bg-slate-50 border-l-4 border-blue-500 rounded-r-xl mb-8">
-                <h3 class="text-xl font-bold text-blue-800 mb-2">1. 恐慌發作者：感覺靈魂要被抽離了</h3>
-                <p class="italic text-slate-500 mb-4">「正開車開到一半，突然手腳發麻、吸不到氧氣，覺得心臟要停了...」</p>
-                <p><strong>洪醫師觀點：</strong> 這是警報系統誤啟動。研究顯示，恐慌症患者的平均壽命並不會比一般人短，甚至可能更長！我會使用神經調節藥物，讓大腦重新校準。</p>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-800 border-b-2 border-slate-100 pb-2 mt-12 mb-6">一、 為什麼「自律神經失調」成了大眾的擋箭牌？</h2>
+            <p>自律神經管理著我們的心跳、呼吸、消化與免疫。因為社會對精神疾病仍有標籤化，病友更傾向使用這張「溫柔的招牌」。</p>
+            
+            <div class="symptom-tag-row">
+                <span class="symptom-tag">心悸</span><span class="symptom-tag">頭暈</span><span class="symptom-tag">胸悶</span><span class="symptom-tag">呼吸不順</span><span class="symptom-tag">喉嚨卡卡</span><span class="symptom-tag">腸胃不適</span><span class="symptom-tag">手腳發麻</span><span class="symptom-tag">慢性疲勞</span><span class="symptom-tag">睡眠障礙</span>
             </div>
 
-            <div class="p-6 bg-slate-50 border-l-4 border-blue-500 rounded-r-xl mb-8">
-                <h3 class="text-xl font-bold text-blue-800 mb-2">2. 長期失眠者：煞車壞掉的身體</h3>
-                <p>這多半是副交感神經被長期壓抑。除了引導睡眠，我會找出「能量漏損」點，重建身體的煞車機制。</p>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-800 border-b-2 border-slate-100 pb-2 mt-12 mb-6">二、 各種受苦靈魂的真實面貌與治療對策</h2>
+
+            <div class="treatment-box">
+                <h3 class="font-bold text-blue-800 mb-2">1. 恐慌發作者：感覺靈魂要被抽離了</h3>
+                <p class="italic text-slate-500 mb-2">「正開車開到一半，突然手腳發麻、吸不到氧氣，覺得心臟要停了...」</p>
+                <p><strong>洪醫師觀點：</strong> 這是警報系統誤啟動。研究顯示，恐慌症患者的平均壽命並不會比一般人短，甚至可能更長！我會使用穩定神經調節藥物配合生理教育，讓大腦重新校準。</p>
             </div>
 
-            <div class="p-6 bg-slate-50 border-l-4 border-blue-500 rounded-r-xl mb-8">
-                <h3 class="text-xl font-bold text-blue-800 mb-2">3. 思覺失調與躁鬱初期：奇怪的身體異感</h3>
-                <p>這並非單純壓力，而是大腦多巴胺系統失調。我會透過專業診斷使用微量調節藥物，效果往往立竿見影。</p>
+            <div class="treatment-box">
+                <h3 class="font-bold text-blue-800 mb-2">2. 思覺失調與躁鬱初期：奇怪的身體異感</h3>
+                <p class="italic text-slate-500 mb-2">「總覺得後腦勺涼涼的，身體裡像是有電在跑，各處檢查都正常...」</p>
+                <p><strong>治療絕招：</strong> 這是最容易被忽視的一群。涉及大腦多巴胺系統失調，表現在體感上。我會透過專業診斷使用微量藥物，效果往往立竿見影。</p>
             </div>
 
-            <h2 class="text-2xl font-bold text-slate-800 border-b-2 border-slate-100 pb-2 mt-12 mb-6">三、 為什麼我的治療療效很好？</h2>
-            <p class="p-6 bg-blue-50 text-blue-900 rounded-xl font-medium italic">「因為我不盲目相信 HRV 機器。最好的診斷儀器是專科醫師的耳朵與眼睛。我會量身打造不管是藥物微調還是深度認知調整的計畫。」</p>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-800 border-b-2 border-slate-100 pb-2 mt-12 mb-6">三、 為什麼我的治療療效很好？</h2>
+            <p>因為我不盲目相信 HRV 機器。最好的診斷儀器是「專科醫師的耳朵與眼睛」。我會針對您的病史、發作型態，量身打造不管是藥物微調、生理回饋還是認知調整的「組合拳」。</p>
 
             <div class="mt-16 bg-slate-800 text-white p-10 rounded-3xl text-center">
                 <h3 class="text-2xl font-bold mb-4">找回您的舒適生活</h3>
-                <p class="text-slate-400 mb-8 text-lg">透過精準評估，找出症狀背後的真實機制，不再被標籤困擾。</p>
-                <a href="https://linktr.ee/SoothingClinic" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-xl transition-all">預約洪成志醫師門診</a>
+                <a href="https://linktr.ee/SoothingClinic" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full shadow-xl">預約洪成志醫師門診評估</a>
             </div>
-        </article>
+        </div>
     </main>
 
-    <footer class="bg-slate-900 text-white py-12 text-center">
-        <p class="mb-2">臺北市北投區自強街 141 巷 17 號</p>
-        <p class="text-slate-500 text-sm">© 2026 舒眠身心醫學診所. All Rights Reserved.</p>
+    <footer class="bg-slate-900 text-white py-12 text-center text-sm text-slate-500">
+        <p>© 2026 舒眠身心醫學診所 | 臺北市北投區自強街 141 巷 17 號</p>
     </footer>
 </body>
 </html>
