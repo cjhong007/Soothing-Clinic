@@ -186,346 +186,251 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
 <section id="articles" class="py-20 relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-blue-600 font-bold tracking-wider text-sm eng-font uppercase">Health Education</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-4">衛教專區</h2>
-                <div class="w-16 h-1 bg-blue-500 mx-auto rounded-full"></div>
-                <p class="text-slate-500 mt-4 max-w-2xl mx-auto">以精準醫學與同理心，帶您破解睡眠與情緒的迷思，找回內心的平靜。</p>
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-10">
+            <span class="text-blue-600 font-bold tracking-wider text-sm eng-font uppercase">Health Education</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-4">衛教專區</h2>
+            <div class="w-16 h-1 bg-blue-500 mx-auto rounded-full"></div>
+            <p class="text-slate-500 mt-4 max-w-2xl mx-auto">以精準醫學與同理心，帶您破解睡眠與情緒的迷思，找回內心的平靜。</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-12 max-w-4xl mx-auto px-2" id="article-filters">
+            <button class="filter-btn active bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md transition-all hover:-translate-y-0.5" data-target="all">全部文章</button>
+            <button class="filter-btn bg-white text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-5 py-2.5 rounded-full text-sm font-bold shadow-sm border border-slate-200 transition-all hover:-translate-y-0.5" data-target="sleep">睡眠障礙</button>
+            <button class="filter-btn bg-white text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-5 py-2.5 rounded-full text-sm font-bold shadow-sm border border-slate-200 transition-all hover:-translate-y-0.5" data-target="emotion">情緒與自律神經</button>
+            <button class="filter-btn bg-white text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-5 py-2.5 rounded-full text-sm font-bold shadow-sm border border-slate-200 transition-all hover:-translate-y-0.5" data-target="bipolar">躁鬱與用藥</button>
+            <button class="filter-btn bg-white text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-5 py-2.5 rounded-full text-sm font-bold shadow-sm border border-slate-200 transition-all hover:-translate-y-0.5" data-target="genetics">基因與精準醫療</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" id="article-grid">
+            
+            <a href="articles/article-psychiatric-genetics-nature.html" data-category="genetics" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-fuchsia-50 text-fuchsia-600 p-3 rounded-lg group-hover:bg-fuchsia-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/03/03</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-fuchsia-600 transition-colors">🧠 基因檢測能「算命」嗎？破解精神疾病的遺傳迷思</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">權威期刊《Nature》最新研究指出，許多精神疾病共用同一套風險基因。帶您看懂基因檢測對臨床的真正意義。</p>
+                <div class="mt-auto text-fuchsia-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/article-wes-screening.html" data-category="genetics" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-indigo-50 text-indigo-600 p-3 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/03/03</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-indigo-600 transition-colors">🛡️ 既然做基因檢測，為何推薦「全外顯子定序」？</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">除了失智症，還有機會揪出猝死、遺傳性癌症與嚴重藥物過敏的隱藏地雷。帶您了解為何WES是終生受用的健康投資。</p>
+                <div class="mt-auto text-indigo-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/article-dementia-genetic-counseling.html" data-category="genetics" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-teal-50 text-teal-600 p-3 rounded-lg group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/03/03</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-teal-600 transition-colors">🧬 失智症會遺傳嗎？一文看懂遺傳性失智症</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">「我爸爸得了失智症，我以後也會得嗎？」超過90%患者沒有明顯家族病史。帶您破解遺傳迷思與基因檢測重要性。</p>
+                <div class="mt-auto text-teal-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/article-insomnia-causes.html" data-category="sleep" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-blue-50 text-blue-600 p-3 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/02/25</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">🔍 為什麼我會睡不好？找出幕後黑手</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">破解失眠迷思！您的失眠是正常老化、大腦過熱，還是生理時鐘大亂？跟著睡眠偵探一起找出真正的原因。</p>
+                <div class="mt-auto text-blue-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/article-sleeping-pills-guide.html" data-category="sleep" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-cyan-50 text-cyan-600 p-3 rounded-lg group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/02/26</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-cyan-600 transition-colors">💊 安眠藥的「聰明使用指南」</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">怕成癮？怕跌倒？洪醫師教您打破傳統死板教條，安全駕馭助眠藥物，並學會在狀況好轉時適時放下「暫時的拐杖」。</p>
+                <div class="mt-auto text-cyan-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/article-cbti.html" data-category="sleep" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-indigo-50 text-indigo-600 p-3 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/02/26</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-indigo-600 transition-colors">🧠 不靠藥物也能好眠？</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">真正能讓您從此好眠的根本治療是「失眠認知行為治療(CBT-I)」。透過大腦與行為的重新訓練，幫您找回睡眠主導權！</p>
+                <div class="mt-auto text-indigo-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/article-supplements-truth.html" data-category="sleep" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-amber-50 text-amber-500 p-3 rounded-lg group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/02/27</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-amber-600 transition-colors">💊 褪黑激素、芝麻明E有效嗎？</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">GABA、色胺酸真的能助眠？還是強大的安慰劑效應？精神科醫師帶您看懂雙盲試驗真相，教您把錢花在刀口上！</p>
+                <div class="mt-auto text-amber-500 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/article-depression-truth.html" data-category="emotion" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-rose-50 text-rose-500 p-3 rounded-lg group-hover:bg-rose-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/02/27</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-rose-500 transition-colors">🌧️ 我明明過得很好，為何得憂鬱症？</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">破解「不知足」的迷思！憂鬱症不一定是壓力造成的，而是大腦的情緒調節機制失調。看懂三大症狀，找回快樂的自己。</p>
+                <div class="mt-auto text-rose-500 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/article-exercise-depression.html" data-category="emotion" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-green-50 text-green-600 p-3 rounded-lg group-hover:bg-green-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/02/27</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-green-600 transition-colors">🏃 覺得累只想躺著？運動才是特效藥</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">破解迷思！憂鬱與失眠不能只靠靜態休息。看運動如何分泌大腦肥料 BDNF，成為最天然的處方箋。</p>
+                <div class="mt-auto text-green-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/hrv-truth.html" data-category="emotion" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-violet-50 text-violet-600 p-3 rounded-lg group-hover:bg-violet-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/02/28</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-violet-600 transition-colors">📉 為什麼不盲目依賴「自律神經檢測儀」？</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">診所為什麼沒有測自律神經的儀器？精神科醫師真心話：比起短短5分鐘容易波動的數據，我們更重視深度問診。</p>
+                <div class="mt-auto text-violet-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <a href="articles/autonomic-panic.html" data-category="emotion" class="article-card flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-teal-50 text-teal-600 p-3 rounded-lg group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                    </div>
+                    <span class="text-sm text-slate-400 font-medium">2026/02/28</span>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-teal-600 transition-colors">⚖️ 全身不舒服檢查卻正常？認識自律神經失調</h3>
+                <p class="text-slate-600 mb-6 line-clamp-3">為什麼會沒來由地心悸、胸悶、恐慌？帶您破除「壓力太大」的迷思，找出隱藏在自律神經失調現象背後真正的疾病根源。</p>
+                <div class="mt-auto text-teal-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+            </a>
+
+            <div class="article-card flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300" data-category="bipolar">
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                    <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">用藥迷思與心理</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
+                        <a href="articles/article-anxiety-meds-extremes.html" class="hover:text-blue-600 transition">怕吃藥 vs. 拼命加藥：焦慮與失眠門診的兩個極端，你是哪一種？</a>
+                    </h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed flex-1">有些患者擅自停藥怕成癮；有些卻無止盡要求加藥。帶您看懂這兩種極端心態，以及真正容易依賴藥物的是哪種人。</p>
+                    <div class="mt-auto pt-4 border-t border-slate-50">
+                        <a href="articles/article-anxiety-meds-extremes.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
+                            閱讀全文 <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                
-                <a href="articles/article-insomnia-causes.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-blue-50 text-blue-600 p-3 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/25</span>
+            <div class="article-card flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300" data-category="bipolar">
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                    <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">用藥迷思與實證</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
+                        <a href="articles/article-bipolar-monotherapy.html" class="hover:text-blue-600 transition">躁鬱症需要吃一堆藥嗎？從實證醫學看「單一用藥」的王者之爭</a>
+                    </h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed flex-1">「吃這麼多種藥，腦袋會不會變笨？」讓最嚴謹的科學數據來說話，告訴您為什麼「單一用藥」是我們追求的最高目標。</p>
+                    <div class="mt-auto pt-4 border-t border-slate-50">
+                        <a href="articles/article-bipolar-monotherapy.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
+                            閱讀全文 <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">🔍 為什麼我會睡不好？找出幕後黑手</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">破解失眠迷思！您的失眠是正常老化、大腦過熱，還是生理時鐘大亂？跟著睡眠偵探一起找出真正的原因。</p>
-                    <div class="mt-auto text-blue-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-                <a href="articles/article-sleeping-pills-guide.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-cyan-50 text-cyan-600 p-3 rounded-lg group-hover:bg-cyan-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/26</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-cyan-600 transition-colors">💊 安眠藥的「聰明使用指南」</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">怕成癮？怕跌倒？洪醫師教您打破傳統死板教條，安全駕馭助眠藥物，並學會在狀況好轉時適時放下「暫時的拐杖」。</p>
-                    <div class="mt-auto text-cyan-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-                <a href="articles/article-cbti.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-indigo-50 text-indigo-600 p-3 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/26</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-indigo-600 transition-colors">🧠 不靠藥物也能好眠？</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">真正能讓您從此好眠的根本治療是「失眠認知行為治療(CBT-I)」。透過大腦與行為的重新訓練，幫您找回睡眠主導權！</p>
-                    <div class="mt-auto text-indigo-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-                <a href="articles/article-dementia-genetics.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-teal-50 text-teal-600 p-3 rounded-lg group-hover:bg-teal-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/26</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-teal-600 transition-colors">🧬 忘記了，是老了還是遺傳？</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">失智症真的會遺傳嗎？60歲前發病與65歲後發病有何不同？洪醫師帶您破解遺傳迷思，看見基因治療的未來曙光。</p>
-                    <div class="mt-auto text-teal-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-<a href="articles/article-dementia-genetic-counseling.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-blue-50 text-blue-600 p-3 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/03/03</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">🧬 失智症會遺傳嗎？一文看懂遺傳性失智症</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">「我爸爸得了失智症，我以後也會得嗎？」超過 90% 的患者沒有明顯家族病史。帶您破解遺傳迷思，了解基因檢測與遺傳諮詢的重要性。</p>
-                    <div class="mt-auto text-blue-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </div>
-                </a>
-
-<a href="articles/article-wes-screening.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-indigo-50 text-indigo-600 p-3 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/03/03</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-indigo-600 transition-colors">🛡️ 既然做基因檢測，為何推薦「全外顯子定序」？</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">除了失智症，還有機會揪出猝死、遺傳性癌症與嚴重藥物過敏的隱藏地雷。帶您了解為何全外顯子定序（WES）是終生受用的健康投資。</p>
-                    <div class="mt-auto text-indigo-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </div>
-                </a>
-
-
-           <a href="articles/article-psychiatric-genetics-nature.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-    <div class="flex items-center gap-4 mb-4">
-        <div class="bg-fuchsia-50 text-fuchsia-600 p-3 rounded-lg group-hover:bg-fuchsia-600 group-hover:text-white transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-            </svg>
-        </div>
-        <span class="text-sm text-slate-400 font-medium">2026/03/03</span>
-    </div>
-    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-fuchsia-600 transition-colors">🧠 基因檢測能「算命」嗎？破解精神疾病與天賦的遺傳迷思</h3>
-    <p class="text-slate-600 mb-6 line-clamp-3">權威期刊《Nature》最新研究指出，許多精神疾病其實共用同一套風險基因。帶您看懂基因檢測能否預測個性天賦，以及對臨床的真正意義。</p>
-    <div class="mt-auto text-fuchsia-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-        閱讀全文 
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-        </svg>
-    </div>
-</a>     
-                
-                <a href="articles/article-supplements-truth.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-amber-50 text-amber-500 p-3 rounded-lg group-hover:bg-amber-500 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/27</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-amber-600 transition-colors">💊 褪黑激素、芝麻明E有效嗎？</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">GABA、色胺酸真的能助眠？還是強大的安慰劑效應？精神科醫師帶您看懂雙盲試驗真相，教您把錢花在刀口上！</p>
-                    <div class="mt-auto text-amber-500 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-                <a href="articles/article-depression-truth.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-rose-50 text-rose-500 p-3 rounded-lg group-hover:bg-rose-500 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/27</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-rose-500 transition-colors">🌧️ 我明明過得很好，為何得憂鬱症？</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">破解「不知足」的迷思！憂鬱症不一定是壓力造成的，而是大腦的情緒調節機制失調。看懂三大症狀，找回快樂的自己。</p>
-                    <div class="mt-auto text-rose-500 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-<a href="articles/article-exercise-depression.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-green-50 text-green-600 p-3 rounded-lg group-hover:bg-green-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/27</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-green-600 transition-colors">🏃 覺得累只想躺著？運動才是特效藥</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">破解迷思！憂鬱與失眠不能只靠靜態休息。了解《Lancet》最新研究，看運動如何分泌大腦肥料 BDNF，成為最天然的處方箋。</p>
-                    <div class="mt-auto text-green-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-<a href="articles/hrv-truth.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-violet-50 text-violet-600 p-3 rounded-lg group-hover:bg-violet-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/28</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-violet-600 transition-colors">📉 為什麼不盲目依賴「自律神經檢測儀」？</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">診所為什麼沒有測自律神經的儀器？精神科醫師真心話：比起短短5分鐘容易波動的數據，我們更重視專科醫師面對面的深度問診。</p>
-                    <div class="mt-auto text-violet-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-<a href="articles/autonomic-panic.html" class="flex flex-col bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="bg-teal-50 text-teal-600 p-3 rounded-lg group-hover:bg-teal-600 group-hover:text-white transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
-                        </div>
-                        <span class="text-sm text-slate-400 font-medium">2026/02/28</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3 group-hover:text-teal-600 transition-colors">⚖️ 全身不舒服檢查卻正常？認識自律神經失調</h3>
-                    <p class="text-slate-600 mb-6 line-clamp-3">為什麼會沒來由地心悸、胸悶、恐慌？帶您破除「壓力太大」的迷思，找出隱藏在自律神經失調現象背後真正的疾病根源。</p>
-                    <div class="mt-auto text-teal-600 font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        閱讀全文 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </div>
-                </a>
-
-<div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300 flex flex-col">
-    <div class="p-6 md:p-8 flex-1 flex flex-col">
-        <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">用藥迷思與心理</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
-            <a href="articles/article-anxiety-meds-extremes.html" class="hover:text-blue-600 transition">
-                怕吃藥 vs. 拼命加藥：焦慮與失眠門診的兩個極端，你是哪一種？
-            </a>
-        </h3>
-        <p class="text-slate-600 mb-6 leading-relaxed flex-1">
-            有些患者一有好轉就擅自停藥，怕成癮；有些患者卻無止盡地要求加藥，從不評估療效。精神科醫師帶您看懂這兩種極端心態，以及真正容易藥物依賴的其實是哪一種人。
-        </p>
-        <div class="mt-auto pt-4 border-t border-slate-50">
-            <a href="articles/article-anxiety-meds-extremes.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
-                閱讀全文 
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
-              
-
-                
-<div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300 flex flex-col">
-    <div class="p-6 md:p-8 flex-1 flex flex-col">
-        <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">用藥迷思與實證</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
-            <a href="articles/article-bipolar-monotherapy.html" class="hover:text-blue-600 transition">
-                躁鬱症需要吃一堆藥嗎？從實證醫學看「單一用藥」的王者之爭
-            </a>
-        </h3>
-        <p class="text-slate-600 mb-6 leading-relaxed flex-1">
-            「吃這麼多種藥，腦袋會不會變慢、變笨？」許多患者與家屬都會有這樣的擔憂。我們不憑感覺，讓最嚴謹的科學數據來說話，告訴您為什麼「單一用藥」是我們追求的最高目標。
-        </p>
-        <div class="mt-auto pt-4 border-t border-slate-50">
-            <a href="articles/article-bipolar-monotherapy.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
-                閱讀全文 
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300 flex flex-col">
-    <div class="p-6 md:p-8 flex-1 flex flex-col">
-        <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">用藥迷思與實證</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
-            <a href="articles/article-bipolar-medications.html" class="hover:text-blue-600 transition">
-                既然「鋰鹽」是躁鬱症王者，為什麼很多醫師不敢開？
-            </a>
-        </h3>
-        <p class="text-slate-600 mb-6 leading-relaxed flex-1">
-            許多人對精神科藥物充滿恐懼，甚至排斥抽血檢查。本文將帶您破解鋰鹽、帝拔癲與金普薩的副作用迷思，了解為什麼「抽血測濃度」其實是最極致的安全防護。
-        </p>
-        <div class="mt-auto pt-4 border-t border-slate-50">
-            <a href="articles/article-bipolar-medications.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
-                閱讀全文 
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300 flex flex-col">
-    <div class="p-6 md:p-8 flex-1 flex flex-col">
-        <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">疾病與治療入門</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
-            <a href="articles/article-bipolar-basics.html" class="hover:text-blue-600 transition">
-                掌握大腦的情緒恆溫器：典型躁鬱症的最基本藥物治療
-            </a>
-        </h3>
-        <p class="text-slate-600 mb-6 leading-relaxed flex-1">
-            「我現在感覺很好，為什麼要吃藥？」帶您了解為什麼單靠轉念無法控制躁鬱症，以及情緒穩定劑是如何幫失控的大腦裝上煞車，找回平順人生。
-        </p>
-        <div class="mt-auto pt-4 border-t border-slate-50">
-            <a href="articles/article-bipolar-basics.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
-                閱讀全文 
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
-
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300 flex flex-col">
-    <div class="p-6 md:p-8 flex-1 flex flex-col">
-        <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">用藥迷思與實證</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
-            <a href="articles/article-bipolar-efficacy.html" class="hover:text-blue-600 transition">
-                乖乖吃藥為什麼還是發病？何時該懷疑「藥效不佳」
-            </a>
-        </h3>
-        <p class="text-slate-600 mb-6 leading-relaxed flex-1">
-            「又發病了，是不是你沒好好吃藥？」許多醫師常落入這個盲點。透過疾病自然史的 10 次法則，教您如何客觀評估目前的藥物到底有沒有發揮真正的預防效果。
-        </p>
-        <div class="mt-auto pt-4 border-t border-slate-50">
-            <a href="articles/article-bipolar-efficacy.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
-                閱讀全文 
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300 flex flex-col">
-    <div class="p-6 md:p-8 flex-1 flex flex-col">
-        <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">疾病與治療入門</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
-            <a href="articles/article-med-speed.html" class="hover:text-blue-600 transition">
-                為什麼沒有「吃了馬上快樂」的藥？藥效快慢與大腦重塑的秘密
-            </a>
-        </h3>
-        <p class="text-slate-600 mb-6 leading-relaxed flex-1">
-            「醫師，能不能開個備用藥，他不舒服時吃一顆馬上好？」許多人常犯的致命錯誤，就是把長效核心藥當成備用藥吃。帶您看懂為什麼主流藥物需要數週的大腦重塑工程。
-        </p>
-        <div class="mt-auto pt-4 border-t border-slate-50">
-            <a href="articles/article-med-speed.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
-                閱讀全文 
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300 flex flex-col">
-    <div class="p-6 md:p-8 flex-1 flex flex-col">
-        <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">疾病病程與功能的問診精隨</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
-            <a href="articles/article-triple-functional-course.html" class="hover:text-blue-600 transition">
-                從「功能變化曲線圖」看懂思覺失調、躁鬱症與失智症
-            </a>
-        </h3>
-        <p class="text-slate-600 mb-6 leading-relaxed flex-1">
-            資深精神科醫師與年輕醫師的差別在哪裡？關鍵在於問「功能」而非「症狀」。帶您看懂為什麼躁鬱症可以幾乎完全恢復，失覺失調症會階梯式下降，而失智症則是持續不可逆之陡峭下降。
-        </p>
-        <div class="mt-auto pt-4 border-t border-slate-50">
-            <a href="articles/article-triple-functional-course.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
-                閱讀全文 
-                <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            </a>
-        </div>
-    </div>
-</div>
-                
-                
+                </div>
             </div>
+
+            <div class="article-card flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300" data-category="bipolar">
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                    <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">用藥迷思與實證</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
+                        <a href="articles/article-bipolar-medications.html" class="hover:text-blue-600 transition">既然「鋰鹽」是躁鬱症王者，為什麼很多醫師不敢開？</a>
+                    </h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed flex-1">破解鋰鹽、帝拔癲與金普薩的副作用迷思，了解為什麼「抽血測濃度」其實是最極致的安全防護。</p>
+                    <div class="mt-auto pt-4 border-t border-slate-50">
+                        <a href="articles/article-bipolar-medications.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
+                            閱讀全文 <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300" data-category="bipolar">
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                    <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">疾病與治療入門</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
+                        <a href="articles/article-bipolar-basics.html" class="hover:text-blue-600 transition">掌握大腦的情緒恆溫器：典型躁鬱症的最基本藥物治療</a>
+                    </h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed flex-1">「我現在感覺很好，為什麼要吃藥？」帶您了解情緒穩定劑是如何幫失控的大腦裝上煞車，找回平順人生。</p>
+                    <div class="mt-auto pt-4 border-t border-slate-50">
+                        <a href="articles/article-bipolar-basics.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
+                            閱讀全文 <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300" data-category="bipolar">
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                    <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">用藥迷思與實證</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
+                        <a href="articles/article-bipolar-efficacy.html" class="hover:text-blue-600 transition">乖乖吃藥為什麼還是發病？資深精神科醫師的真心話</a>
+                    </h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed flex-1">透過疾病自然史的 10 次法則，教您如何客觀評估目前的藥物到底有沒有發揮真正的預防效果。</p>
+                    <div class="mt-auto pt-4 border-t border-slate-50">
+                        <a href="articles/article-bipolar-efficacy.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
+                            閱讀全文 <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-lg transition transform hover:-translate-y-1 duration-300" data-category="bipolar">
+                <div class="p-6 md:p-8 flex-1 flex flex-col">
+                    <div class="text-sm text-blue-500 font-bold tracking-wider mb-2">疾病與治療入門</div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug">
+                        <a href="articles/article-med-speed.html" class="hover:text-blue-600 transition">為什麼沒有「吃了馬上快樂」的藥？破解藥效快慢的秘密</a>
+                    </h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed flex-1">「能不能開個備用藥，不舒服時吃一顆馬上好？」帶您看懂為什麼主流藥物需要數週的大腦重塑工程。</p>
+                    <div class="mt-auto pt-4 border-t border-slate-50">
+                        <a href="articles/article-med-speed.html" class="text-blue-600 font-bold hover:text-blue-700 flex items-center group">
+                            閱讀全文 <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>    
+    </div>
+</section>
+    
+    
     <section id="schedule" class="py-20 bg-white/50">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold text-slate-800 mb-8">門診時間表</h2>
@@ -645,9 +550,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
+<style>
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .article-card {
+            transition: display 0.3s ease-out;
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const articles = document.querySelectorAll('.article-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 1. 重置所有按鈕的樣式為「未選取」
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                        b.classList.add('bg-white', 'text-slate-600', 'shadow-sm');
+                    });
+                    
+                    // 2. 將點擊的按鈕設為「已選取」樣式
+                    btn.classList.remove('bg-white', 'text-slate-600', 'shadow-sm');
+                    btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+
+                    const targetCategory = btn.getAttribute('data-target');
+
+                    // 3. 過濾並顯示對應的文章
+                    articles.forEach(article => {
+                        if (targetCategory === 'all' || article.getAttribute('data-category') === targetCategory) {
+                            article.style.display = 'flex'; // 恢復網格排版
+                            article.style.animation = 'none'; // 重置動畫
+                            // 觸發重新繪製以播放動畫
+                            setTimeout(() => {
+                                article.style.animation = 'fadeInScale 0.4s ease forwards';
+                            }, 10);
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+                    
     </body>
 
 </html>
+
 
 
 
