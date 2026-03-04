@@ -220,7 +220,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         });
 
-        document.getElementById('calculate-btn').addEventListener('click', () => {
+document.getElementById('calculate-btn').addEventListener('click', () => {
             let total = 0;
             let answered = 0;
             const rows = document.querySelectorAll('.symptom-row');
@@ -233,8 +233,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
             });
 
+            // 確保每一題都有作答
             if (answered < rows.length) {
-                alert('請完成所有題目的評估再查看結果。');
+                alert('請完成所有 11 道題目的評估，再查看結果喔！');
                 return;
             }
 
@@ -242,19 +243,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const totalSpan = document.getElementById('total-score');
             const textDiv = document.getElementById('result-text');
 
+            // 顯示結果區塊
             resultBox.classList.remove('hidden');
             totalSpan.innerText = total;
 
+            // 根據四大區間給予不同的結果與建議
             let resultHTML = "";
+            
             if (total <= 5) {
-                resultHTML = "<p class='text-emerald-600 font-bold'>【輕微或生理性壓力反應】</p><p>您的自律神經狀況尚屬穩定，目前的身體不適可能與短期生活作息、睡眠不足或壓力有關。建議維持良好的運動與規律作息，並繼續觀察。</p>";
-            } else if (total <= 12) {
-                resultHTML = "<p class='text-amber-600 font-bold'>【中度自律神經功能失衡】</p><p>您的身體正在發出警訊！自律神經可能已經出現明顯失衡，影響到多個器官系統。建議您尋求心身醫學專科醫師的協助，進行深度問診，找出壓力源並適時調整用藥。</p>";
+                // 0-5 分：正常範圍
+                resultHTML = `
+                <div class='p-6 bg-emerald-50 rounded-xl border border-emerald-200 text-left'>
+                    <p class='text-emerald-700 font-bold text-xl mb-2'>🟢 【正常範圍 / 極輕微】</p>
+                    <p class='text-slate-700 leading-relaxed'>您的自律神經狀況尚屬穩定。偶爾出現的身體不適，多半是身體面對短期疲勞或壓力的正常生理反應。請繼續保持良好的作息、運動習慣與適度紓壓即可！</p>
+                </div>`;
+            } else if (total <= 11) {
+                // 6-11 分：輕度
+                resultHTML = `
+                <div class='p-6 bg-blue-50 rounded-xl border border-blue-200 text-left'>
+                    <p class='text-blue-700 font-bold text-xl mb-2'>🔵 【輕度自律神經失衡】</p>
+                    <p class='text-slate-700 leading-relaxed'>身體已經開始對您發出初步的抗議警訊！可能近期壓力較大、睡眠品質不佳或缺乏休息。建議您開始檢視生活步調，學習放鬆技巧。若症狀持續超過兩週未改善，可考慮就醫諮詢。</p>
+                </div>`;
+            } else if (total <= 18) {
+                // 12-18 分：中度
+                resultHTML = `
+                <div class='p-6 bg-amber-50 rounded-xl border border-amber-200 text-left'>
+                    <p class='text-amber-700 font-bold text-xl mb-2'>🟠 【中度自律神經失調】</p>
+                    <p class='text-slate-700 leading-relaxed'>這些症狀可能已經明顯干擾到您的日常工作表現與生活品質。在這個階段，單靠「多休息」可能效果有限。建議您預約門診，讓專業醫師協助您找出核心壓力源或潛在的身體化症狀，避免病情慢性化。</p>
+                </div>`;
             } else {
-                resultHTML = "<p class='text-red-600 font-bold'>【顯著自律神經系統失調】</p><p>您的身體症狀負擔較重，這通常代表自律神經系統已經難以自我調節。這種情況下單靠「多休息」效果有限，建議盡早預約門診，透過精準醫療評估大腦與生理機能，找回健康主導權。</p>";
+                // 19-33 分：重度
+                resultHTML = `
+                <div class='p-6 bg-red-50 rounded-xl border border-red-200 text-left'>
+                    <p class='text-red-700 font-bold text-xl mb-2'>🔴 【重度自律神經失調】</p>
+                    <p class='text-slate-700 leading-relaxed'>您的身體症狀負擔非常沉重，這通常代表自律神經系統目前已經失去自我調節的能力（常常伴隨著潛在的焦慮症或憂鬱症）。強烈建議您盡快尋求心身醫學專科醫師的協助，透過精準的醫療介入與藥物輔助，找回身心平衡。</p>
+                </div>`;
             }
+            
             textDiv.innerHTML = resultHTML;
-            resultBox.scrollIntoView({ behavior: 'smooth' });
+            
+            // 讓畫面平滑滾動到結果區塊
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
     </script>
 
