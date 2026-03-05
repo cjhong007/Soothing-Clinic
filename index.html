@@ -203,6 +203,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="text-slate-500 mt-4 max-w-2xl mx-auto">以精準醫學與同理心，帶您破解睡眠與情緒的迷思，找回內心的平靜。</p>
         </div>
 
+        <div class="max-w-md mx-auto mb-8 relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+            <input type="text" id="article-search" placeholder="搜尋疾病、症狀或關鍵字..." class="w-full pl-11 pr-4 py-3 bg-white border border-slate-200 rounded-full text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm transition-shadow hover:shadow-md">
+        </div>
+
 <div class="flex flex-wrap justify-center gap-3 mb-12 max-w-4xl mx-auto px-2" id="article-filters">
             <button class="filter-btn active bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-md transition-all hover:-translate-y-0.5" data-target="all">全部文章</button>
             <button class="filter-btn bg-white text-slate-600 hover:bg-blue-50 hover:text-blue-600 px-5 py-2.5 rounded-full text-sm font-bold shadow-sm border border-slate-200 transition-all hover:-translate-y-0.5" data-target="sleep">睡眠障礙</button>
@@ -807,47 +816,70 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             transition: display 0.3s ease-out;
         }
     </style>
-    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const articles = document.querySelectorAll('.article-card');
+            const searchInput = document.getElementById('article-search');
 
+            // 核心過濾功能：同時判斷「分類」與「搜尋關鍵字」
+            function filterArticles(category, searchTerm) {
+                articles.forEach(article => {
+                    // 檢查是否符合分類
+                    const matchesCategory = category === 'all' || article.getAttribute('data-category') === category;
+                    // 檢查是否符合搜尋字詞 (將文章標題與摘要轉小寫比對)
+                    const textContent = article.textContent.toLowerCase();
+                    const matchesSearch = textContent.includes(searchTerm.toLowerCase());
+
+                    // 只有同時符合分類與搜尋條件才顯示
+                    if (matchesCategory && matchesSearch) {
+                        article.style.display = 'flex';
+                        article.style.animation = 'none'; // 重置動畫
+                        setTimeout(() => {
+                            article.style.animation = 'fadeInScale 0.4s ease forwards';
+                        }, 10);
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+            }
+
+            // 1. 分類按鈕點擊事件
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // 1. 重置所有按鈕的樣式為「未選取」
+                    // 重置按鈕樣式
                     filterBtns.forEach(b => {
                         b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
                         b.classList.add('bg-white', 'text-slate-600', 'shadow-sm');
                     });
-                    
-                    // 2. 將點擊的按鈕設為「已選取」樣式
+                    // 設定當前點擊按鈕樣式
                     btn.classList.remove('bg-white', 'text-slate-600', 'shadow-sm');
                     btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
 
                     const targetCategory = btn.getAttribute('data-target');
-
-                    // 3. 過濾並顯示對應的文章
-                    articles.forEach(article => {
-                        if (targetCategory === 'all' || article.getAttribute('data-category') === targetCategory) {
-                            article.style.display = 'flex'; // 恢復網格排版
-                            article.style.animation = 'none'; // 重置動畫
-                            // 觸發重新繪製以播放動畫
-                            setTimeout(() => {
-                                article.style.animation = 'fadeInScale 0.4s ease forwards';
-                            }, 10);
-                        } else {
-                            article.style.display = 'none';
-                        }
-                    });
+                    const currentSearch = searchInput.value; // 取得目前的搜尋字詞
+                    filterArticles(targetCategory, currentSearch);
                 });
             });
+
+            // 2. 搜尋框輸入事件
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    // 找出目前被選取的分類按鈕
+                    const activeBtn = document.querySelector('.filter-btn.bg-blue-600');
+                    const targetCategory = activeBtn ? activeBtn.getAttribute('data-target') : 'all';
+                    const currentSearch = e.target.value;
+                    
+                    filterArticles(targetCategory, currentSearch);
+                });
+            }
         });
     </script>
                     
     </body>
 
 </html>
+
 
 
 
