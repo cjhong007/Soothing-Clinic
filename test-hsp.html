@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WT2383TF');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>別人覺得沒什麼，我卻覺得心好累？高敏感族群(HSP)檢測｜舒眠身心醫學診所</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-violet-50 min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white/95 shadow-sm border-b border-violet-100 py-4 fixed w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="font-bold text-xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-[10px] text-violet-600 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="test-hub.html" class="text-sm text-slate-500 hover:text-violet-600 transition font-medium flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                返回測驗大廳
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+        <div class="bg-white max-w-2xl w-full rounded-3xl shadow-xl border border-violet-100 overflow-hidden relative">
+            
+            <div id="progress-container" class="w-full bg-slate-100 h-2 hidden">
+                <div id="progress-bar" class="bg-violet-400 h-2 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="start-screen" class="text-center fade-in">
+                    <div class="w-24 h-24 bg-violet-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-5xl">🦋</span>
+                    </div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-violet-100 text-violet-700 text-sm font-bold mb-4 tracking-wider">
+                        隱性精神困擾系列
+                    </span>
+                    <h1 class="text-3xl font-bold text-slate-800 mb-4 leading-snug">別人覺得沒什麼，我卻覺得心好累？<br><span class="text-2xl text-violet-600">高敏感族群 (HSP) 檢測</span></h1>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        容易被聲音與光線影響？別人的一句無心之言會讓你在意很久？常常覺得社交完電力耗盡？<br><br>
+                        這不是你「太玻璃心」，而是你的神經系統天生具備高度敏銳的接收器。花 2 分鐘，檢測你是否屬於那 20% 的「高敏感族群 (Highly Sensitive Person)」。
+                    </p>
+                    <button onclick="startQuiz()" class="bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-lg">
+                        開始檢測我的敏感度
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="text-sm font-bold text-violet-500 tracking-wider" id="question-progress">Q1 / 6</div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-snug" id="question-text">題目載入中...</h2>
+                    <div id="options-container" class="space-y-4">
+                        </div>
+                </div>
+
+                <div id="result-screen" class="hidden text-center fade-in">
+                    <span class="inline-block py-1 px-3 rounded-full bg-violet-100 text-violet-700 text-sm font-bold mb-4 tracking-wider">
+                        您的專屬解析報告
+                    </span>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">您的感官天線屬於</h2>
+                    <h3 id="result-title" class="text-4xl font-extrabold text-violet-600 mb-8">分數載入中</h3>
+                    
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 md:p-8 mb-8 text-left relative">
+                        <div class="absolute top-4 left-4 text-4xl text-violet-200 opacity-50 font-serif">"</div>
+                        <p id="result-desc" class="text-slate-700 leading-relaxed font-medium relative z-10 pl-6"></p>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-slate-200 pt-8 mb-6 text-left">
+                        <h4 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                            <span>👨‍⚕️</span> 醫師的溫馨提醒
+                        </h4>
+                        <p id="clinical-advice" class="text-slate-600 leading-relaxed mb-6"></p>
+                        
+                        <div id="booking-section" class="bg-violet-50 rounded-xl p-5 text-center hidden">
+                            <p class="text-sm text-slate-600 mb-4">若您的高敏感已經造成長期的焦慮、失眠、或自律神經失調，請不要硬撐。適當的醫療協助能幫您的神經系統建立一個保護罩。</p>
+                            <a href="index.html#booking" class="inline-block bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition transform hover:-translate-y-1 w-full sm:w-auto">
+                                預約門診，建立身心保護罩
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-4 mt-8">
+                        <button onclick="location.reload()" class="text-slate-400 hover:text-slate-600 font-medium underline text-sm">
+                            重新測驗
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            { text: "1. 當周遭環境有強烈感官刺激（如太亮的燈光、吵雜的噪音、強烈的氣味或粗糙的衣物）時，您是否容易感到心煩意亂，甚至想逃離？" },
+            { text: "2. 您是否非常容易察覺到別人的情緒變化（例如：對方雖然笑著，但您一眼就能感覺到他在生氣或難過）？" },
+            { text: "3. 每天下班或參加完熱鬧的社交活動後，您是否覺得「電力耗盡」，必須立刻回到安靜的地方獨處才能恢復能量？" },
+            { text: "4. 面對多項任務同時進行，或是要在短時間內完成很多事情時，您是否容易感到極度焦慮、不知所措，甚至大腦當機？" },
+            { text: "5. 您是否從小到大常被身邊的人說：「你想太多了」、「你太敏感了」或「不要那麼玻璃心」？" },
+            { text: "6. 您對藝術、音樂、電影或大自然的美，是否常有非常深刻、甚至感動到想哭的共鳴體驗？" }
+        ];
+
+        const options = [
+            { text: "完全不符合", score: 0 },
+            { text: "稍微符合", score: 1 },
+            { text: "滿符合的", score: 2 },
+            { text: "完全就是我", score: 3 }
+        ];
+
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            document.getElementById('question-progress').innerText = `Q${currentQuestionIndex + 1} / ${questions.length}`;
+
+            const qText = document.getElementById('question-text');
+            qText.innerText = questions[currentQuestionIndex].text;
+            qText.classList.remove('fade-in');
+            void qText.offsetWidth; 
+            qText.classList.add('fade-in');
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; 
+
+            options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-violet-400 hover:bg-violet-50 transition-all font-medium text-slate-700 fade-in text-lg";
+                btn.style.animationDelay = `${index * 0.1}s`;
+                btn.innerText = opt.text;
+                btn.onclick = () => handleAnswer(opt.score);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(score) {
+            totalScore += score;
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) { renderQuestion(); } 
+            else { showResults(); }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            const titleEl = document.getElementById('result-title');
+            const descEl = document.getElementById('result-desc');
+            const adviceEl = document.getElementById('clinical-advice');
+            const bookingSec = document.getElementById('booking-section');
+
+            // 總分 18 分
+            if (totalScore <= 6) {
+                titleEl.innerText = "鈍感型 (防禦力高)";
+                titleEl.className = "text-4xl font-extrabold text-slate-600 mb-8";
+                descEl.innerText = "您的神經系統相當穩定，不容易受到外界刺激干擾。在充滿壓力的環境中，您能維持很好的抗壓性，情緒起伏不大。";
+                adviceEl.innerText = "這是一個在現代社會非常吃香的特質。不過，偶爾可以稍微留意身邊親友微小的情緒變化，這會讓您的人際關係更加圓融喔！";
+            } else if (totalScore <= 12) {
+                titleEl.innerText = "中度敏感型 (彈性極佳)";
+                titleEl.className = "text-4xl font-extrabold text-blue-500 mb-8";
+                descEl.innerText = "您能在「感受力」與「抗壓力」之間取得很好的平衡。您有足夠的同理心能察言觀色，但在必要時，也能開啟大腦的過濾網，阻擋不必要的雜訊。";
+                adviceEl.innerText = "您的狀態很棒！請繼續保持現有的生活節奏。只有在經歷重大壓力事件時，才需要特別留意給自己多一點獨處修復的時間。";
+            } else {
+                titleEl.innerText = "典型高敏感族 (HSP)";
+                titleEl.className = "text-4xl font-extrabold text-violet-600 mb-8";
+                descEl.innerText = "您擁有宛如頂級雷達般的感受力！您能察覺別人忽略的細節、擁有極高的同理心與豐富的內在世界。但也因為大腦時時刻刻都在吸收龐大的資訊，讓您非常容易出現「感官超載」，引發疲憊與焦慮。";
+                adviceEl.innerText = "高敏感不是病，而是一份「需要被正確使用」的天賦。當您感覺神經緊繃時，請允許自己果斷離開人群。若這份敏感已經讓您頻繁出現恐慌、胸悶或嚴重失眠，代表神經系統已經發炎過熱了。";
+                bookingSec.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
