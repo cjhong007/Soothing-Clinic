@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WT2383TF');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身心健康與性格綜合檢測｜舒眠身心醫學診所</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white/95 shadow-sm border-b border-slate-100 py-4 fixed w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="font-bold text-xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-[10px] text-blue-500 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="index.html" class="text-sm text-slate-500 hover:text-blue-600 transition font-medium">返回首頁</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+        <div class="bg-white max-w-2xl w-full rounded-2xl shadow-lg border border-slate-100 overflow-hidden relative">
+            
+            <div id="progress-container" class="w-full bg-slate-100 h-2 hidden">
+                <div id="progress-bar" class="bg-blue-500 h-2 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="start-screen" class="text-center fade-in">
+                    <div class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h1 class="text-3xl font-bold text-slate-800 mb-4">身心健康與性格綜合檢測</h1>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        您最近過得好嗎？這是一個約需 2 分鐘的快速檢測，不僅能幫助您評估近期的睡眠、情緒與壓力狀態，還能分析您專屬的性格特質（如完美主義、樂觀內斂等）。<br><br>
+                        <span class="text-sm text-rose-500 font-bold">※ 本測驗結果僅供參考，無法取代專業醫師之醫療診斷。</span>
+                    </p>
+                    <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-10 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-1 text-lg">
+                        開始測驗
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="hidden">
+                    <div class="mb-2 text-sm font-bold text-blue-500 tracking-wider uppercase" id="question-category">類別</div>
+                    <h2 class="text-2xl font-bold text-slate-800 mb-8 leading-snug" id="question-text">題目載入中...</h2>
+                    <div id="options-container" class="space-y-3">
+                        </div>
+                </div>
+
+                <div id="result-screen" class="hidden text-center fade-in">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-6">您的綜合檢測報告</h2>
+                    
+                    <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 mb-6 text-left">
+                        <h3 class="font-bold text-indigo-800 text-lg mb-2 flex items-center gap-2">
+                            <span>🎭</span> 您的性格特質分析
+                        </h3>
+                        <p id="personality-result" class="text-slate-700 leading-relaxed font-medium"></p>
+                    </div>
+
+                    <div id="clinical-result-container" class="bg-amber-50 border border-amber-100 rounded-xl p-6 mb-8 text-left">
+                        <h3 class="font-bold text-amber-800 text-lg mb-2 flex items-center gap-2">
+                            <span>🩺</span> 身心狀態評估
+                        </h3>
+                        <p id="clinical-result" class="text-slate-700 leading-relaxed font-medium mb-4"></p>
+                        
+                        <div id="action-buttons" class="mt-6 text-center">
+                            <a href="index.html#booking" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition transform hover:-translate-y-1 mb-3 w-full sm:w-auto">
+                                預約門診進行專業評估
+                            </a>
+                            <p class="text-sm text-slate-500">如有疑問，歡迎致電診所：<a href="tel:0228214412" class="text-blue-600 font-bold">02-2821-4412</a></p>
+                        </div>
+                    </div>
+
+                    <button onclick="location.reload()" class="text-slate-400 hover:text-slate-600 font-medium underline text-sm mt-4">
+                        重新測驗
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- 題庫與計分權重設定 ---
+        const questions = [
+            // 臨床症狀題
+            {
+                category: "情緒狀態",
+                text: "過去兩週內，您是否經常感到心情低落、沮喪，或對原本喜歡的事情失去興趣？",
+                options: [
+                    { text: "完全不會", scores: { depression: 0 } },
+                    { text: "偶爾幾天", scores: { depression: 1 } },
+                    { text: "超過一半的天數", scores: { depression: 2 } },
+                    { text: "幾乎每天", scores: { depression: 3 } }
+                ]
+            },
+            {
+                category: "壓力與焦慮",
+                text: "最近一個月，您是否常感到異常緊張、不安，或是腦袋裡一直想著擔憂的事情停不下來？",
+                options: [
+                    { text: "完全不會", scores: { anxiety: 0 } },
+                    { text: "偶爾會", scores: { anxiety: 1 } },
+                    { text: "經常如此，且感覺難以放鬆", scores: { anxiety: 2 } },
+                    { text: "每天如此，甚至伴隨心悸、肌肉緊繃", scores: { anxiety: 3 } }
+                ]
+            },
+            {
+                category: "睡眠品質",
+                text: "過去一個月，您的睡眠狀況如何？",
+                options: [
+                    { text: "一覺到天亮，睡得很好", scores: { insomnia: 0 } },
+                    { text: "偶爾難入睡或半夜醒來", scores: { insomnia: 1 } },
+                    { text: "經常失眠，白天覺得精神不濟", scores: { insomnia: 2 } },
+                    { text: "非常嚴重，幾乎無法入睡或極早就醒來", scores: { insomnia: 3 } }
+                ]
+            },
+            {
+                category: "特殊精神狀態",
+                text: "是否曾有一段時間，您覺得睡眠需求大幅減少卻異常亢奮，腦中想法轉不停，或花費大量金錢？",
+                options: [
+                    { text: "從未發生過", scores: { bipolar: 0 } },
+                    { text: "好像有過，但不嚴重", scores: { bipolar: 1 } },
+                    { text: "有，且造成生活或財務上的困擾", scores: { bipolar: 3 } }
+                ]
+            },
+            {
+                category: "特殊精神狀態",
+                text: "您是否曾覺得周遭的人都在針對您、監視您，或者聽到別人聽不到的聲音？",
+                options: [
+                    { text: "從未覺得", scores: { psychosis: 0, suspicious: 0 } },
+                    { text: "有時會比較多疑，覺得別人在談論我", scores: { psychosis: 1, suspicious: 2 } },
+                    { text: "非常確定有，且讓我感到恐懼", scores: { psychosis: 3, suspicious: 3 } }
+                ]
+            },
+            // 性格特質題
+            {
+                category: "性格分析",
+                text: "面對突如其來的挫折或未知的挑戰時，您的第一反應通常是？",
+                options: [
+                    { text: "覺得「總有辦法解決的」，偏向樂觀", scores: { optimism: 3, pessimism: 0 } },
+                    { text: "謹慎評估所有可能的風險與最壞情況", scores: { optimism: 1, cautious: 3 } },
+                    { text: "容易覺得「一定會搞砸」，陷入悲觀思考", scores: { pessimism: 3, optimism: 0 } }
+                ]
+            },
+            {
+                category: "性格分析",
+                text: "對於工作或生活細節的要求，您通常是哪一種態度？",
+                options: [
+                    { text: "順其自然，有完成就好", scores: { perfectionism: 0 } },
+                    { text: "盡力而為，就算有小瑕疵也能接受", scores: { perfectionism: 1 } },
+                    { text: "極度要求完美，只要不達標就會非常焦慮", scores: { perfectionism: 3 } }
+                ]
+            },
+            {
+                category: "性格分析",
+                text: "在群體或社交場合中，您通常扮演什麼樣的角色？",
+                options: [
+                    { text: "主動帶動氣氛，喜歡表達自己", scores: { extrovert: 3, introvert: 0 } },
+                    { text: "隨和配合大家，偶爾發表意見", scores: { extrovert: 1, introvert: 1 } },
+                    { text: "安靜觀察，比較喜歡獨處或一對一交流", scores: { introvert: 3, extrovert: 0 } }
+                ]
+            }
+        ];
+
+        // 狀態變數
+        let currentQuestionIndex = 0;
+        let userScores = {
+            depression: 0, anxiety: 0, insomnia: 0, bipolar: 0, psychosis: 0,
+            optimism: 0, pessimism: 0, cautious: 0, perfectionism: 0, extrovert: 0, introvert: 0, suspicious: 0
+        };
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            progressContainer.classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            // 更新進度條
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            const q = questions[currentQuestionIndex];
+            document.getElementById('question-category').innerText = q.category;
+            
+            // 加上淡入動畫
+            const qText = document.getElementById('question-text');
+            qText.innerText = q.text;
+            qText.classList.remove('fade-in');
+            void qText.offsetWidth; // 觸發重繪
+            qText.classList.add('fade-in');
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; // 清空選項
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50 transition-all font-medium text-slate-700 fade-in";
+                btn.style.animationDelay = `${index * 0.1}s`;
+                btn.innerText = opt.text;
+                btn.onclick = () => handleAnswer(opt.scores);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(scoresToAdd) {
+            // 累加分數
+            for (let trait in scoresToAdd) {
+                userScores[trait] += scoresToAdd[trait];
+            }
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            progressContainer.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            // 1. 生成性格分析文案
+            let personalityTraits = [];
+            
+            if (userScores.perfectionism >= 3) personalityTraits.push("具有強烈的「完美主義」傾向，做事嚴謹，但有時會給自己過大的壓力。");
+            if (userScores.optimism > userScores.pessimism && userScores.optimism > userScores.cautious) {
+                personalityTraits.push("個性「樂觀進取」，面對挑戰總能看見希望的曙光。");
+            } else if (userScores.cautious >= 3) {
+                personalityTraits.push("性格「保守謹慎」，思慮周全，不輕易涉險。");
+            } else if (userScores.pessimism >= 3) {
+                personalityTraits.push("近期可能較為「悲觀或陰沉憂鬱」，容易放大負面訊息，需要多關照內心感受。");
+            }
+            
+            if (userScores.extrovert > userScores.introvert) {
+                personalityTraits.push("社交上偏向「外向開朗」，能從與人互動中獲得能量。");
+            } else {
+                personalityTraits.push("氣質較為「內斂沉穩」，偏好深度交流，能在獨處中自我修復。");
+            }
+
+            if (userScores.suspicious >= 2) personalityTraits.push("具有較強的「防禦與多疑」特質，不容易輕信他人。");
+
+            document.getElementById('personality-result').innerHTML = personalityTraits.map(t => "• " + t).join('<br>');
+
+            // 2. 生成臨床評估文案與就醫建議
+            let clinicalIssues = [];
+            let needsDoctor = false;
+
+            if (userScores.depression >= 2) { clinicalIssues.push("明顯的憂鬱或低落情緒"); needsDoctor = true; }
+            if (userScores.anxiety >= 2) { clinicalIssues.push("中度以上的焦慮與緊繃"); needsDoctor = true; }
+            if (userScores.insomnia >= 2) { clinicalIssues.push("困擾生活的失眠問題"); needsDoctor = true; }
+            if (userScores.bipolar >= 3) { clinicalIssues.push("疑似躁症（情緒過度亢奮、失控）的跡象"); needsDoctor = true; }
+            if (userScores.psychosis >= 3) { clinicalIssues.push("疑似思覺失調（嚴重多疑、幻聽）的跡象"); needsDoctor = true; }
+
+            const clinicalResultText = document.getElementById('clinical-result');
+            const clinicalContainer = document.getElementById('clinical-result-container');
+            const actionBtns = document.getElementById('action-buttons');
+
+            if (needsDoctor) {
+                clinicalContainer.className = "bg-rose-50 border border-rose-100 rounded-xl p-6 mb-8 text-left";
+                document.querySelector('#clinical-result-container h3').className = "font-bold text-rose-800 text-lg mb-2 flex items-center gap-2";
+                
+                clinicalResultText.innerHTML = `根據您的作答，您目前可能正面臨 <strong class="text-rose-600">${clinicalIssues.join('、')}</strong>。<br><br>這些症狀可能已經影響到您的大腦神經傳導物質平衡。精神狀況就像感冒一樣，及早介入治療能避免長期受苦。建議您預約門診，讓醫師為您進行更詳細的專業評估。`;
+                actionBtns.style.display = 'block';
+            } else {
+                clinicalContainer.className = "bg-emerald-50 border border-emerald-100 rounded-xl p-6 mb-8 text-left";
+                document.querySelector('#clinical-result-container h3').className = "font-bold text-emerald-800 text-lg mb-2 flex items-center gap-2";
+                
+                clinicalResultText.innerHTML = `好消息！您的身心狀態目前看起來相當穩定，並未出現嚴重需要醫療介入的臨床症狀。<br><br>請繼續保持良好的作息與舒壓習慣。如果未來有任何情緒困擾或睡眠問題，診所大門隨時為您敞開。`;
+                actionBtns.style.display = 'none'; // 隱藏預約按鈕，因為不需要
+            }
+        }
+    </script>
+</body>
+</html>
