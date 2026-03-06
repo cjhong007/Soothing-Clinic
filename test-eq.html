@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WT2383TF');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你是情緒的主人還是奴隸？情緒智力(EQ)測驗｜舒眠身心醫學診所</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-indigo-50 min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white/95 shadow-sm border-b border-indigo-100 py-4 fixed w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="font-bold text-xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-[10px] text-indigo-600 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="test-hub.html" class="text-sm text-slate-500 hover:text-indigo-600 transition font-medium flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                返回測驗大廳
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+        <div class="bg-white max-w-2xl w-full rounded-3xl shadow-xl border border-indigo-100 overflow-hidden relative">
+            
+            <div id="progress-container" class="w-full bg-slate-100 h-2 hidden">
+                <div id="progress-bar" class="bg-indigo-500 h-2 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="start-screen" class="text-center fade-in">
+                    <div class="w-24 h-24 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-5xl">🌊</span>
+                    </div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-indigo-100 text-indigo-700 text-sm font-bold mb-4 tracking-wider">
+                        深度自我探索系列
+                    </span>
+                    <h1 class="text-3xl font-bold text-slate-800 mb-4 leading-snug">你是情緒的主人還是奴隸？<br><span class="text-2xl text-indigo-600">情緒智力 (EQ) 與復原力測驗</span></h1>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        高 EQ 並不是「永遠不生氣」，而是懂得察覺情緒、接納感受，並在衝動邊緣踩下煞車。<br><br>
+                        花 2 分鐘，檢測您大腦的「情緒調節機制」，看看您是善於衝浪的情緒航海家，還是容易爆發的火山？
+                    </p>
+                    <button onclick="startQuiz()" class="bg-gradient-to-r from-indigo-500 to-blue-600 hover:from-indigo-600 hover:to-blue-700 text-white font-bold py-3.5 px-10 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-lg">
+                        開始解析大腦情緒
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="text-sm font-bold text-indigo-500 tracking-wider" id="question-progress">Q1 / 5</div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-snug" id="question-text">題目載入中...</h2>
+                    <div id="options-container" class="space-y-4">
+                        </div>
+                </div>
+
+                <div id="result-screen" class="hidden text-center fade-in">
+                    <span class="inline-block py-1 px-3 rounded-full bg-indigo-100 text-indigo-700 text-sm font-bold mb-4 tracking-wider">
+                        您的情緒雷達解析
+                    </span>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">您的情緒調節模式偏向</h2>
+                    <h3 id="result-title" class="text-4xl font-extrabold text-indigo-600 mb-8">型態載入中</h3>
+                    
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 md:p-8 mb-8 text-left relative">
+                        <div class="absolute top-4 left-4 text-4xl text-indigo-200 opacity-50 font-serif">"</div>
+                        <p id="result-desc" class="text-slate-700 leading-relaxed font-medium relative z-10 pl-6"></p>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-slate-200 pt-8 mb-6 text-left">
+                        <h4 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                            <span>👨‍⚕️</span> 醫師的溫馨提醒
+                        </h4>
+                        <p id="clinical-advice" class="text-slate-600 leading-relaxed mb-6"></p>
+                        
+                        <div id="booking-section" class="bg-indigo-50 rounded-xl p-5 text-center hidden">
+                            <p class="text-sm text-slate-600 mb-4">如果您發現自己長期被焦慮、憤怒困擾，或因為過度壓抑而產生不明的身體疼痛與失眠，請讓醫療團隊協助您重新找回大腦的平靜。</p>
+                            <a href="index.html#booking" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition transform hover:-translate-y-1 w-full sm:w-auto">
+                                預約門診，重啟情緒調節力
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-4 mt-8">
+                        <button onclick="location.reload()" class="text-slate-400 hover:text-slate-600 font-medium underline text-sm">
+                            重新測驗
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            {
+                text: "1. 當你突然感到一陣強烈的煩躁或心情低落時，你通常的反應是？",
+                options: [
+                    { text: "能覺察並告訴自己：「我現在很煩躁，這只是暫時的情緒。」", scores: { master: 2 } },
+                    { text: "覺得被情緒淹沒，很容易失去理智，想發脾氣或找人出氣。", scores: { reactive: 2 } },
+                    { text: "不想去管它，趕快找別的事情做（如滑手機、吃東西）來逃避感受。", scores: { suppressor: 2 } }
+                ]
+            },
+            {
+                text: "2. 當計畫突然被打亂，或是遇到突發的挫折時，你的第一直覺是？",
+                options: [
+                    { text: "先深呼吸穩定下來，評估目前還有哪些替代方案可以解決問題。", scores: { master: 2 } },
+                    { text: "腦袋一片空白或立刻爆炸，覺得「完蛋了，怎麼會這麼衰！」", scores: { reactive: 2 } },
+                    { text: "覺得很無奈，但習慣把不滿吞下去，默默承受一切結果。", scores: { suppressor: 2 } }
+                ]
+            },
+            {
+                text: "3. 當朋友遭遇挫折，哭著向你訴苦時，你最常出現的反應是？",
+                options: [
+                    { text: "靜靜陪伴並傾聽，同理他的感受，不會急著指導他該怎麼做。", scores: { master: 2 } },
+                    { text: "跟著他一起痛罵對方，情緒起伏甚至比當事人還要激動。", scores: { reactive: 2 } },
+                    { text: "覺得面對別人的情緒很尷尬，只想趕快幫他理性分析、解決問題。", scores: { suppressor: 2 } }
+                ]
+            },
+            {
+                text: "4. 當你在工作或人際關係中遭遇嚴重的批評或失敗時，你通常需要多久才能走出來？",
+                options: [
+                    { text: "允許自己難過幾天後，能從中學到經驗，並調整心態重新出發。", scores: { master: 2 } },
+                    { text: "很容易陷入長期的自我懷疑與崩潰，覺得自己一無是處。", scores: { reactive: 2 } },
+                    { text: "表面上裝作不在乎、隔天照常生活，但其實心裡一直有個沒解開的結。", scores: { suppressor: 2 } }
+                ]
+            },
+            {
+                text: "5. 當你跟別人發生衝突，對方說出讓你很受傷的話時，你會怎麼做？",
+                options: [
+                    { text: "明確告訴對方：「你剛剛那樣說讓我很難過」，並試著表達底線。", scores: { master: 2 } },
+                    { text: "當場失控，用更難聽的話反擊回去，互相傷害。", scores: { reactive: 2 } },
+                    { text: "直接冷戰、轉身離開，在心裡默默把對方扣分甚至拉黑。", scores: { suppressor: 2 } }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userScores = { master: 0, reactive: 0, suppressor: 0 };
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            document.getElementById('question-progress').innerText = `Q${currentQuestionIndex + 1} / ${questions.length}`;
+
+            const q = questions[currentQuestionIndex];
+            
+            const qText = document.getElementById('question-text');
+            qText.innerText = q.text;
+            qText.classList.remove('fade-in');
+            void qText.offsetWidth; 
+            qText.classList.add('fade-in');
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; 
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-5 rounded-2xl border-2 border-slate-100 hover:border-indigo-400 hover:bg-indigo-50 transition-all font-medium text-slate-700 fade-in text-lg leading-relaxed";
+                btn.style.animationDelay = `${index * 0.1}s`;
+                btn.innerText = opt.text;
+                btn.onclick = () => handleAnswer(opt.scores);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(scoresToAdd) {
+            for (let trait in scoresToAdd) { userScores[trait] += scoresToAdd[trait]; }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) { renderQuestion(); } 
+            else { showResults(); }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            let maxScore = -1;
+            let dominantTrait = '';
+            for (let trait in userScores) {
+                if (userScores[trait] > maxScore) {
+                    maxScore = userScores[trait];
+                    dominantTrait = trait;
+                }
+            }
+
+            const resultsData = {
+                master: {
+                    title: "🌊 情緒航海家 (高 EQ)",
+                    desc: "恭喜您！您擁有極佳的情緒調節與挫折復原力。您不會害怕負面情緒，反而能像觀察海浪一樣，接納它們的到來與離去。面對衝突或壓力時，您的大腦前額葉（理智中心）能發揮很好的煞車作用，讓您做出成熟的反應。",
+                    advice: "您的心智韌性非常強大。請繼續保持對自我的覺察，這份穩定的情緒不僅保護了您的身心健康，也是您身邊親友最安心的依靠。",
+                    showBooking: false
+                },
+                reactive: {
+                    title: "🌋 情緒火山 (反應型)",
+                    desc: "您是一個真性情、情緒豐富的人，但也因此容易被情緒「綁架」。當大腦的杏仁核（情緒中心）拉響警報時，您往往來不及思考就做出反應。這讓您在生氣或難過時容易波及他人，事後卻又感到懊悔與內疚。",
+                    advice: "情緒失控有時並不是修養不好，而是神經系統過度緊繃所致。長期的壓力、睡眠不足或焦慮，都會降低大腦的「煞車能力」。學習放鬆技巧與適當的醫療介入，能幫您的情緒火山裝上安全的調節閥。",
+                    showBooking: true
+                },
+                suppressor: {
+                    title: "🧊 情緒冰山 (壓抑型)",
+                    desc: "很多人誤以為您脾氣很好，但其實您只是習慣將情緒「冷凍」起來。為了避免衝突或展現脆弱，您常常切斷自己的感受，用理性來麻痺不適。然而，被壓抑的情緒並不會消失，它們會沉入冰山底層，變成身體的慢性壓力。",
+                    advice: "「不生氣」不等於高 EQ。長期壓抑情緒的人，往往是自律神經失調、慢性偏頭痛或胃痛的高危險群。在安全的醫療或諮商環境中，學習將冰封的感受融化並表達出來，是您找回身心健康的重要功課。",
+                    showBooking: true
+                }
+            };
+
+            const result = resultsData[dominantTrait];
+            document.getElementById('result-title').innerText = result.title;
+            document.getElementById('result-desc').innerHTML = result.desc;
+            document.getElementById('clinical-advice').innerText = result.advice;
+            
+            if (result.showBooking) {
+                document.getElementById('booking-section').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
