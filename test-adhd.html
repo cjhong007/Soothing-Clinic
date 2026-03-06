@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WT2383TF');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我是懶惰還是生病了？成人 ADHD 潛在特質篩檢｜舒眠身心醫學診所</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-emerald-50 min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white/95 shadow-sm border-b border-emerald-100 py-4 fixed w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="font-bold text-xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-[10px] text-emerald-600 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="test-hub.html" class="text-sm text-slate-500 hover:text-emerald-600 transition font-medium flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                返回測驗大廳
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+        <div class="bg-white max-w-2xl w-full rounded-3xl shadow-xl border border-emerald-100 overflow-hidden relative">
+            
+            <div id="progress-container" class="w-full bg-slate-100 h-2 hidden">
+                <div id="progress-bar" class="bg-emerald-400 h-2 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="start-screen" class="text-center fade-in">
+                    <div class="w-24 h-24 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-5xl">⚡</span>
+                    </div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold mb-4 tracking-wider">
+                        隱性精神困擾系列
+                    </span>
+                    <h1 class="text-3xl font-bold text-slate-800 mb-4 leading-snug">嚴重拖延、忘東忘西？<br><span class="text-2xl text-emerald-600">成人 ADHD 潛在特質篩檢</span></h1>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        「每次都要拖到最後一刻才動工」、「別人講話常常神遊」、「房間總是亂糟糟整理不好」... 這可能不是因為您懶惰，而是大腦執行功能與多巴胺分泌的特質。<br><br>
+                        花 2 分鐘，檢測看看您是否具有「注意力不足過動症 (ADHD)」的潛在特質。
+                    </p>
+                    <button onclick="startQuiz()" class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-lg">
+                        開始檢測
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="text-sm font-bold text-emerald-500 tracking-wider" id="question-progress">Q1 / 6</div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-snug" id="question-text">題目載入中...</h2>
+                    <div id="options-container" class="space-y-4">
+                        </div>
+                </div>
+
+                <div id="result-screen" class="hidden text-center fade-in">
+                    <span class="inline-block py-1 px-3 rounded-full bg-emerald-100 text-emerald-700 text-sm font-bold mb-4 tracking-wider">
+                        您的專屬診斷報告
+                    </span>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">您的 ADHD 潛在傾向為</h2>
+                    <h3 id="result-title" class="text-4xl font-extrabold text-emerald-600 mb-8">分數載入中</h3>
+                    
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 md:p-8 mb-8 text-left relative">
+                        <div class="absolute top-4 left-4 text-4xl text-emerald-200 opacity-50 font-serif">"</div>
+                        <p id="result-desc" class="text-slate-700 leading-relaxed font-medium relative z-10 pl-6"></p>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-slate-200 pt-8 mb-6 text-left">
+                        <h4 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                            <span>👨‍⚕️</span> 醫師的溫馨提醒
+                        </h4>
+                        <p id="clinical-advice" class="text-slate-600 leading-relaxed mb-6"></p>
+                        
+                        <div id="booking-section" class="bg-emerald-50 rounded-xl p-5 text-center hidden">
+                            <p class="text-sm text-slate-600 mb-4">ADHD 是一種大腦神經傳導物質（多巴胺）分泌不均的生理現象，透過藥物與行為治療，能大幅改善拖延與專注力問題，找回生活主導權。</p>
+                            <a href="index.html#booking" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition transform hover:-translate-y-1 w-full sm:w-auto">
+                                預約門診，評估改善方案
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-4 mt-8">
+                        <button onclick="location.reload()" class="text-slate-400 hover:text-slate-600 font-medium underline text-sm">
+                            重新測驗
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            { text: "1. 當您必須進行一件需要耗費心思、需要組織規劃的任務時，您是否經常覺得很難開始，甚至會一直拖延？" },
+            { text: "2. 當一項任務的挑戰性與新鮮感過後，只剩下收尾或繁瑣的細節時，您是否常覺得很難完成它？" },
+            { text: "3. 您是否經常忘記約會、忘記繳費，或把東西（如鑰匙、手機、錢包）隨手亂丟而找不到？" },
+            { text: "4. 在必須長時間安靜坐著的場合（如開會、聽講），您是否會覺得坐立難安，手腳經常會不自覺地扭動或敲打？" },
+            { text: "5. 您是否常覺得大腦裡的思緒像馬達一樣轉個不停，很難讓自己真正的放鬆下來？" },
+            { text: "6. 別人對您說話時，您是否經常因為恍神或注意力飄到其他地方，而沒有聽進去對方在說什麼？" }
+        ];
+
+        // 選項是固定的，分數從 0 到 4
+        const options = [
+            { text: "從不這樣", score: 0 },
+            { text: "很少這樣", score: 1 },
+            { text: "有時這樣", score: 2 },
+            { text: "經常這樣", score: 3 },
+            { text: "總是如此", score: 4 }
+        ];
+
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            document.getElementById('question-progress').innerText = `Q${currentQuestionIndex + 1} / ${questions.length}`;
+
+            const qText = document.getElementById('question-text');
+            qText.innerText = questions[currentQuestionIndex].text;
+            qText.classList.remove('fade-in');
+            void qText.offsetWidth; 
+            qText.classList.add('fade-in');
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; 
+
+            options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-emerald-400 hover:bg-emerald-50 transition-all font-medium text-slate-700 fade-in text-lg";
+                btn.style.animationDelay = `${index * 0.1}s`;
+                btn.innerText = opt.text;
+                btn.onclick = () => handleAnswer(opt.score);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(score) {
+            totalScore += score;
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) { renderQuestion(); } 
+            else { showResults(); }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            const titleEl = document.getElementById('result-title');
+            const descEl = document.getElementById('result-desc');
+            const adviceEl = document.getElementById('clinical-advice');
+            const bookingSec = document.getElementById('booking-section');
+
+            // 總分 24 分。參考 ASRS 計分邏輯進行生活化解讀
+            if (totalScore <= 8) {
+                titleEl.innerText = "極低 (神經典型)";
+                titleEl.className = "text-4xl font-extrabold text-slate-600 mb-8";
+                descEl.innerText = "您的專注力與大腦執行功能運作得相當良好！您能有效地安排任務、控制衝動，且不容易受到外界干擾而分心。";
+                adviceEl.innerText = "偶爾的忘東忘西或拖延，通常只是因為太過疲倦或壓力較大，只要適當休息即可，不需要過度擔心。請繼續保持健康的生活步調！";
+            } else if (totalScore <= 15) {
+                titleEl.innerText = "中等 (部分干擾)";
+                titleEl.className = "text-4xl font-extrabold text-amber-500 mb-8";
+                descEl.innerText = "您在生活中偶爾會受到專注力不足或執行功能弱化的困擾。您可能特別依賴「死線 (Deadline)」帶來的壓力才能驅動自己做事，或者在面對繁雜任務時容易感到心煩意亂。";
+                adviceEl.innerText = "這可能是輕度的 ADHD 特質，但也可能是因為近期的長期壓力、睡眠不足或焦慮所引起的「假性注意力不足」。建議您可以先嘗試建立規律的記事本習慣、將大任務切割成小塊來執行。若仍覺得嚴重影響工作，可尋求專業評估。";
+                bookingSec.classList.remove('hidden');
+            } else {
+                titleEl.innerText = "高度顯著 (強烈建議評估)";
+                titleEl.className = "text-4xl font-extrabold text-rose-600 mb-8";
+                descEl.innerText = "您的作答顯示出高度的 ADHD 特質！您的大腦可能天生對多巴胺的利用率較低，導致您比一般人更難維持專注、控制衝動，或者總覺得思緒停不下來。這些特質可能已經讓您在學業、工作或人際關係上經歷了許多不必要的挫折。";
+                adviceEl.innerText = "請停止責備自己「不夠努力」或「太懶惰」！成人 ADHD 是完全可以透過精神醫療介入而大幅改善的。許多患者在接受正確的藥物與行為治療後，就像「近視戴上了眼鏡」一樣，找回了清晰與專注的生活。";
+                bookingSec.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
