@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WT2383TF');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>為什麼我總在感情中受傷？成人依戀型態測驗｜舒眠身心醫學診所</title>
+    <meta property="og:title" content="為什麼我總在感情中受傷？測出你的專屬「依戀型態」">
+    <meta property="og:description" content="你是焦慮型、逃避型還是安全型？花 2 分鐘，由舒眠身心醫學診所帶你解碼大腦的戀愛基因。">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-rose-50 min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white/95 shadow-sm border-b border-rose-100 py-4 fixed w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="font-bold text-xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-[10px] text-rose-500 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="index.html" class="text-sm text-slate-500 hover:text-rose-600 transition font-medium">返回首頁</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+        <div class="bg-white max-w-2xl w-full rounded-3xl shadow-xl border border-rose-100 overflow-hidden relative">
+            
+            <div id="progress-container" class="w-full bg-slate-100 h-2 hidden">
+                <div id="progress-bar" class="bg-rose-400 h-2 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="start-screen" class="text-center fade-in">
+                    <div class="w-24 h-24 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-5xl">💔</span>
+                    </div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-rose-100 text-rose-700 text-sm font-bold mb-4 tracking-wider">
+                        大腦與人際探索系列
+                    </span>
+                    <h1 class="text-3xl font-bold text-slate-800 mb-4 leading-snug">為什麼我總在感情中受傷？<br><span class="text-2xl text-rose-600">測出你的「成人依戀型態」</span></h1>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        在親密關係（伴侶、摯友）中，我們總是不自覺地重複某些互動模式。有時過度依賴、有時卻想逃跑。<br><br>
+                        這個 2 分鐘的快速測驗，將帶您透視內心深處的安全感來源，找出您是屬於哪一種心理學上的「依戀型態」。
+                    </p>
+                    <button onclick="startQuiz()" class="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-lg">
+                        開始解析我的內心
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="text-sm font-bold text-rose-500 tracking-wider" id="question-progress">Q1 / 5</div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-snug" id="question-text">題目載入中...</h2>
+                    <div id="options-container" class="space-y-4">
+                        </div>
+                </div>
+
+                <div id="result-screen" class="hidden text-center fade-in">
+                    <span class="inline-block py-1 px-3 rounded-full bg-rose-100 text-rose-700 text-sm font-bold mb-4 tracking-wider">
+                        您的專屬診斷報告
+                    </span>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">您在關係中屬於</h2>
+                    <h3 id="result-title" class="text-4xl font-extrabold text-rose-600 mb-8">型態載入中</h3>
+                    
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 md:p-8 mb-8 text-left relative">
+                        <div class="absolute top-4 left-4 text-4xl text-rose-200 opacity-50 font-serif">"</div>
+                        <p id="result-desc" class="text-slate-700 leading-relaxed font-medium relative z-10 pl-6"></p>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-slate-200 pt-8 mb-6 text-left">
+                        <h4 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                            <span>👨‍⚕️</span> 精神科醫師的溫馨提醒
+                        </h4>
+                        <p id="clinical-advice" class="text-slate-600 leading-relaxed mb-6"></p>
+                        
+                        <div class="bg-rose-50 rounded-xl p-5 text-center">
+                            <p class="text-sm text-slate-600 mb-4">如果您常因為感情或人際關係感到嚴重的焦慮、失眠，甚至影響到工作，請不要獨自承受。</p>
+                            <a href="index.html#booking" class="inline-block bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition transform hover:-translate-y-1 w-full sm:w-auto">
+                                預約心理健康評估
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-4 mt-8">
+                        <button onclick="location.reload()" class="text-slate-400 hover:text-slate-600 font-medium underline text-sm">
+                            重新測驗
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            {
+                text: "1. 當伴侶（或很在乎的朋友）很忙，好幾個小時都沒有回覆你的訊息時，你最真實的第一反應是？",
+                options: [
+                    { text: "覺得沒差，趁這時候做自己的事，我本來就不喜歡太黏。", scores: { avoidant: 2 } },
+                    { text: "開始感到焦慮，腦中上演小劇場：「他是不是不在乎我了？」", scores: { anxious: 2 } },
+                    { text: "雖然有點不安，但怕被討厭，所以裝作不在乎、甚至故意冷淡他。", scores: { fearful: 2 } },
+                    { text: "知道他可能在忙，心裡很踏實，等他有空就會回了。", scores: { secure: 2 } }
+                ]
+            },
+            {
+                text: "2. 關於向另一半（或摯友）展露自己脆弱、不完美的一面，你的感覺是？",
+                options: [
+                    { text: "我很願意分享，因為這能讓我們的關係更親密。", scores: { secure: 2 } },
+                    { text: "我很渴望向他傾訴，但又很怕他聽了會覺得煩，最後拋棄我。", scores: { anxious: 2 } },
+                    { text: "我很想靠近，但每當快要交心時，我就會恐懼受傷而下意識把對方推開。", scores: { fearful: 2 } },
+                    { text: "非常抗拒。我習慣自己解決問題，依賴別人讓我覺得失去控制權。", scores: { avoidant: 2 } }
+                ]
+            },
+            {
+                text: "3. 當你們在關係中發生激烈的爭吵與衝突時，你通常會怎麼應對？",
+                options: [
+                    { text: "極度恐慌，急著想要馬上解決問題、立刻和好，否則會崩潰睡不著。", scores: { anxious: 2 } },
+                    { text: "大腦當機、情緒混亂，有時會崩潰大罵，有時又想直接消失算了。", scores: { fearful: 2 } },
+                    { text: "覺得很煩、壓力很大，會直接離開現場，拒絕溝通，想一個人靜靜。", scores: { avoidant: 2 } },
+                    { text: "等雙方冷靜下來後，表達自己的感受，並試著傾聽對方的想法。", scores: { secure: 2 } }
+                ]
+            },
+            {
+                text: "4. 你在心底深處，是如何看待自己與他人的價值的？",
+                options: [
+                    { text: "我覺得自己滿好的，別人也值得信任。", scores: { secure: 2 } },
+                    { text: "我覺得自己沒什麼價值，必須靠著對方的愛才能證明我的存在。", scores: { anxious: 2 } },
+                    { text: "我覺得我很獨立優秀，是別人都不太可靠，會拖累我。", scores: { avoidant: 2 } },
+                    { text: "我覺得自己不值得被愛，也覺得別人遲早會傷害我。", scores: { fearful: 2 } }
+                ]
+            },
+            {
+                text: "5. 若要用一句話總結你的戀愛/交友史，哪一句最貼切？",
+                options: [
+                    { text: "「我總是不停在追逐，卻常常遇到冷漠、不想給承諾的人。」", scores: { anxious: 2 } },
+                    { text: "「當有人太喜歡我、太靠近我時，我就會覺得窒息想逃跑。」", scores: { avoidant: 2 } },
+                    { text: "「雖然偶有摩擦，但多數時候都能互相支持，和平共處。」", scores: { secure: 2 } },
+                    { text: "「我極度渴望愛，但又總是搞砸關係，最後兩敗俱傷。」", scores: { fearful: 2 } }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userScores = { secure: 0, anxious: 0, avoidant: 0, fearful: 0 };
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            // 更新進度
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            document.getElementById('question-progress').innerText = `Q${currentQuestionIndex + 1} / ${questions.length}`;
+
+            const q = questions[currentQuestionIndex];
+            
+            const qText = document.getElementById('question-text');
+            qText.innerText = q.text;
+            qText.classList.remove('fade-in');
+            void qText.offsetWidth; 
+            qText.classList.add('fade-in');
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; 
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-5 rounded-2xl border-2 border-slate-100 hover:border-rose-400 hover:bg-rose-50 transition-all font-medium text-slate-700 fade-in text-lg leading-relaxed";
+                btn.style.animationDelay = `${index * 0.1}s`;
+                btn.innerText = opt.text;
+                btn.onclick = () => handleAnswer(opt.scores);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(scoresToAdd) {
+            for (let trait in scoresToAdd) { userScores[trait] += scoresToAdd[trait]; }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) { renderQuestion(); } 
+            else { showResults(); }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            // 找出最高分的型態
+            let maxScore = -1;
+            let dominantTrait = '';
+            for (let trait in userScores) {
+                if (userScores[trait] > maxScore) {
+                    maxScore = userScores[trait];
+                    dominantTrait = trait;
+                }
+            }
+
+            const resultsData = {
+                secure: {
+                    title: "安全型依戀 (Secure)",
+                    desc: "恭喜您！您擁有非常健康的關係特質。您對自己有自信，也願意信任他人。在關係中不害怕親密，也不會因為需要個人空間而感到恐慌。遇到衝突時，您能理性溝通，是伴侶與朋友心中強大的避風港。",
+                    advice: "您的心智韌性很好，即使遇到挫折也能快速復原。請繼續保持這份溫暖與自信，若身邊有焦慮型或逃避型的親友，您的穩定將會是他們最好的療癒來源。"
+                },
+                anxious: {
+                    title: "焦慮型依戀 (Anxious)",
+                    desc: "您在關係中付出了極大的心力，但總覺得缺乏安全感。您非常害怕被拋棄，當對方沒有及時回應時，您的內心就會上演各種災難小劇場。您常常委屈自己去討好對方，只為了換取一點點被愛的保證。",
+                    advice: "焦慮型的人常因為感情問題引發自律神經失調或失眠。請記得，您的價值不需要由別人來定義。在門診中，我們會透過心理支持與必要的舒緩藥物，幫助您穩定大腦中過度警覺的神經，找回愛自己的能力。"
+                },
+                avoidant: {
+                    title: "逃避型依戀 (Avoidant)",
+                    desc: "您習慣將自己武裝成非常獨立的樣子。對您而言，「依賴」等同於「失去控制」或「展現脆弱」。當別人試圖靠近您的內心，或者向您索取情感承諾時，您的第一反應往往是覺得窒息、想要逃跑或切斷聯繫。",
+                    advice: "逃避不是因為不愛，而是大腦為了避免受傷所產生的防衛機制。長期壓抑情感，可能會以不明原因的身體疼痛、慢性疲勞來表現。探索這層防衛機制，能幫助您建立更深層且無壓力的關係。"
+                },
+                fearful: {
+                    title: "恐懼型依戀 (Fearful-Avoidant)",
+                    desc: "您的內心處於極度矛盾的狀態：您比誰都渴望被愛，但又比誰都害怕受傷。當關係靠近時您想推開，當對方離開時您又崩潰想挽回。這通常源自於過去深刻的人際創傷，讓您的大腦無法相信「愛是安全的」。",
+                    advice: "這種拉扯的狀態最容易讓心靈耗竭，甚至引發憂鬱症。這並不是您的錯，而是大腦還停留在過去的創傷警報中。透過專業的精神醫療與諮商介入，我們能協助您重新撫平這些傷痕，建立安全感。"
+                }
+            };
+
+            const result = resultsData[dominantTrait];
+            document.getElementById('result-title').innerText = result.title;
+            document.getElementById('result-desc').innerHTML = result.desc;
+            document.getElementById('clinical-advice').innerText = result.advice;
+        }
+    </script>
+</body>
+</html>
