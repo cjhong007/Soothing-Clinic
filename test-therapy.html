@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WT2383TF');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我需要心理諮商嗎？求助時機評估｜舒眠身心醫學診所</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-teal-50 min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white/95 shadow-sm border-b border-teal-100 py-4 fixed w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="font-bold text-xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-[10px] text-teal-600 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="test-hub.html" class="text-sm text-slate-500 hover:text-teal-600 transition font-medium flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                返回測驗大廳
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+        <div class="bg-white max-w-2xl w-full rounded-3xl shadow-xl border border-teal-100 overflow-hidden relative">
+            
+            <div id="progress-container" class="w-full bg-slate-100 h-2 hidden">
+                <div id="progress-bar" class="bg-teal-500 h-2 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="start-screen" class="text-center fade-in">
+                    <div class="w-24 h-24 bg-teal-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-5xl">🛋️</span>
+                    </div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-teal-100 text-teal-800 text-sm font-bold mb-4 tracking-wider">
+                        綜合身心評估系列
+                    </span>
+                    <h1 class="text-3xl font-bold text-slate-800 mb-4 leading-snug">我只是壓力大，還是生病了？<br><span class="text-2xl text-teal-600">心理諮商與治療需求評估</span></h1>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        很多人在痛苦中掙扎許久，卻常因為「覺得自己還不夠嚴重」而不敢求助。<br><br>
+                        花 2 分鐘，客觀評估您目前的「困擾程度」與「生活影響」，找出最適合您的心理健康資源與下一步。
+                    </p>
+                    <button onclick="startQuiz()" class="bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white font-bold py-3.5 px-10 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-lg">
+                        開始評估求助時機
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="text-sm font-bold text-teal-600 tracking-wider" id="question-progress">Q1 / 6</div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-snug" id="question-text">題目載入中...</h2>
+                    <div id="options-container" class="space-y-4">
+                        </div>
+                </div>
+
+                <div id="result-screen" class="hidden text-center fade-in">
+                    <span class="inline-block py-1 px-3 rounded-full bg-teal-100 text-teal-800 text-sm font-bold mb-4 tracking-wider">
+                        您的專業資源建議
+                    </span>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">目前的求助建議為</h2>
+                    <h3 id="result-title" class="text-4xl font-extrabold text-teal-600 mb-8">狀態載入中</h3>
+                    
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8 mb-8 text-left relative">
+                        <div class="absolute top-4 left-4 text-4xl text-teal-200 opacity-50 font-serif">"</div>
+                        <p id="result-desc" class="text-slate-700 leading-relaxed font-medium relative z-10 pl-6"></p>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-slate-200 pt-8 mb-6 text-left">
+                        <h4 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                            <span>👨‍⚕️</span> 醫師的下一步建議
+                        </h4>
+                        <p id="clinical-advice" class="text-slate-600 leading-relaxed mb-6"></p>
+                        
+                        <div id="booking-section" class="bg-teal-50 rounded-xl p-5 text-center hidden">
+                            <p class="text-sm text-slate-600 mb-4">無論是需要心理諮商梳理情緒，還是需要醫療協助穩定睡眠與自律神經，診所都能為您安排最適合的療程。</p>
+                            <a href="index.html#booking" class="inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition transform hover:-translate-y-1 w-full sm:w-auto">
+                                預約初診評估
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-4 mt-8">
+                        <button onclick="location.reload()" class="text-slate-400 hover:text-slate-600 font-medium underline text-sm">
+                            重新評估
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            { text: "1. 困擾持續度：您目前的負面情緒（如焦慮、憂鬱、憤怒或無力感），大約持續了多久？" },
+            { text: "2. 生活影響力：這些困擾，是否已經影響到您的日常生活（如：無法專心上班/上學、不想出門、連原本喜歡的事都不想做）？" },
+            { text: "3. 生理訊號：您是否開始出現一些「找不到原因的身體不適」（例如：嚴重失眠、胸悶心悸、經常胃痛、食慾大增或大減）？" },
+            { text: "4. 支持系統：當您覺得快撐不下去時，身邊是否有可以放心傾訴、且能接住您情緒的親友？" },
+            { text: "5. 應對方式：為了緩解這些痛苦，您是否開始依賴某些較不健康的方式（如：大量飲酒、暴飲暴食、過度消費或自傷行為）？" },
+            { text: "6. 自我控制感：您覺得自己目前還有能力「靠自己的力量」從這個困境中走出來嗎？" }
+        ];
+
+        // 根據每題的語境，客製化選項與分數 (分數越高代表越需要求助)
+        const optionsList = [
+            // Q1: 持續度
+            [
+                { text: "幾天而已，因為特定的事件引起", score: 0 },
+                { text: "斷斷續續一兩個星期了", score: 1 },
+                { text: "已經超過一個月，幾乎每天都不開心", score: 2 },
+                { text: "好幾個月甚至幾年了，感覺一直好不起來", score: 3 }
+            ],
+            // Q2: 生活影響
+            [
+                { text: "完全沒有影響，照常生活", score: 0 },
+                { text: "偶爾會分心或提不起勁，但還能應付", score: 1 },
+                { text: "滿吃力的，工作或人際關係已經開始出狀況", score: 2 },
+                { text: "嚴重影響，幾乎無法維持正常的生活運作", score: 3 }
+            ],
+            // Q3: 生理訊號
+            [
+                { text: "沒有，身體狀況一切正常", score: 0 },
+                { text: "有一點，偶爾睡不好或覺得緊繃", score: 1 },
+                { text: "經常發生，已經影響到白天的精神", score: 2 },
+                { text: "非常嚴重，身體常常很不舒服，甚至看過其他科也找不出原因", score: 3 }
+            ],
+            // Q4: 支持系統 (反向計分：越孤單分數越高)
+            [
+                { text: "有，我有很多支持我的人", score: 0 },
+                { text: "有少數幾個能講心事的朋友", score: 1 },
+                { text: "雖然有人可以說，但覺得他們不了解我", score: 2 },
+                { text: "沒有，我覺得自己孤立無援，沒人可以幫我", score: 3 }
+            ],
+            // Q5: 應對方式
+            [
+                { text: "完全沒有，我會去運動或找健康的方式舒壓", score: 0 },
+                { text: "偶爾會有點放縱，但還在可控範圍內", score: 1 },
+                { text: "滿常依賴這些方式的，不然覺得撐不下去", score: 2 },
+                { text: "每天都需要，且劑量/頻率越來越高", score: 3 }
+            ],
+            // Q6: 自我控制感
+            [
+                { text: "絕對可以，我知道怎麼調適自己", score: 0 },
+                { text: "應該可以，只需要一點時間", score: 1 },
+                { text: "不太確定，覺得越來越無力", score: 2 },
+                { text: "完全沒辦法，我覺得自己被困住了", score: 3 }
+            ]
+        ];
+
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            document.getElementById('question-progress').innerText = `Q${currentQuestionIndex + 1} / ${questions.length}`;
+
+            const qText = document.getElementById('question-text');
+            qText.innerText = questions[currentQuestionIndex].text;
+            qText.classList.remove('fade-in');
+            void qText.offsetWidth; 
+            qText.classList.add('fade-in');
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; 
+
+            const currentOptions = optionsList[currentQuestionIndex];
+
+            currentOptions.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-teal-400 hover:bg-teal-50 transition-all font-medium text-slate-700 fade-in text-lg";
+                btn.style.animationDelay = `${index * 0.1}s`;
+                btn.innerText = opt.text;
+                btn.onclick = () => handleAnswer(opt.score);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(score) {
+            totalScore += score;
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) { renderQuestion(); } 
+            else { showResults(); }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            const titleEl = document.getElementById('result-title');
+            const descEl = document.getElementById('result-desc');
+            const adviceEl = document.getElementById('clinical-advice');
+            const bookingSec = document.getElementById('booking-section');
+
+            // 總分 18 分
+            if (totalScore <= 5) {
+                titleEl.innerText = "綠燈：自我調適階段";
+                titleEl.className = "text-4xl font-extrabold text-emerald-500 mb-8";
+                descEl.innerText = "您目前的狀態還算穩定，生活受到的影響不大。您具備足夠的自我覺察能力與支持系統，能夠應付目前的壓力。";
+                adviceEl.innerText = "現階段您不需要立即進入醫療體系或心理諮商。建議您維持良好的作息、找時間運動放鬆，或與信任的朋友聊聊。若未來壓力增加，診所隨時歡迎您。";
+            } else if (totalScore <= 11) {
+                titleEl.innerText = "黃燈：建議嘗試心理諮商";
+                titleEl.className = "text-4xl font-extrabold text-amber-500 mb-8";
+                descEl.innerText = "您已經獨自承擔了許多壓力，雖然目前還能勉強維持生活運作，但內心常感到疲憊、卡關，舊有的舒壓方式似乎開始失效了。";
+                adviceEl.innerText = "這是一個非常適合開始「心理諮商」的最佳時機！在情況惡化之前，讓專業的心理師陪伴您梳理盲點、學習新的情緒調節技巧。若有輕微失眠，也可由醫師評估給予短期的舒緩藥物。";
+                bookingSec.classList.remove('hidden');
+            } else {
+                titleEl.innerText = "紅燈：建議啟動醫療與心理評估";
+                titleEl.className = "text-4xl font-extrabold text-rose-600 mb-8";
+                descEl.innerText = "您的身心已經處於嚴重的超載狀態（Burnout）。這些困擾已經明顯影響了您的睡眠、生理機能或生活軌道。您可能會覺得自己很糟或孤立無援。";
+                adviceEl.innerText = "請停止勉強自己「堅強」！當大腦神經傳導物質失衡時，光靠「想開一點」是無效的。強烈建議您盡快預約門診，讓醫師透過專業評估，結合醫療介入與心理治療，接住往下墜落的您。這不是懦弱，而是保護自己最勇敢的決定。";
+                bookingSec.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
