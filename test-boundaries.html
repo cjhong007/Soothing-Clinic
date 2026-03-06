@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WT2383TF');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你是爛好人還是容易被勒索？人際界線測驗｜舒眠身心醫學診所</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-amber-50 min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white/95 shadow-sm border-b border-amber-100 py-4 fixed w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="font-bold text-xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-[10px] text-amber-600 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="test-hub.html" class="text-sm text-slate-500 hover:text-amber-600 transition font-medium flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                返回測驗大廳
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+        <div class="bg-white max-w-2xl w-full rounded-3xl shadow-xl border border-amber-100 overflow-hidden relative">
+            
+            <div id="progress-container" class="w-full bg-slate-100 h-2 hidden">
+                <div id="progress-bar" class="bg-amber-400 h-2 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="start-screen" class="text-center fade-in">
+                    <div class="w-24 h-24 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-5xl">🗣️</span>
+                    </div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-amber-100 text-amber-700 text-sm font-bold mb-4 tracking-wider">
+                        感情與人際關係系列
+                    </span>
+                    <h1 class="text-3xl font-bold text-slate-800 mb-4 leading-snug">總是不敢拒絕別人？<br><span class="text-2xl text-amber-600">情緒勒索與人際界線測驗</span></h1>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        「我這都是為你好」、「如果你愛我，你就應該...」、「沒關係，我自己一個人承受就好」...<br><br>
+                        你是否經常因為這些話而感到內疚、被迫妥協？花 2 分鐘，檢視你的「人際防禦網」是否出現了漏洞，找回拒絕的勇氣。
+                    </p>
+                    <button onclick="startQuiz()" class="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3.5 px-10 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-lg">
+                        開始檢視我的界線
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="text-sm font-bold text-amber-500 tracking-wider" id="question-progress">Q1 / 5</div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-snug" id="question-text">題目載入中...</h2>
+                    <div id="options-container" class="space-y-4">
+                        </div>
+                </div>
+
+                <div id="result-screen" class="hidden text-center fade-in">
+                    <span class="inline-block py-1 px-3 rounded-full bg-amber-100 text-amber-700 text-sm font-bold mb-4 tracking-wider">
+                        您的人際關係診斷
+                    </span>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">您的人際界線屬於</h2>
+                    <h3 id="result-title" class="text-4xl font-extrabold text-amber-600 mb-8">型態載入中</h3>
+                    
+                    <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 md:p-8 mb-8 text-left relative">
+                        <div class="absolute top-4 left-4 text-4xl text-amber-200 opacity-50 font-serif">"</div>
+                        <p id="result-desc" class="text-slate-700 leading-relaxed font-medium relative z-10 pl-6"></p>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-slate-200 pt-8 mb-6 text-left">
+                        <h4 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                            <span>👨‍⚕️</span> 精神科醫師的溫馨提醒
+                        </h4>
+                        <p id="clinical-advice" class="text-slate-600 leading-relaxed mb-6"></p>
+                        
+                        <div id="booking-section" class="bg-amber-50 rounded-xl p-5 text-center hidden">
+                            <p class="text-sm text-slate-600 mb-4">如果您因為長期的妥協與壓抑，已經出現了失眠、胸悶、胃痛或嚴重的焦慮情緒，這代表身體正在對您發出求救訊號。</p>
+                            <a href="index.html#booking" class="inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition transform hover:-translate-y-1 w-full sm:w-auto">
+                                預約門診，修復受損身心
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-4 mt-8">
+                        <button onclick="location.reload()" class="text-slate-400 hover:text-slate-600 font-medium underline text-sm">
+                            重新測驗
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            {
+                text: "1. 當同事或朋友提出一個會讓你很困擾的要求時，你通常會怎麼做？",
+                options: [
+                    { text: "立刻答應，即使心裡千百個不願意，因為很怕拒絕會破壞關係。", scores: { pleaser: 2 } },
+                    { text: "先猶豫很久，最後還是因為覺得「有罪惡感」而勉強答應。", scores: { blackmailed: 2 } },
+                    { text: "溫和但堅定地表達自己的困難，並拒絕這個要求。", scores: { healthy: 2 } },
+                    { text: "直接拒絕，甚至會趁機反諷對方：「你怎麼好意思提這種要求？」", scores: { controller: 2 } }
+                ]
+            },
+            {
+                text: "2. 當伴侶或家人對你說出：「如果你真的在乎我，你就會照我的意思去做」時，你的感受是？",
+                options: [
+                    { text: "馬上覺得是自己做錯了，立刻妥協以安撫對方的情緒。", scores: { pleaser: 2 } },
+                    { text: "覺得壓力很大且委屈，但為了避免爭吵擴大，通常還是會順著對方。", scores: { blackmailed: 2 } },
+                    { text: "這句話聽起來很耳熟，因為我自己生氣時也常常這樣對別人說。", scores: { controller: 2 } },
+                    { text: "清楚意識到這是一句情緒勒索，不會因為這句話就改變自己的原則。", scores: { healthy: 2 } }
+                ]
+            },
+            {
+                text: "3. 你是否常常覺得自己要為別人（伴侶、父母、朋友）的情緒或快樂負責？",
+                options: [
+                    { text: "非常強烈。只要身邊的人不開心，我就覺得一定是我的問題。", scores: { pleaser: 2 } },
+                    { text: "滿常的。如果我不順著他們的意，我就會充滿嚴重的罪惡感。", scores: { blackmailed: 2 } },
+                    { text: "偶爾會，但我知道每個人最終都要為自己的情緒負責。", scores: { healthy: 2 } },
+                    { text: "不會。反而是我覺得身邊的人都不夠體諒我、沒有照顧好我的情緒。", scores: { controller: 2 } }
+                ]
+            },
+            {
+                text: "4. 在親密關係或職場中，你設定「底線（什麼可以接受，什麼不行）」的狀況是？",
+                options: [
+                    { text: "我其實沒有什麼底線，只要對方開心，我都可以配合。", scores: { pleaser: 2 } },
+                    { text: "我有底線，但只要對方一裝可憐或發脾氣，我的底線就會不斷往後退。", scores: { blackmailed: 2 } },
+                    { text: "我的底線很清楚，一旦對方踩線，我會明確表達並保持距離。", scores: { healthy: 2 } },
+                    { text: "別人的底線不重要，重要的是他們必須配合我設定的規則。", scores: { controller: 2 } }
+                ]
+            },
+            {
+                text: "5. 面對衝突或意見不合時，你最習慣採取的策略是？",
+                options: [
+                    { text: "不停道歉，把錯都攬在自己身上，只求趕快恢復和平。", scores: { pleaser: 2 } },
+                    { text: "雖然心裡有很多不滿，但選擇沉默壓抑，自己生悶氣。", scores: { blackmailed: 2 } },
+                    { text: "就事論事，表達自己的感受，同時也願意傾聽對方的立場。", scores: { healthy: 2 } },
+                    { text: "用冷戰、嘆氣或發脾氣的方式，讓對方感到愧疚並主動來道歉。", scores: { controller: 2 } }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userScores = { healthy: 0, pleaser: 0, blackmailed: 0, controller: 0 };
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            document.getElementById('question-progress').innerText = `Q${currentQuestionIndex + 1} / ${questions.length}`;
+
+            const q = questions[currentQuestionIndex];
+            
+            const qText = document.getElementById('question-text');
+            qText.innerText = q.text;
+            qText.classList.remove('fade-in');
+            void qText.offsetWidth; 
+            qText.classList.add('fade-in');
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; 
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-5 rounded-2xl border-2 border-slate-100 hover:border-amber-400 hover:bg-amber-50 transition-all font-medium text-slate-700 fade-in text-lg leading-relaxed";
+                btn.style.animationDelay = `${index * 0.1}s`;
+                btn.innerText = opt.text;
+                btn.onclick = () => handleAnswer(opt.scores);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(scoresToAdd) {
+            for (let trait in scoresToAdd) { userScores[trait] += scoresToAdd[trait]; }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) { renderQuestion(); } 
+            else { showResults(); }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            let maxScore = -1;
+            let dominantTrait = '';
+            for (let trait in userScores) {
+                if (userScores[trait] > maxScore) {
+                    maxScore = userScores[trait];
+                    dominantTrait = trait;
+                }
+            }
+
+            const resultsData = {
+                healthy: {
+                    title: "堅定溫和型 (界線健康)",
+                    desc: "恭喜您！您擁有非常健康的人際界線。您清楚知道自己的價值，不會輕易被別人的情緒綁架。您懂得適時說「不」，也能在不委屈自己的前提下給予他人協助。在關係中，您是個能為自己負責的成熟大人。",
+                    advice: "能劃清界線是一種珍貴的能力。請繼續保持這種溫和但堅定的態度，這不僅能保護您的身心健康，也能篩選出真正尊重您的優質關係。",
+                    showBooking: false
+                },
+                pleaser: {
+                    title: "過度討好型 (缺乏界線)",
+                    desc: "您的內心非常柔軟善良，但卻把「別人的感受」放得比「自己的需求」還重。您習慣性地當個「爛好人」，極度害怕衝突與被討厭。為了維持表面的和平，您不斷退讓底線，甚至常常感到心力交瘁。",
+                    advice: "討好別人，往往是因為內心缺乏自信與安全感。長期的過度配合會消耗大量的情緒成本，容易導致憂鬱或自律神經失調。請記得：拒絕不合理的要求，並不會讓您成為一個壞人。試著把照顧別人的心力，拿一點回來照顧自己。",
+                    showBooking: true
+                },
+                blackmailed: {
+                    title: "易受勒索型 (罪惡感纏身)",
+                    desc: "您是「情緒勒索」最容易下手的目標。當身邊的人使用「裝可憐」、「引發罪惡感」或「威脅」的手段時，您的理智線就會斷掉，不自覺地掉入他們的圈套中。您常在答應別人後感到委屈與懊悔，卻又無法掙脫。",
+                    advice: "您需要意識到，這是一場權力的不對等遊戲。「罪惡感」是對方用來控制您的武器。在門診中，我們常透過諮商與情緒支持，幫助患者學會辨識勒索語言、練習脫離勒索情境，重新拿回人生的主導權。",
+                    showBooking: true
+                },
+                controller: {
+                    title: "無意識勒索型 (控制慾較強)",
+                    desc: "在關係中，您往往是較為強勢的一方。有時候，為了達到目的或獲得安全感，您會不自覺地使用情緒（如生悶氣、哭泣、指責）來迫使對方妥協。雖然您可能沒有惡意，但這已在無形中給身邊的人帶來了極大的壓力。",
+                    advice: "用情緒來操控別人，或許能得到短暫的順從，但卻會慢慢侵蝕彼此的信任與愛。試著學習用「直接且非指責」的方式表達您的脆弱與需求，這會讓您的關係更加真實且長久。",
+                    showBooking: false
+                }
+            };
+
+            const result = resultsData[dominantTrait];
+            document.getElementById('result-title').innerText = result.title;
+            document.getElementById('result-desc').innerHTML = result.desc;
+            document.getElementById('clinical-advice').innerText = result.advice;
+            
+            if (result.showBooking) {
+                document.getElementById('booking-section').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
