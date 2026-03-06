@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WT2383TF');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打開你的大腦說明書：核心性格密碼分析｜舒眠身心醫學診所</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans TC', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT2383TF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <nav class="bg-white/95 shadow-sm border-b border-slate-200 py-4 fixed w-full z-50">
+        <div class="max-w-4xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex flex-col">
+                <span class="font-bold text-xl tracking-wide text-slate-800">舒眠身心醫學診所</span>
+                <span class="text-[10px] text-sky-600 font-medium tracking-wider uppercase">Soothing Sleep & Mind Clinic</span>
+            </a>
+            <a href="test-hub.html" class="text-sm text-slate-500 hover:text-sky-600 transition font-medium flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7h18"></path></svg>
+                返回測驗大廳
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+        <div class="bg-white max-w-2xl w-full rounded-3xl shadow-xl border border-slate-200 overflow-hidden relative">
+            
+            <div id="progress-container" class="w-full bg-slate-100 h-2 hidden">
+                <div id="progress-bar" class="bg-sky-500 h-2 transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                
+                <div id="start-screen" class="text-center fade-in">
+                    <div class="w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-5xl">🧩</span>
+                    </div>
+                    <span class="inline-block py-1 px-3 rounded-full bg-slate-100 text-slate-700 text-sm font-bold mb-4 tracking-wider">
+                        深度自我探索系列
+                    </span>
+                    <h1 class="text-3xl font-bold text-slate-800 mb-4 leading-snug">打開你的大腦說明書<br><span class="text-2xl text-sky-600">核心性格密碼分析</span></h1>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        性格沒有絕對的好壞，只有「放對位置」與「放錯位置」的差異。基於心理學界權威的《大五人格理論》，這個測驗將幫您解碼您的大腦原廠設定。<br><br>
+                        花 2 分鐘，找出您的優勢潛能，並學習如何照顧您專屬的性格特質。
+                    </p>
+                    <button onclick="startQuiz()" class="bg-gradient-to-r from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black text-white font-bold py-3.5 px-10 rounded-full shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-lg">
+                        開始解碼我的性格
+                    </button>
+                </div>
+
+                <div id="quiz-screen" class="hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="text-sm font-bold text-sky-600 tracking-wider" id="question-progress">Q1 / 5</div>
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-8 leading-snug" id="question-text">題目載入中...</h2>
+                    <div id="options-container" class="space-y-4">
+                        </div>
+                </div>
+
+                <div id="result-screen" class="hidden text-center fade-in">
+                    <span class="inline-block py-1 px-3 rounded-full bg-sky-100 text-sky-700 text-sm font-bold mb-4 tracking-wider">
+                        您的專屬性格說明書
+                    </span>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">您的核心原型是</h2>
+                    <h3 id="result-title" class="text-4xl font-extrabold text-sky-600 mb-8">型態載入中</h3>
+                    
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8 mb-8 text-left relative">
+                        <div class="absolute top-4 left-4 text-4xl text-slate-200 opacity-50 font-serif">"</div>
+                        <p id="result-desc" class="text-slate-700 leading-relaxed font-medium relative z-10 pl-6"></p>
+                    </div>
+
+                    <div class="border-t-2 border-dashed border-slate-200 pt-8 mb-6 text-left">
+                        <h4 class="font-bold text-slate-800 text-lg mb-3 flex items-center gap-2">
+                            <span>👨‍⚕️</span> 醫師的保養建議
+                        </h4>
+                        <p id="clinical-advice" class="text-slate-600 leading-relaxed mb-6"></p>
+                        
+                        <div id="booking-section" class="bg-sky-50 rounded-xl p-5 text-center hidden">
+                            <p class="text-sm text-slate-600 mb-4">當您的性格特質被過度使用，或是處在不適合的環境中，就容易引發廣泛性焦慮或嚴重失眠。適時尋求專業協助，能幫您找回內在的平衡。</p>
+                            <a href="index.html#booking" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-8 rounded-full shadow-md transition transform hover:-translate-y-1 w-full sm:w-auto">
+                                預約門診，評估身心壓力
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center gap-4 mt-8">
+                        <button onclick="location.reload()" class="text-slate-400 hover:text-slate-600 font-medium underline text-sm">
+                            重新測驗
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+            {
+                text: "1. 面對生活中的變化或突如其來的任務時，您最真實的反應是？",
+                options: [
+                    { text: "喜歡按部就班，先把細節和計畫弄清楚才覺得安心。", scores: { architect: 2 } },
+                    { text: "覺得很興奮，喜歡探索各種可能的新解法。", scores: { explorer: 2 } },
+                    { text: "通常會先看大家的意見，順應多數人的決定。", scores: { harmonizer: 2 } },
+                    { text: "不喜歡被打亂步調，會先退一步靜觀其變，再做決定。", scores: { observer: 2 } }
+                ]
+            },
+            {
+                text: "2. 在團隊合作或與人相處時，您最看重的是什麼？",
+                options: [
+                    { text: "事情的對錯、邏輯與效率是否合理。", scores: { architect: 2 } },
+                    { text: "整體的氣氛是否融洽，以及每個人的感受。", scores: { harmonizer: 2 } },
+                    { text: "有沒有激發出有趣的點子，過程是否充滿活力。", scores: { explorer: 2 } },
+                    { text: "彼此是否保有足夠的個人空間，互不干涉。", scores: { observer: 2 } }
+                ]
+            },
+            {
+                text: "3. 當您感到壓力很大、焦慮不安時，您通常會怎麼做來緩解？",
+                options: [
+                    { text: "列出代辦清單，按表操課把事情解決來消除焦慮。", scores: { architect: 2 } },
+                    { text: "找信任的朋友傾訴，尋求情感上的支持與安慰。", scores: { harmonizer: 2 } },
+                    { text: "轉移注意力，跑去參加活動、運動或做新鮮的事。", scores: { explorer: 2 } },
+                    { text: "切斷與外界的聯繫，躲進自己的世界裡獨處消化。", scores: { observer: 2 } }
+                ]
+            },
+            {
+                text: "4. 如果要做出一個重大的決定，您的思考模式偏向？",
+                options: [
+                    { text: "基於客觀的數據、優缺點分析與過去的經驗。", scores: { architect: 2 } },
+                    { text: "考量這個決定「會不會影響到我重視的人」。", scores: { harmonizer: 2 } },
+                    { text: "憑藉直覺，以及這個決定未來能帶來的發展性。", scores: { explorer: 2 } },
+                    { text: "深思熟慮所有最壞的狀況，確保一切安全穩妥。", scores: { observer: 2 } }
+                ]
+            },
+            {
+                text: "5. 您覺得以下哪一句話，最貼切地描述了您的內心？",
+                options: [
+                    { text: "「我做事靠譜且負責任，但有時對自己和別人太嚴格了。」", scores: { architect: 2 } },
+                    { text: "「我人緣不錯且善解人意，但有時會為了配合別人而委屈自己。」", scores: { harmonizer: 2 } },
+                    { text: "「我點子多、行動力強，但有時被覺得三分鐘熱度或太跳躍。」", scores: { explorer: 2 } },
+                    { text: "「我內心豐富但慢熟，常被覺得太過安靜或難以親近。」", scores: { observer: 2 } }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userScores = { architect: 0, harmonizer: 0, explorer: 0, observer: 0 };
+
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            document.getElementById('question-progress').innerText = `Q${currentQuestionIndex + 1} / ${questions.length}`;
+
+            const q = questions[currentQuestionIndex];
+            
+            const qText = document.getElementById('question-text');
+            qText.innerText = q.text;
+            qText.classList.remove('fade-in');
+            void qText.offsetWidth; 
+            qText.classList.add('fade-in');
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = ''; 
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-5 rounded-2xl border-2 border-slate-100 hover:border-sky-400 hover:bg-sky-50 transition-all font-medium text-slate-700 fade-in text-lg leading-relaxed";
+                btn.style.animationDelay = `${index * 0.1}s`;
+                btn.innerText = opt.text;
+                btn.onclick = () => handleAnswer(opt.scores);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function handleAnswer(scoresToAdd) {
+            for (let trait in scoresToAdd) { userScores[trait] += scoresToAdd[trait]; }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) { renderQuestion(); } 
+            else { showResults(); }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            let maxScore = -1;
+            let dominantTrait = '';
+            for (let trait in userScores) {
+                if (userScores[trait] > maxScore) {
+                    maxScore = userScores[trait];
+                    dominantTrait = trait;
+                }
+            }
+
+            const resultsData = {
+                architect: {
+                    title: "📐 秩序建築師",
+                    desc: "在《大五人格》中，您具備極高的「嚴謹性」。您是團體中最可靠的基石，做事有條理、重邏輯且深思熟慮。您不喜歡失控的感覺，喜歡將生活打理得井井有條。對您來說，客觀的事實與效率，往往比感性的抒發來得重要。",
+                    advice: "您的責任感是極大的優勢，但也容易讓您陷入「完美主義」的陷阱。當事情不如預期時，您常會過度苛責自己，這也是引發焦慮症與廣泛性肌肉緊繃的常見主因。學著對自己說：「這樣已經夠好了」，容許生活中有一點不完美的彈性。",
+                    showBooking: true
+                },
+                harmonizer: {
+                    title: "🤝 溫暖協調者",
+                    desc: "在《大五人格》中，您具備極高的「友善性」。您擁有強大的同理心，非常善於察言觀色與照顧他人的情緒。在群體中，您就像潤滑劑，總能讓氣氛變得柔和。您討厭衝突，因此經常會選擇退讓來維持人際的和諧。",
+                    advice: "您的善良讓您備受喜愛，但也容易讓您成為「吸收他人負能量的海綿」。在門診中，高友善性的人往往會因為過度壓抑自己的需求而引發憂鬱情緒或睡眠障礙。請記得：您的需求和別人一樣重要，設立界線並不是自私的表現。",
+                    showBooking: true
+                },
+                explorer: {
+                    title: "🚀 創新探險家",
+                    desc: "在《大五人格》中，您具備極高的「開放性」與「外向性」。您的大腦渴望新鮮的刺激，點子多、行動力強，且不害怕打破常規。您能從與人的互動與新事物的探索中獲得能量，枯燥規律的生活對您來說簡直是種折磨。",
+                    advice: "您的創造力與活力非常迷人，但大腦長期處於「高轉速」狀態，若沒有適當的關機休息，很容易引發神經系統的疲勞與自律神經失調。請為自己安排固定的「靜心時間」，讓大腦有機會重組與消化龐大的資訊。",
+                    showBooking: false
+                },
+                observer: {
+                    title: "🦉 沉穩觀察者",
+                    desc: "在《大五人格》中，您的特質偏向「內向性」與高穩定度。您不需要透過喧鬧的社交來證明自己，您擁有非常豐富且深邃的內在世界。面對事情，您不會急著下結論，而是習慣先退一步冷靜觀察。您的慢熟，是為了確保關係與環境的安全。",
+                    advice: "現代社會常常過度推崇外向特質，可能會讓您產生「我是不是太孤僻」的自我懷疑。請接納您透過獨處來「充電」的天性。只要這份安靜沒有讓您感到痛苦或陷入社交恐懼，這就是您最獨特且沉穩的力量。",
+                    showBooking: false
+                }
+            };
+
+            const result = resultsData[dominantTrait];
+            document.getElementById('result-title').innerText = result.title;
+            document.getElementById('result-desc').innerHTML = result.desc;
+            document.getElementById('clinical-advice').innerText = result.advice;
+            
+            if (result.showBooking) {
+                document.getElementById('booking-section').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
