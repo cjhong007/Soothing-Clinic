@@ -52,84 +52,115 @@
     </div>
 
 <script>
-        // 請確保這裡填入您正確的診所專案 Supabase 資訊
-        const SUPABASE_URL = 'https://drrgysqembjwulmbdium.supabase.co'; 
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRycmd5c3FlbWJqd3VsbWJkaXVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzMDQ1OTksImV4cCI6MjA4NTg4MDU5OX0._uchZy85H9Io6hg6eGzmhnfUJbwjdzIuJupUy6li8n4'; 
-        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        // 等待網頁元素全部載入後再執行，確保不會找不到按鈕
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookingForm = document.getElementById('bookingForm');
+            const messageDiv = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
 
-        const bookingForm = document.getElementById('bookingForm');
-        const messageDiv = document.getElementById('message');
-        const submitBtn = document.getElementById('submitBtn');
+            if (!bookingForm) return;
 
-        // 這裡已經清除了會干擾的文字，正式啟動表單監聽
-        bookingForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.innerText = "處理中...";
+            bookingForm.addEventListener('submit', async (e) => {
+                // 【防彈機制 1】絕對優先：攔截表單的預設跳轉行為！
+                e.preventDefault();
+                
+                // 改變按鈕狀態，避免病患狂按
+                submitBtn.disabled = true;
+                submitBtn.innerText = "安全連線處理中...";
+                messageDiv.style.display = 'none';
 
-            const name = document.getElementById('patient_name').value;
-            const phone = document.getElementById('phone').value;
-            const date = document.getElementById('date').value;
-            const time_slot = document.getElementById('time_slot').value;
-            const symptoms = document.getElementById('symptoms').value;
+                try {
+                    // 取得病患填寫的資料
+                    const name = document.getElementById('patient_name').value;
+                    const phone = document.getElementById('phone').value;
+                    const date = document.getElementById('date').value;
+                    const time_slot = document.getElementById('time_slot').value;
+                    const symptoms = document.getElementById('symptoms').value;
 
-            // 將時段代碼轉換成中文，讓信件內容更好閱讀
-            let timeSlotText = "";
-            if (time_slot === 'morning') timeSlotText = '早診 (09:00 - 12:00)';
-            else if (time_slot === 'afternoon') timeSlotText = '午診 (14:00 - 17:00)';
-            else timeSlotText = '晚診 (18:00 - 21:00)';
+                    // 時段中文化
+                    let timeSlotText = "";
+                    if (time_slot === 'morning') timeSlotText = '早診 (09:00 - 12:00)';
+                    else if (time_slot === 'afternoon') timeSlotText = '午診 (14:00 - 17:00)';
+                    else timeSlotText = '晚診 (18:00 - 21:00)';
 
-            // 【步驟一】先將資料存入您的 Supabase 資料庫
-            const { data, error } = await _supabase
-                .from('appointments') 
-                .insert([
-                    {
-                        patient_name: name,
-                        phone: phone,       
-                        booking_date: date, 
-                        time_slot: time_slot,
-                        symptoms: symptoms 
+                    let emailSuccess = false;
+                    let dbSuccess = false;
+
+                    // ==========================================
+                    // 【防彈機制 2】動作 A：背景發送 Email 通知
+                    // ==========================================
+                    try {
+                        const emailResponse = await fetch("https://formsubmit.co/ajax/soothing.sleep.mind@gmail.com", {
+                            method: "POST",
+                            headers: { 
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                "病患姓名": name,
+                                "聯絡電話": phone,
+                                "預約日期": date,
+                                "預約時段": timeSlotText,
+                                "症狀說明": symptoms,
+                                "_subject": "🔔【診所網站】有新的線上預約單！"
+                            })
+                        });
+                        if (emailResponse.ok) emailSuccess = true;
+                    } catch (emailErr) {
+                        console.error("Email 發送遭遇障礙:", emailErr);
                     }
-                ]);
 
-            if (error) {
-                console.error('Error:', error);
-                messageDiv.className = 'error';
-                messageDiv.innerText = '掛號失敗：' + error.message;
-                submitBtn.disabled = false;
-                submitBtn.innerText = "重新送出";
-                messageDiv.style.display = 'block';
-            } else {
-                // 【步驟二】資料庫儲存成功後，立刻背景發送 Email 到診所信箱
-                fetch("https://formsubmit.co/ajax/soothing.sleep.mind@gmail.com", {
-                    method: "POST",
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        "病患姓名": name,
-                        "聯絡電話": phone,
-                        "預約日期": date,
-                        "預約時段": timeSlotText,
-                        "症狀說明": symptoms,
-                        "_subject": "🔔【診所網站】有新的線上預約單！"
-                    })
-                })
-                .then(response => console.log("Email 系統呼叫成功"))
-                .catch(error => console.error("Email 寄送失敗:", error));
+                    // ==========================================
+                    // 【防彈機制 3】動作 B：儲存至 Supabase 資料庫
+                    // ==========================================
+                    try {
+                        const SUPABASE_URL = 'https://drrgysqembjwulmbdium.supabase.co'; 
+                        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRycmd5c3FlbWJqd3VsbWJkaXVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzMDQ1OTksImV4cCI6MjA4NTg4MDU5OX0._uchZy85H9Io6hg6eGzmhnfUJbwjdzIuJupUy6li8n4'; 
+                        
+                        // 檢查資料庫套件是否有成功載入
+                        if (typeof supabase !== 'undefined') {
+                            const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                            const { error } = await _supabase.from('appointments').insert([{
+                                patient_name: name,
+                                phone: phone,       
+                                booking_date: date, 
+                                time_slot: time_slot,
+                                symptoms: symptoms 
+                            }]);
+                            if (!error) dbSuccess = true;
+                        }
+                    } catch (dbErr) {
+                        console.error("資料庫連線遭遇障礙:", dbErr);
+                    }
 
-                // 【步驟三】顯示成功訊息給病患看
-                messageDiv.className = 'success';
-                messageDiv.innerHTML = '<h3>掛號資料已送出！</h3><p>診所人員將與您聯繫確認。</p>';
-                bookingForm.reset();
-                submitBtn.innerText = "已完成";
-                messageDiv.style.display = 'block';
-            }
+                    // ==========================================
+                    // 最終結算與畫面顯示
+                    // ==========================================
+                    messageDiv.style.display = 'block';
+                    
+                    // 只要「Email有寄出」或「資料庫有存入」其中一個成功，就當作成功！
+                    if (emailSuccess || dbSuccess) {
+                        messageDiv.className = 'success';
+                        messageDiv.innerHTML = '<h3>✅ 掛號資料已成功送出！</h3><p>診所人員將盡快與您聯繫確認。</p>';
+                        bookingForm.reset();
+                        submitBtn.innerText = "預約已完成";
+                    } else {
+                        throw new Error("網路連線阻擋");
+                    }
+
+                } catch (error) {
+                    messageDiv.style.display = 'block';
+                    messageDiv.className = 'error';
+                    messageDiv.innerHTML = '<h3>❌ 送出失敗</h3><p>網路連線不穩，請稍後再試，或直接來電診所預約。</p>';
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "重新送出";
+                }
+            });
         });
     </script>
     
 </body>
 
 </html>
+
 
