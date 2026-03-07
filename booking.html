@@ -61,8 +61,7 @@
         const messageDiv = document.getElementById('message');
         const submitBtn = document.getElementById('submitBtn');
 
-// 請將此段落覆蓋 booking.html 中對應的部份
-bookingForm.addEventListener('submit', async (e) => {
+// 請將此段落覆蓋 booking.html 中對應的部份bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     submitBtn.disabled = true;
     submitBtn.innerText = "處理中...";
@@ -73,12 +72,18 @@ bookingForm.addEventListener('submit', async (e) => {
     const time_slot = document.getElementById('time_slot').value;
     const symptoms = document.getElementById('symptoms').value;
 
-    // 修改處：將 .from('bookings') 改為 .from('appointments')
+    // 將時段代碼轉換成中文，讓信件內容更好閱讀
+    let timeSlotText = "";
+    if (time_slot === 'morning') timeSlotText = '早診 (09:00 - 12:00)';
+    else if (time_slot === 'afternoon') timeSlotText = '午診 (14:00 - 17:00)';
+    else timeSlotText = '晚診 (18:00 - 21:00)';
+
+    // 【步驟一】先將資料存入您的 Supabase 資料庫
     const { data, error } = await _supabase
         .from('appointments') 
         .insert([
             {
-                patient_name: name,         // 請確認 Supabase 欄位名是 name 還是 patient_name
+                patient_name: name,
                 phone: phone,       
                 booking_date: date, 
                 time_slot: time_slot,
@@ -93,9 +98,28 @@ bookingForm.addEventListener('submit', async (e) => {
         submitBtn.disabled = false;
         submitBtn.innerText = "重新送出";
     } else {
-        // ... 成功後的處理邏輯 ...
+        // 【步驟二】資料庫儲存成功後，立刻背景發送 Email 到診所信箱
+        fetch("https://formsubmit.co/ajax/soothing.sleep.mind@gmail.com", {
+            method: "POST",
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                "病患姓名": name,
+                "聯絡電話": phone,
+                "預約日期": date,
+                "預約時段": timeSlotText,
+                "症狀說明": symptoms,
+                "_subject": "🔔【診所網站】有新的線上預約單！"
+            })
+        })
+        .then(response => console.log("Email 系統呼叫成功"))
+        .catch(error => console.error("Email 寄送失敗:", error));
+
+        // 【步驟三】顯示成功訊息給病患看
         messageDiv.className = 'success';
-        messageDiv.innerHTML = '<h3>掛號資料已送出！</h3><p>診所人員將與您聯繫。</p>';
+        messageDiv.innerHTML = '<h3>掛號資料已送出！</h3><p>診所人員將與您聯繫確認。</p>';
         bookingForm.reset();
         submitBtn.innerText = "已完成";
     }
@@ -103,4 +127,5 @@ bookingForm.addEventListener('submit', async (e) => {
 });
     </script>
 </body>
+
 </html>
