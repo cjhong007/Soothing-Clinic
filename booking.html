@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label>預約日期</label>
-                <input type="date" id="date" required>
+                <input type="date" id="date" required min="2026-04-07">
             </div>
             <div class="form-group">
                 <label>時段</label>
@@ -75,6 +75,40 @@
                     const phone = document.getElementById('phone').value;
                     const date = document.getElementById('date').value;
                     const time_slot = document.getElementById('time_slot').value;
+                    function validateSchedule() {
+            if (!dateInput.value || !timeSlotSelect.value) return;
+
+            const selectedDate = new Date(dateInput.value);
+            const dayOfWeek = selectedDate.getDay(); // 0 是星期日, 1 是星期一, 2 是星期二...以此類推
+            const timeSlot = timeSlotSelect.value;
+
+            // 1. 阻擋星期日 (全天休診)
+            if (dayOfWeek === 0) {
+                alert("星期日為診所固定休診日，請為自己挑選其他日期喔！");
+                dateInput.value = ""; // 強制清空日期
+                return;
+            }
+
+            // 2. 阻擋星期二「下午」 (院長於榮總看診)
+            if (dayOfWeek === 2 && timeSlot === "afternoon") {
+                alert("洪院長星期二下午於臺北榮總看診，本診所該時段休診。請選擇星期二的早診/晚診，或其他日期。");
+                timeSlotSelect.value = ""; // 強制清空時段
+                return;
+            }
+
+            // 3. 星期六「隔週看診」溫馨提醒 (不阻擋，但跳出提醒)
+            if (dayOfWeek === 6) {
+                // 使用 confirm 讓病患確認，按「確定」保留，按「取消」清空
+                const confirmSaturday = confirm("溫馨提醒：本診所星期六採【隔週看診制】。\n\n請確認您選擇的日期是診所有開診的週次。若不確定，可點擊『取消』並先來電確認，或點擊『確定』繼續送出，我們將有專人與您聯繫確認。");
+                if (!confirmSaturday) {
+                    dateInput.value = ""; 
+                }
+            }
+        }
+
+
+
+                    
                     const symptoms = document.getElementById('symptoms').value;
 
                     // 時段中文化
@@ -162,5 +196,6 @@
 </body>
 
 </html>
+
 
 
