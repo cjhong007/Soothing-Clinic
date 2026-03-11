@@ -38,7 +38,7 @@
                 <label>時段</label>
                 <select id="time_slot">
                     <option value="morning">早診 (09:00 - 12:00)</option>
-                    <option value="afternoon">午診 (14:00 - 17:00)</option>
+                    <option value="afternoon">午診 (14:00 - 16:00)</option>
                     <option value="evening">晚診 (18:00 - 21:00)</option>
                 </select>
             </div>
@@ -51,45 +51,42 @@
         <div id="message"></div>
     </div>
 
-<script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const bookingForm = document.getElementById('bookingForm');
             const messageDiv = document.getElementById('message');
             const submitBtn = document.getElementById('submitBtn');
             
-            // 取得日期與時段的輸入框
             const dateInput = document.getElementById('date');
             const timeSlotSelect = document.getElementById('time_slot');
 
             if (!bookingForm) return;
 
             // ==========================================
-            // 門診時間自動防呆驗證系統 (獨立出來，隨時監聽)
+            // 門診時間自動防呆驗證系統
             // ==========================================
             function validateSchedule() {
-                if (!dateInput.value || !timeSlotSelect.value) return;
+                if (!dateInput.value) return;
 
                 const selectedDate = new Date(dateInput.value);
-                const dayOfWeek = selectedDate.getDay(); // 0是星期日, 1是星期一, 2是星期二...
-                const timeSlot = timeSlotSelect.value;
+                const dayOfWeek = selectedDate.getDay(); 
 
                 // 1. 阻擋星期日 (全天休診)
                 if (dayOfWeek === 0) {
                     alert("星期日為診所固定休診日，請為自己挑選其他日期喔！");
-                    dateInput.value = ""; // 強制清空日期
+                    dateInput.value = ""; 
                     return;
                 }
 
-                // 2. 阻擋星期二「下午」 (院長於榮總看診)
-                if (dayOfWeek === 2 && timeSlot === "afternoon") {
-                    alert("洪院長星期二下午於臺北榮總看診，本診所該時段休診。請選擇星期二的早診/晚診，或其他日期。");
-                    timeSlotSelect.value = "morning"; // 強制跳回早診
+                // 2. 阻擋星期二 (全天休診) 👇 這裡已經改為阻擋整個星期二了！
+                if (dayOfWeek === 2) {
+                    alert("洪院長星期二於臺北榮總看診，本診所星期二全天休診。請選擇其他日期喔！");
+                    dateInput.value = ""; // 強制清空日期
                     return;
                 }
 
                 // 3. 星期六「隔週看診」溫馨提醒
                 if (dayOfWeek === 6) {
-                    // 使用 confirm 讓病患確認，按「確定」保留，按「取消」清空
                     const confirmSaturday = confirm("溫馨提醒：本診所星期六採【隔週看診制】。\n\n請確認您選擇的日期是診所有開診的週次。若不確定，可點擊『取消』並先來電確認，或點擊『確定』繼續保留，我們將有專人與您聯繫確認。");
                     if (!confirmSaturday) {
                         dateInput.value = ""; 
@@ -97,19 +94,18 @@
                 }
             }
 
-            // 啟動監聽：只要病患滑鼠一點選更改日期或時段，立刻執行上面的檢查！
+            // 只要改變日期，就立刻檢查
             dateInput.addEventListener('change', validateSchedule);
-            timeSlotSelect.addEventListener('change', validateSchedule);
 
             // ==========================================
-            // 表單送出處理 (包含防彈儲存與寄信機制)
+            // 表單送出處理
             // ==========================================
             bookingForm.addEventListener('submit', async (e) => {
-                e.preventDefault(); // 攔截跳轉
+                e.preventDefault(); 
                 
-                // 送出前做最後一次安全檢查
+                // 送出前的最後一道防線
                 const finalDate = new Date(dateInput.value);
-                if (finalDate.getDay() === 0 || (finalDate.getDay() === 2 && timeSlotSelect.value === 'afternoon')) {
+                if (finalDate.getDay() === 0 || finalDate.getDay() === 2) {
                     alert("請選擇正確的看診時間！");
                     return;
                 }
@@ -125,15 +121,15 @@
                     const time_slot = timeSlotSelect.value;
                     const symptoms = document.getElementById('symptoms').value;
 
+                    // 👇 Email 收到的信件內容也會顯示 16:00
                     let timeSlotText = "";
                     if (time_slot === 'morning') timeSlotText = '早診 (09:00 - 12:00)';
-                    else if (time_slot === 'afternoon') timeSlotText = '午診 (14:00 - 17:00)';
+                    else if (time_slot === 'afternoon') timeSlotText = '午診 (14:00 - 16:00)';
                     else timeSlotText = '晚診 (18:00 - 21:00)';
 
                     let emailSuccess = false;
                     let dbSuccess = false;
 
-                    // 動作 A：背景發送 Email
                     try {
                         const emailResponse = await fetch("https://formsubmit.co/ajax/soothing.sleep.mind@gmail.com", {
                             method: "POST",
@@ -155,7 +151,6 @@
                         console.error("Email 發送遭遇障礙:", emailErr);
                     }
 
-                    // 動作 B：儲存至 Supabase
                     try {
                         const SUPABASE_URL = 'https://drrgysqembjwulmbdium.supabase.co'; 
                         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRycmd5c3FlbWJqd3VsbWJkaXVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzMDQ1OTksImV4cCI6MjA4NTg4MDU5OX0._uchZy85H9Io6hg6eGzmhnfUJbwjdzIuJupUy6li8n4'; 
@@ -196,11 +191,5 @@
             });
         });
     </script>
-    
 </body>
-
 </html>
-
-
-
-
