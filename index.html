@@ -84,6 +84,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="#environment" class="hover:text-blue-600 transition whitespace-nowrap">診所環境</a>
                     <a href="#faq" class="hover:text-blue-600 transition whitespace-nowrap">看診須知</a>
                     <a href="#schedule" class="hover:text-blue-600 transition whitespace-nowrap">門診時間</a>
+                    <a href="#fees" class="hover:text-blue-600 transition whitespace-nowrap">收費標準</a>
                     <a href="#contact" class="hover:text-blue-600 transition whitespace-nowrap">交通資訊</a>
                     
                     <a href="tel:0228214412" class="flex items-center gap-1 text-blue-600 font-bold hover:text-blue-800 transition duration-300 whitespace-nowrap ml-1 pl-3 border-l border-slate-200">
@@ -112,6 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="#environment" class="mobile-link hover:text-blue-600">診所環境</a>
                 <a href="#faq" class="mobile-link hover:text-blue-600">看診須知</a>
                 <a href="#schedule" class="mobile-link hover:text-blue-600">門診時間</a>
+                <a href="#fees" class="mobile-link hover:text-blue-600">收費標準</a>
                 <a href="#contact" class="mobile-link hover:text-blue-600">交通資訊</a>
                 
                 <hr class="border-slate-100 my-2">
@@ -1212,6 +1214,107 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
 
+    <section id="fees" class="py-20 bg-white relative z-10 border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-6">
+            
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-bold tracking-wider text-sm eng-font uppercase">Fee Schedule</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2 mb-4">門診收費標準</h2>
+                <div class="w-16 h-1 bg-blue-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="glass-card rounded-3xl shadow-lg overflow-hidden border border-slate-200">
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[500px]">
+                        <thead>
+                            <tr class="bg-blue-50 text-blue-800 border-b-2 border-blue-100">
+                                <th class="py-4 px-6 font-bold text-lg w-1/2">身份別</th>
+                                <th class="py-4 px-6 font-bold text-lg text-center whitespace-nowrap">掛號費</th>
+                                <th class="py-4 px-6 font-bold text-lg text-center whitespace-nowrap">部分負擔</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-700 text-lg divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="py-4 px-6 font-bold text-slate-800">初診 (健保)</td>
+                                <td class="py-4 px-6 text-center">600</td>
+                                <td class="py-4 px-6 text-center">50</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="py-4 px-6 font-bold text-slate-800">複診 (健保)</td>
+                                <td class="py-4 px-6 text-center">300</td>
+                                <td class="py-4 px-6 text-center">50</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors bg-amber-50/30">
+                                <td class="py-4 px-6 font-bold text-slate-800 flex items-center gap-2">
+                                    <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded">自費</span> 初診
+                                </td>
+                                <td class="py-4 px-6 text-center">1200</td>
+                                <td class="py-4 px-6 text-center">0</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors bg-amber-50/30">
+                                <td class="py-4 px-6 font-bold text-slate-800 flex items-center gap-2">
+                                    <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded">自費</span> 複診
+                                </td>
+                                <td class="py-4 px-6 text-center">800</td>
+                                <td class="py-4 px-6 text-center">0</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="py-4 px-6 font-bold text-slate-800">榮民</td>
+                                <td class="py-4 px-6 text-center">250</td>
+                                <td class="py-4 px-6 text-center">0</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="py-4 px-6 font-bold text-slate-800">福保 (低收入戶)</td>
+                                <td class="py-4 px-6 text-center">200</td>
+                                <td class="py-4 px-6 text-center">0</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="py-4 px-6 font-bold text-slate-800">身心障礙、重大傷病</td>
+                                <td class="py-4 px-6 text-center">150</td>
+                                <td class="py-4 px-6 text-center">50</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-slate-50 p-6 md:p-8 border-t border-slate-200 text-slate-600">
+                    <h4 class="font-bold text-slate-800 mb-4 text-lg flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        就醫收費須知
+                    </h4>
+                    <ul class="space-y-3 list-disc list-inside text-base">
+                        <li><span class="text-rose-600 font-bold">初診超時費：</span>初診30分鐘內不收超時費，<span class="font-bold">超過30分鐘每10分鐘加收200元。</span></li>
+                        <li>特殊身份別請出示有效證件，未出示者視同一般身份。</li>
+                        <li>在榮總就給院長看的病人視同複診。</li>
+                        <li><span class="font-bold">健保欠卡押金：1000元</span>，7天內回院過卡可退還全額押金。</li>
+                        <li>心理諮商須預約，費用另計。</li>
+                        <li class="text-slate-500 text-sm mt-2 pt-2 border-t border-slate-200">健保藥品部分負擔依健保署規範辦理。</li>
+                    </ul>
+
+                    <h4 class="font-bold text-slate-800 mt-6 mb-3 text-lg flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        文件與病歷申請
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="font-bold text-slate-800 block mb-1">📋 診斷書</span>
+                            第一份 <span class="font-bold text-blue-600">100元</span><br>
+                            第二份(含)以上 每份 <span class="font-bold text-blue-600">50元</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="font-bold text-slate-800 block mb-1">🗂️ 病歷複製</span>
+                            基本費 <span class="font-bold text-blue-600">100元</span><br>
+                            第二頁(含)以上 每頁 <span class="font-bold text-blue-600">5元</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
     <section id="faq" class="py-20">
         <div class="max-w-4xl mx-auto px-6 delay-100">
             <div class="text-center mb-10">
@@ -1437,6 +1540,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </body>
 
 </html>
+
 
 
 
