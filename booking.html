@@ -24,11 +24,15 @@
         <form id="bookingForm">
             <div class="form-group">
                 <label>姓名</label>
-                <input type="text" id="patient_name" required>
+                <input type="text" id="patient_name" required placeholder="請輸入您的姓名">
             </div>
             <div class="form-group">
                 <label>電話</label>
-                <input type="tel" id="phone" required>
+                <input type="tel" id="phone" required placeholder="例如: 0912345678">
+            </div>
+            <div class="form-group">
+                <label>電子信箱</label>
+                <input type="email" id="email" required placeholder="例如: yourname@email.com">
             </div>
             <div class="form-group">
                 <label>預約日期</label>
@@ -44,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label>主要症狀說明</label>
-                <textarea id="symptoms" rows="3"></textarea>
+                <textarea id="symptoms" rows="3" placeholder="請簡述您的困擾，以利醫師評估..."></textarea>
             </div>
             <button type="submit" id="submitBtn">送出掛號</button>
         </form>
@@ -71,21 +75,18 @@
                 const selectedDate = new Date(dateInput.value);
                 const dayOfWeek = selectedDate.getDay(); 
 
-                // 1. 阻擋星期日 (全天休診)
                 if (dayOfWeek === 0) {
                     alert("星期日為診所固定休診日，請為自己挑選其他日期喔！");
                     dateInput.value = ""; 
                     return;
                 }
 
-                // 2. 阻擋星期二 (全天休診) 👇 這裡已經改為阻擋整個星期二了！
                 if (dayOfWeek === 2) {
                     alert("洪院長星期二於臺北榮總看診，本診所星期二全天休診。請選擇其他日期喔！");
-                    dateInput.value = ""; // 強制清空日期
+                    dateInput.value = ""; 
                     return;
                 }
 
-                // 3. 星期六「隔週看診」溫馨提醒
                 if (dayOfWeek === 6) {
                     const confirmSaturday = confirm("溫馨提醒：本診所星期六採【隔週看診制】。\n\n請確認您選擇的日期是診所有開診的週次。若不確定，可點擊『取消』並先來電確認，或點擊『確定』繼續保留，我們將有專人與您聯繫確認。");
                     if (!confirmSaturday) {
@@ -94,7 +95,6 @@
                 }
             }
 
-            // 只要改變日期，就立刻檢查
             dateInput.addEventListener('change', validateSchedule);
 
             // ==========================================
@@ -103,7 +103,6 @@
             bookingForm.addEventListener('submit', async (e) => {
                 e.preventDefault(); 
                 
-                // 送出前的最後一道防線
                 const finalDate = new Date(dateInput.value);
                 if (finalDate.getDay() === 0 || finalDate.getDay() === 2) {
                     alert("請選擇正確的看診時間！");
@@ -117,11 +116,11 @@
                 try {
                     const name = document.getElementById('patient_name').value;
                     const phone = document.getElementById('phone').value;
+                    const email = document.getElementById('email').value; // 抓取 Email 資料
                     const date = dateInput.value;
                     const time_slot = timeSlotSelect.value;
                     const symptoms = document.getElementById('symptoms').value;
 
-                    // 👇 Email 收到的信件內容也會顯示 16:00
                     let timeSlotText = "";
                     if (time_slot === 'morning') timeSlotText = '早診 (09:00 - 12:00)';
                     else if (time_slot === 'afternoon') timeSlotText = '午診 (14:00 - 16:00)';
@@ -130,6 +129,7 @@
                     let emailSuccess = false;
                     let dbSuccess = false;
 
+                    // 動作 A：背景發送 Email 到診所信箱 (已加入病患信箱)
                     try {
                         const emailResponse = await fetch("https://formsubmit.co/ajax/soothing.sleep.mind@gmail.com", {
                             method: "POST",
@@ -140,6 +140,7 @@
                             body: JSON.stringify({
                                 "病患姓名": name,
                                 "聯絡電話": phone,
+                                "電子信箱": email, // 信件內會顯示病患的 Email
                                 "預約日期": date,
                                 "預約時段": timeSlotText,
                                 "症狀說明": symptoms,
@@ -151,6 +152,7 @@
                         console.error("Email 發送遭遇障礙:", emailErr);
                     }
 
+                    // 動作 B：儲存至 Supabase 資料庫 (已加入 email 欄位)
                     try {
                         const SUPABASE_URL = 'https://drrgysqembjwulmbdium.supabase.co'; 
                         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRycmd5c3FlbWJqd3VsbWJkaXVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzMDQ1OTksImV4cCI6MjA4NTg4MDU5OX0._uchZy85H9Io6hg6eGzmhnfUJbwjdzIuJupUy6li8n4'; 
@@ -159,7 +161,8 @@
                             const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                             const { error } = await _supabase.from('appointments').insert([{
                                 patient_name: name,
-                                phone: phone,       
+                                phone: phone, 
+                                email: email, // 存入 Supabase 的 email 欄位
                                 booking_date: date, 
                                 time_slot: time_slot,
                                 symptoms: symptoms 
