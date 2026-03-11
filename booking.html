@@ -13,14 +13,22 @@
         input, textarea, select { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; box-sizing: border-box; }
         button { background-color: #2563eb; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; width: 100%; }
         button:hover { background-color: #1d4ed8; }
-        #message { margin-top: 20px; padding: 15px; border-radius: 6px; display: none; }
+        #message { margin-top: 20px; padding: 20px; border-radius: 6px; display: none; text-align: center; }
         .success { background-color: #dff0d8; color: #3c763d; border: 1px solid #d6e9c6; }
         .error { background-color: #f2dede; color: #a94442; border: 1px solid #ebccd1; }
+        
+        /* 新增的返回按鈕樣式 */
+        .back-link { display: inline-block; margin-bottom: 15px; color: #64748b; text-decoration: none; font-size: 14px; font-weight: bold; transition: color 0.2s; }
+        .back-link:hover { color: #2563eb; text-decoration: underline; }
+        .btn-home { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #10b981; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background-color 0.2s; }
+        .btn-home:hover { background-color: #059669; }
     </style>
 </head>
 <body>
     <div class="form-card">
-        <h2 style="text-align: center; color: #1e293b;">線上掛號預約</h2>
+        <a href="index.html" class="back-link">&larr; 返回診所首頁</a>
+        
+        <h2 style="text-align: center; color: #1e293b; margin-top: 0;">線上掛號預約</h2>
         <form id="bookingForm">
             <div class="form-group">
                 <label>姓名</label>
@@ -116,7 +124,7 @@
                 try {
                     const name = document.getElementById('patient_name').value;
                     const phone = document.getElementById('phone').value;
-                    const email = document.getElementById('email').value; // 抓取 Email 資料
+                    const email = document.getElementById('email').value; 
                     const date = dateInput.value;
                     const time_slot = timeSlotSelect.value;
                     const symptoms = document.getElementById('symptoms').value;
@@ -129,7 +137,6 @@
                     let emailSuccess = false;
                     let dbSuccess = false;
 
-                    // 動作 A：背景發送 Email 到診所信箱 (已加入病患信箱)
                     try {
                         const emailResponse = await fetch("https://formsubmit.co/ajax/soothing.sleep.mind@gmail.com", {
                             method: "POST",
@@ -140,7 +147,7 @@
                             body: JSON.stringify({
                                 "病患姓名": name,
                                 "聯絡電話": phone,
-                                "電子信箱": email, // 信件內會顯示病患的 Email
+                                "電子信箱": email, 
                                 "預約日期": date,
                                 "預約時段": timeSlotText,
                                 "症狀說明": symptoms,
@@ -152,7 +159,6 @@
                         console.error("Email 發送遭遇障礙:", emailErr);
                     }
 
-                    // 動作 B：儲存至 Supabase 資料庫 (已加入 email 欄位)
                     try {
                         const SUPABASE_URL = 'https://drrgysqembjwulmbdium.supabase.co'; 
                         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRycmd5c3FlbWJqd3VsbWJkaXVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzMDQ1OTksImV4cCI6MjA4NTg4MDU5OX0._uchZy85H9Io6hg6eGzmhnfUJbwjdzIuJupUy6li8n4'; 
@@ -162,7 +168,7 @@
                             const { error } = await _supabase.from('appointments').insert([{
                                 patient_name: name,
                                 phone: phone, 
-                                email: email, // 存入 Supabase 的 email 欄位
+                                email: email, 
                                 booking_date: date, 
                                 time_slot: time_slot,
                                 symptoms: symptoms 
@@ -177,9 +183,15 @@
                     
                     if (emailSuccess || dbSuccess) {
                         messageDiv.className = 'success';
-                        messageDiv.innerHTML = '<h3>✅ 掛號資料已成功送出！</h3><p>診所人員將盡快與您聯繫確認。</p>';
+                        // 👇 這裡新增了「回診所首頁」的綠色大按鈕 👇
+                        messageDiv.innerHTML = `
+                            <h3>✅ 掛號資料已成功送出！</h3>
+                            <p style="margin-bottom: 5px;">診所人員將盡快與您聯繫確認。</p>
+                            <a href="index.html" class="btn-home">回診所首頁</a>
+                        `;
                         bookingForm.reset();
                         submitBtn.innerText = "預約已完成";
+                        submitBtn.style.display = 'none'; // 送出成功後把原本的藍色按鈕藏起來，畫面更清爽
                     } else {
                         throw new Error("網路連線阻擋");
                     }
