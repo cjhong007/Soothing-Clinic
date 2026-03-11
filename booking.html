@@ -10,6 +10,7 @@
         .form-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: bold; color: #334155; }
+        .optional-tag { color: #64748b; font-size: 0.9em; font-weight: normal; margin-left: 4px; }
         input, textarea, select { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; box-sizing: border-box; }
         button { background-color: #2563eb; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; width: 100%; }
         button:hover { background-color: #1d4ed8; }
@@ -43,8 +44,8 @@
                 <input type="tel" id="phone" required placeholder="例如: 0912345678">
             </div>
             <div class="form-group">
-                <label>電子信箱</label>
-                <input type="email" id="email" required placeholder="例如: yourname@email.com">
+                <label>電子信箱 <span class="optional-tag">(選填)</span></label>
+                <input type="email" id="email" placeholder="若無信箱可直接跳過">
             </div>
             <div class="form-group">
                 <label>預約日期</label>
@@ -55,11 +56,11 @@
                 <select id="time_slot">
                     <option value="morning">早診 (09:00 - 12:00)</option>
                     <option value="afternoon">午診 (14:00 - 16:00)</option>
-                    <option value="evening">晚診 (17:00 - 20:00)</option>
+                    <option value="evening">晚診 (18:00 - 21:00)</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>主要症狀說明</label>
+                <label>主要症狀說明 <span class="optional-tag">(選填)</span></label>
                 <textarea id="symptoms" rows="3" placeholder="請簡述您的困擾，以利醫師評估..."></textarea>
             </div>
             <button type="submit" id="submitBtn">送出掛號</button>
@@ -118,15 +119,18 @@
                 try {
                     const name = document.getElementById('patient_name').value;
                     const phone = document.getElementById('phone').value;
-                    const email = document.getElementById('email').value; 
+                    const rawEmail = document.getElementById('email').value; // 抓取信箱 (可能是空的)
                     const date = dateInput.value;
                     const time_slot = timeSlotSelect.value;
                     const symptoms = document.getElementById('symptoms').value;
 
+                    // 如果病患沒填信箱，信件顯示「未提供」
+                    const emailForNotify = rawEmail.trim() !== "" ? rawEmail : "未提供";
+
                     let timeSlotText = "";
                     if (time_slot === 'morning') timeSlotText = '早診 (09:00 - 12:00)';
                     else if (time_slot === 'afternoon') timeSlotText = '午診 (14:00 - 16:00)';
-                    else timeSlotText = '晚診 (18:00 - 21:00)';
+                    else timeSlotText = '晚診 (17:00 - 20:00)';
 
                     let emailSuccess = false;
                     let dbSuccess = false;
@@ -138,10 +142,10 @@
                             body: JSON.stringify({
                                 "病患姓名": name,
                                 "聯絡電話": phone,
-                                "電子信箱": email, 
+                                "電子信箱": emailForNotify, 
                                 "預約日期": date,
                                 "預約時段": timeSlotText,
-                                "症狀說明": symptoms,
+                                "症狀說明": symptoms || "未提供",
                                 "_subject": "🔔【診所網站】有新的線上預約單！"
                             })
                         });
@@ -159,7 +163,7 @@
                             const { error } = await _supabase.from('appointments').insert([{
                                 patient_name: name,
                                 phone: phone, 
-                                email: email, 
+                                email: rawEmail, 
                                 booking_date: date, 
                                 time_slot: time_slot,
                                 symptoms: symptoms 
@@ -175,7 +179,6 @@
                     if (emailSuccess || dbSuccess) {
                         messageDiv.className = 'success';
                         
-                        // 👇 升級版的成功畫面：帶有資料明細與取消提醒 👇
                         messageDiv.innerHTML = `
                             <h3 style="color: #10b981; font-size: 1.5rem; margin-top: 0; margin-bottom: 10px;">✅ 掛號資料已送出！</h3>
                             <p style="color: #64748b; margin-bottom: 15px;">診所人員將盡快與您聯繫確認。以下為您的預約明細：</p>
@@ -194,7 +197,7 @@
                             <a href="index.html" class="btn-home">回診所首頁</a>
                         `;
                         
-                        bookingForm.style.display = 'none'; // 送出成功後，直接把表單隱藏起來，只留明細
+                        bookingForm.style.display = 'none'; 
                     } else {
                         throw new Error("網路連線阻擋");
                     }
@@ -211,4 +214,3 @@
     </script>
 </body>
 </html>
-
