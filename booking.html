@@ -12,8 +12,11 @@
         label { display: block; margin-bottom: 8px; font-weight: bold; color: #334155; }
         .optional-tag { color: #64748b; font-size: 0.9em; font-weight: normal; margin-left: 4px; }
         input, textarea, select { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; box-sizing: border-box; }
+        /* 當選單被鎖住時的樣式 */
+        select:disabled { background-color: #f1f5f9; color: #94a3b8; cursor: not-allowed; }
         button { background-color: #2563eb; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; width: 100%; }
         button:hover { background-color: #1d4ed8; }
+        button:disabled { background-color: #94a3b8; cursor: not-allowed; }
         #message { margin-top: 20px; padding: 20px; border-radius: 6px; display: none; text-align: center; }
         .success { background-color: #ffffff; border: 2px solid #10b981; }
         .error { background-color: #f2dede; color: #a94442; border: 1px solid #ebccd1; }
@@ -23,7 +26,6 @@
         .btn-home { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #10b981; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background-color 0.2s; }
         .btn-home:hover { background-color: #059669; }
         
-        /* 預約明細卡片的樣式 */
         .receipt-card { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin: 15px 0; text-align: left; }
         .receipt-item { margin-bottom: 8px; font-size: 15px; color: #334155; }
         .receipt-item strong { color: #0f172a; display: inline-block; width: 80px; }
@@ -52,11 +54,9 @@
                 <input type="date" id="date" required min="2026-04-07">
             </div>
             <div class="form-group">
-                <label>時段</label>
-                <select id="time_slot">
-                    <option value="morning">早診 (09:00 - 12:00)</option>
-                    <option value="afternoon">午診 (14:00 - 16:00)</option>
-                    <option value="evening">晚診 (17:00 - 20:00)</option>
+                <label>時段 <span class="optional-tag" style="color:#ef4444;" id="slot_hint"></span></label>
+                <select id="time_slot" required disabled>
+                    <option value="">請先選擇上方預約日期</option>
                 </select>
             </div>
             <div class="form-group">
@@ -75,40 +75,110 @@
             const submitBtn = document.getElementById('submitBtn');
             const dateInput = document.getElementById('date');
             const timeSlotSelect = document.getElementById('time_slot');
+            const slotHint = document.getElementById('slot_hint');
 
             if (!bookingForm) return;
 
+            // ==========================================
+            // 診所各日期的看診時段設定庫
+            // ==========================================
+            const clinicSchedule = {
+                1: [ // 星期一
+                    { value: 'morning', text: '上午診 (09:00 - 12:00)' },
+                    { value: 'evening', text: '晚上診 (18:00 - 21:00)' }
+                ],
+                3: [ // 星期三
+                    { value: 'morning', text: '上午診 (09:00 - 12:00)' },
+                    { value: 'evening', text: '晚上診 (18:00 - 21:00)' }
+                ],
+                4: [ // 星期四
+                    { value: 'afternoon', text: '下午診 (14:00 - 16:00)' },
+                    { value: 'evening', text: '晚上診 (18:00 - 21:00)' }
+                ],
+                5: [ // 星期五
+                    { value: 'morning', text: '上午診 (09:00 - 12:00)' },
+                    { value: 'afternoon', text: '下午診 (14:00 - 16:00)' }
+                ],
+                6: [ // 星期六
+                    { value: 'morning', text: '上午診 (09:00 - 12:00)' }
+                ]
+            };
+
+            // ==========================================
+            // 自動更新時段選單的函數
+            // ==========================================
+            function updateAvailableSlots() {
+                // 清空現有選項
+                timeSlotSelect.innerHTML = '';
+                
+                if (!dateInput.value) {
+                    timeSlotSelect.innerHTML = '<option value="">請先選擇上方預約日期</option>';
+                    timeSlotSelect.disabled = true;
+                    slotHint.innerText = "";
+                    return;
+                }
+
+                const selectedDate = new Date(dateInput.value);
+                const dayOfWeek = selectedDate.getDay(); 
+
+                // 如果是診所有開的日子
+                if (clinicSchedule[dayOfWeek]) {
+                    timeSlotSelect.disabled = false;
+                    slotHint.innerText = ""; // 清除提示
+                    
+                    // 動態載入當天專屬的時段
+                    clinicSchedule[dayOfWeek].forEach(slot => {
+                        const option = document.createElement('option');
+                        option.value = slot.value;
+                        option.text = slot.text;
+                        timeSlotSelect.appendChild(option);
+                    });
+                } else {
+                    // 如果被強制選到了沒開的日子 (雖然下方有擋，但保險起見)
+                    timeSlotSelect.innerHTML = '<option value="">本日無門診，請選擇其他日期</option>';
+                    timeSlotSelect.disabled = true;
+                }
+            }
+
+            // ==========================================
+            // 日期防呆與連動觸發
+            // ==========================================
             function validateSchedule() {
-                if (!dateInput.value) return;
+                if (!dateInput.value) {
+                    updateAvailableSlots();
+                    return;
+                }
+
                 const selectedDate = new Date(dateInput.value);
                 const dayOfWeek = selectedDate.getDay(); 
 
                 if (dayOfWeek === 0) {
                     alert("星期日為診所固定休診日，請為自己挑選其他日期喔！");
                     dateInput.value = ""; 
-                    return;
-                }
-                if (dayOfWeek === 2) {
+                } else if (dayOfWeek === 2) {
                     alert("洪院長星期二於臺北榮總看診，本診所星期二全天休診。請選擇其他日期喔！");
                     dateInput.value = ""; 
-                    return;
-                }
-                if (dayOfWeek === 6) {
+                } else if (dayOfWeek === 6) {
                     const confirmSaturday = confirm("溫馨提醒：本診所星期六採【隔週看診制】。\n\n請確認您選擇的日期是診所有開診的週次。若不確定，可點擊『取消』並先來電確認，或點擊『確定』繼續保留，我們將有專人與您聯繫確認。");
                     if (!confirmSaturday) {
                         dateInput.value = ""; 
                     }
                 }
+                
+                // 檢查完日期後，立刻更新對應的時段選單
+                updateAvailableSlots();
             }
 
             dateInput.addEventListener('change', validateSchedule);
 
+            // ==========================================
+            // 表單送出處理
+            // ==========================================
             bookingForm.addEventListener('submit', async (e) => {
                 e.preventDefault(); 
                 
-                const finalDate = new Date(dateInput.value);
-                if (finalDate.getDay() === 0 || finalDate.getDay() === 2) {
-                    alert("請選擇正確的看診時間！");
+                if (!dateInput.value || !timeSlotSelect.value) {
+                    alert("請確保已選擇正確的看診日期與時段！");
                     return;
                 }
                 
@@ -119,18 +189,15 @@
                 try {
                     const name = document.getElementById('patient_name').value;
                     const phone = document.getElementById('phone').value;
-                    const rawEmail = document.getElementById('email').value; // 抓取信箱 (可能是空的)
+                    const rawEmail = document.getElementById('email').value; 
                     const date = dateInput.value;
                     const time_slot = timeSlotSelect.value;
                     const symptoms = document.getElementById('symptoms').value;
 
-                    // 如果病患沒填信箱，信件顯示「未提供」
                     const emailForNotify = rawEmail.trim() !== "" ? rawEmail : "未提供";
 
-                    let timeSlotText = "";
-                    if (time_slot === 'morning') timeSlotText = '早診 (09:00 - 12:00)';
-                    else if (time_slot === 'afternoon') timeSlotText = '午診 (14:00 - 16:00)';
-                    else timeSlotText = '晚診 (17:00 - 20:00)';
+                    // 抓取被選中時段的「中文顯示文字」給通知信和明細用
+                    const timeSlotText = timeSlotSelect.options[timeSlotSelect.selectedIndex].text;
 
                     let emailSuccess = false;
                     let dbSuccess = false;
@@ -214,4 +281,3 @@
     </script>
 </body>
 </html>
-
