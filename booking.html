@@ -4,25 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>線上掛號 - 舒眠身心醫學診所</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <style>
-        body { font-family: sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; background-color: #f8fafc; }
-        .form-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; color: #334155; }
-        .optional-tag { color: #64748b; font-size: 0.9em; font-weight: normal; margin-left: 4px; }
-        input, textarea, select { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; box-sizing: border-box; }
-        /* 當選單被鎖住時的樣式 */
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            max-width: 650px; 
+            margin: 20px auto; 
+            padding: 20px; 
+            background-color: #f1f5f9; 
+        }
+        
+        .back-link { 
+            display: inline-block; 
+            margin-bottom: 15px; 
+            color: #64748b; 
+            text-decoration: none; 
+            font-size: 15px; 
+            font-weight: bold; 
+            transition: color 0.2s; 
+        }
+        .back-link:hover { color: #2563eb; text-decoration: underline; }
+        
+        /* 全新升級的卡片外觀 */
+        .form-card { 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
+            overflow: hidden; 
+        }
+        
+        /* 專業的深藍色漸層表頭 */
+        .clinic-header { 
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); 
+            padding: 35px 20px; 
+            text-align: center; 
+            color: white; 
+        }
+        .clinic-header h2 { 
+            margin: 0; 
+            font-size: 26px; 
+            letter-spacing: 2px; 
+            font-weight: 700; 
+        }
+        .clinic-header p { 
+            margin: 8px 0 0 0; 
+            font-size: 13px; 
+            opacity: 0.9; 
+            letter-spacing: 1px; 
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* 掛號說明與資安宣告區塊 */
+        .instruction-box { 
+            background-color: #f8fafc; 
+            border: 1px solid #e2e8f0; 
+            border-left: 5px solid #3b82f6; 
+            padding: 20px 25px; 
+            margin: 25px; 
+            border-radius: 6px; 
+            color: #475569; 
+            font-size: 15px; 
+            line-height: 1.6; 
+        }
+        .instruction-box h3 { 
+            color: #1e293b; 
+            margin-top: 0; 
+            margin-bottom: 12px; 
+            font-size: 18px; 
+            border-bottom: 1px solid #e2e8f0; 
+            padding-bottom: 10px; 
+        }
+        .instruction-box ul { 
+            margin: 10px 0 0 0; 
+            padding-left: 20px; 
+        }
+        .instruction-box li { margin-bottom: 8px; }
+        
+        /* 表單內容區塊 */
+        .form-body { padding: 10px 30px 30px 30px; }
+        .form-group { margin-bottom: 22px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: #334155; font-size: 16px;}
+        .optional-tag { color: #64748b; font-size: 0.85em; font-weight: normal; margin-left: 4px; }
+        
+        input, textarea, select { 
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 6px; 
+            box-sizing: border-box; 
+            font-size: 15px;
+            font-family: 'Noto Sans TC', sans-serif; 
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
         select:disabled { background-color: #f1f5f9; color: #94a3b8; cursor: not-allowed; }
-        button { background-color: #2563eb; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; width: 100%; }
+        
+        button { 
+            background-color: #2563eb; 
+            color: white; 
+            padding: 14px 24px; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            font-weight: bold;
+            width: 100%; 
+            transition: background-color 0.2s;
+        }
         button:hover { background-color: #1d4ed8; }
         button:disabled { background-color: #94a3b8; cursor: not-allowed; }
+        
         #message { margin-top: 20px; padding: 20px; border-radius: 6px; display: none; text-align: center; }
         .success { background-color: #ffffff; border: 2px solid #10b981; }
         .error { background-color: #f2dede; color: #a94442; border: 1px solid #ebccd1; }
         
-        .back-link { display: inline-block; margin-bottom: 15px; color: #64748b; text-decoration: none; font-size: 14px; font-weight: bold; transition: color 0.2s; }
-        .back-link:hover { color: #2563eb; text-decoration: underline; }
         .btn-home { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #10b981; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background-color 0.2s; }
         .btn-home:hover { background-color: #059669; }
         
@@ -32,40 +133,55 @@
     </style>
 </head>
 <body>
+    <a href="index.html" class="back-link">&larr; 返回診所首頁</a>
+    
     <div class="form-card">
-        <a href="index.html" class="back-link">&larr; 返回診所首頁</a>
-        <h2 style="text-align: center; color: #1e293b; margin-top: 0;">線上掛號預約</h2>
+        <div class="clinic-header">
+            <h2>舒眠身心醫學診所</h2>
+            <p>Soothing Sleep & Mind Clinic</p>
+        </div>
+
+        <div class="instruction-box">
+            <h3>📝 線上掛號與隱私說明</h3>
+            <p>歡迎您使用雲端掛號系統！為保障您的就醫權益，填寫前請詳閱以下須知：</p>
+            <ul>
+                <li><strong>專人聯繫確認：</strong> 送出表單後為「預約登記」狀態，診所人員將於營業時間內致電與您確認，方完成掛號程序。</li>
+                <li><strong>初診用藥規範：</strong> 依健保署規定，本診所初診無法直接開立「連續處方箋」，需於第二次回診確認後方可開立。</li>
+                <li><strong style="color: #059669;">✅ 資安加密防護：</strong> 本系統採用安全加密連線，您的個人與健康資料受到嚴格保護，絕不外洩給第三方，請安心填寫。</li>
+            </ul>
+        </div>
         
-        <form id="bookingForm">
+        <form id="bookingForm" class="form-body">
             <div class="form-group">
-                <label>姓名</label>
-                <input type="text" id="patient_name" required placeholder="請輸入您的姓名">
+                <label>病患姓名</label>
+                <input type="text" id="patient_name" required placeholder="請輸入您的真實姓名">
             </div>
             <div class="form-group">
-                <label>電話</label>
-                <input type="tel" id="phone" required placeholder="例如: 0912345678">
+                <label>聯絡電話</label>
+                <input type="tel" id="phone" required placeholder="例如: 0912345678 (供診所回電確認使用)">
             </div>
             <div class="form-group">
                 <label>電子信箱 <span class="optional-tag">(選填)</span></label>
                 <input type="email" id="email" placeholder="若無信箱可直接跳過">
             </div>
             <div class="form-group">
-                <label>預約日期</label>
+                <label>希望預約日期</label>
                 <input type="date" id="date" required min="2026-04-07">
             </div>
             <div class="form-group">
-                <label>時段 <span class="optional-tag" style="color:#ef4444;" id="slot_hint"></span></label>
+                <label>希望看診時段 <span class="optional-tag" style="color:#ef4444;" id="slot_hint"></span></label>
                 <select id="time_slot" required disabled>
-                    <option value="">請先選擇上方預約日期</option>
+                    <option value="">請先選擇上方的預約日期</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>主要症狀說明 <span class="optional-tag">(選填)</span></label>
-                <textarea id="symptoms" rows="3" placeholder="請簡述您的困擾，以利醫師評估..."></textarea>
+                <label>主要症狀或困擾 <span class="optional-tag">(選填)</span></label>
+                <textarea id="symptoms" rows="3" placeholder="請簡單描述您目前的狀況，以利醫師初步評估（例如：失眠、焦慮、藥物諮詢等...）"></textarea>
             </div>
-            <button type="submit" id="submitBtn">送出掛號</button>
+            <button type="submit" id="submitBtn">同意上述說明，確認送出掛號</button>
         </form>
-        <div id="message"></div>
+        
+        <div id="message" style="margin: 0 30px 30px 30px;"></div>
     </div>
 
     <script>
@@ -92,12 +208,12 @@
                     { value: 'evening', text: '晚上診 (5:00 - 8:00)' }
                 ],
                 4: [ // 星期四
-                    { value: 'afternoon', text: '下午診 (14:00 - 16:00)' },
+                    { value: 'afternoon', text: '下午診 (2:00 - 4:00)' },
                     { value: 'evening', text: '晚上診 (5:00 - 8:00)' }
                 ],
                 5: [ // 星期五
                     { value: 'morning', text: '上午診 (09:00 - 12:00)' },
-                    { value: 'afternoon', text: '下午診 (14:00 - 16:00)' }
+                    { value: 'afternoon', text: '下午診 (2:00 - 4:00)' }
                 ],
                 6: [ // 星期六
                     { value: 'morning', text: '上午診 (09:00 - 12:00)' }
@@ -108,7 +224,6 @@
             // 自動更新時段選單的函數
             // ==========================================
             function updateAvailableSlots() {
-                // 清空現有選項
                 timeSlotSelect.innerHTML = '';
                 
                 if (!dateInput.value) {
@@ -121,12 +236,10 @@
                 const selectedDate = new Date(dateInput.value);
                 const dayOfWeek = selectedDate.getDay(); 
 
-                // 如果是診所有開的日子
                 if (clinicSchedule[dayOfWeek]) {
                     timeSlotSelect.disabled = false;
-                    slotHint.innerText = ""; // 清除提示
+                    slotHint.innerText = ""; 
                     
-                    // 動態載入當天專屬的時段
                     clinicSchedule[dayOfWeek].forEach(slot => {
                         const option = document.createElement('option');
                         option.value = slot.value;
@@ -134,15 +247,11 @@
                         timeSlotSelect.appendChild(option);
                     });
                 } else {
-                    // 如果被強制選到了沒開的日子 (雖然下方有擋，但保險起見)
                     timeSlotSelect.innerHTML = '<option value="">本日無門診，請選擇其他日期</option>';
                     timeSlotSelect.disabled = true;
                 }
             }
 
-            // ==========================================
-            // 日期防呆與連動觸發
-            // ==========================================
             function validateSchedule() {
                 if (!dateInput.value) {
                     updateAvailableSlots();
@@ -165,7 +274,6 @@
                     }
                 }
                 
-                // 檢查完日期後，立刻更新對應的時段選單
                 updateAvailableSlots();
             }
 
@@ -195,8 +303,6 @@
                     const symptoms = document.getElementById('symptoms').value;
 
                     const emailForNotify = rawEmail.trim() !== "" ? rawEmail : "未提供";
-
-                    // 抓取被選中時段的「中文顯示文字」給通知信和明細用
                     const timeSlotText = timeSlotSelect.options[timeSlotSelect.selectedIndex].text;
 
                     let emailSuccess = false;
@@ -265,6 +371,7 @@
                         `;
                         
                         bookingForm.style.display = 'none'; 
+                        document.querySelector('.instruction-box').style.display = 'none'; // 隱藏說明框讓畫面更乾淨
                     } else {
                         throw new Error("網路連線阻擋");
                     }
@@ -274,11 +381,10 @@
                     messageDiv.className = 'error';
                     messageDiv.innerHTML = '<h3>❌ 送出失敗</h3><p>網路連線不穩，請稍後再試，或直接來電診所預約。</p>';
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "重新送出";
+                    submitBtn.innerText = "同意上述說明，確認送出掛號";
                 }
             });
         });
     </script>
 </body>
 </html>
-
