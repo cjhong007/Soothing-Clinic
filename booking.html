@@ -219,64 +219,49 @@
                 ]
             };
 
-            // ==========================================
-            // 自動更新時段選單的函數
+// ==========================================
+            // 自動更新時段選單的函數 (無痛手機版)
             // ==========================================
             function updateAvailableSlots() {
                 timeSlotSelect.innerHTML = '';
+                timeSlotSelect.disabled = false;
+                slotHint.innerText = ""; 
                 
                 if (!dateInput.value) {
                     timeSlotSelect.innerHTML = '<option value="">請先選擇上方預約日期</option>';
                     timeSlotSelect.disabled = true;
-                    slotHint.innerText = "";
                     return;
                 }
 
                 const selectedDate = new Date(dateInput.value);
                 const dayOfWeek = selectedDate.getDay(); 
 
-                if (clinicSchedule[dayOfWeek]) {
-                    timeSlotSelect.disabled = false;
-                    slotHint.innerText = ""; 
+                // 判斷是否為休診日，直接顯示在選單上，不使用干擾人的 alert
+                if (dayOfWeek === 0) {
+                    timeSlotSelect.innerHTML = '<option value="">星期日為固定休診日，請重選日期</option>';
+                    timeSlotSelect.disabled = true;
+                } else if (dayOfWeek === 2) {
+                    timeSlotSelect.innerHTML = '<option value="">星期二為全天休診，請重選日期</option>';
+                    timeSlotSelect.disabled = true;
+                } else if (clinicSchedule[dayOfWeek]) {
+                    // 若為星期六，使用文字提示取代 confirm 視窗
+                    if (dayOfWeek === 6) {
+                        slotHint.innerText = "(提醒：週六採隔週看診，我們將去電與您確認)";
+                    }
                     
+                    // 填入住診時段
                     clinicSchedule[dayOfWeek].forEach(slot => {
                         const option = document.createElement('option');
                         option.value = slot.value;
                         option.text = slot.text;
                         timeSlotSelect.appendChild(option);
                     });
-                } else {
-                    timeSlotSelect.innerHTML = '<option value="">本日無門診，請選擇其他日期</option>';
-                    timeSlotSelect.disabled = true;
                 }
             }
 
-            function validateSchedule() {
-                if (!dateInput.value) {
-                    updateAvailableSlots();
-                    return;
-                }
-
-                const selectedDate = new Date(dateInput.value);
-                const dayOfWeek = selectedDate.getDay(); 
-
-                if (dayOfWeek === 0) {
-                    alert("星期日為診所固定休診日，請為自己挑選其他日期喔！");
-                    dateInput.value = ""; 
-                } else if (dayOfWeek === 2) {
-                    alert("本診所星期二全天休診。請選擇其他日期喔！");
-                    dateInput.value = ""; 
-                } else if (dayOfWeek === 6) {
-                    const confirmSaturday = confirm("溫馨提醒：本診所星期六採【隔週看診制】。\n\n請確認您選擇的日期是診所有開診的週次。若不確定，可點擊『取消』並先來電確認，或點擊『確定』繼續保留，我們將有專人與您聯繫確認。");
-                    if (!confirmSaturday) {
-                        dateInput.value = ""; 
-                    }
-                }
-                
-                updateAvailableSlots();
-            }
-
-            dateInput.addEventListener('change', validateSchedule);
+            // 監聽日期改變，同時綁定 input 和 change 以相容各廠牌手機
+            dateInput.addEventListener('input', updateAvailableSlots);
+            dateInput.addEventListener('change', updateAvailableSlots);
 
             // ==========================================
             // 表單送出處理
