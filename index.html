@@ -48,6 +48,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
         .animate-blob { animation: blob 10s infinite; }
         .animation-delay-2000 { animation-delay: 2s; }
+
+/* 👇 Lightbox 放大模組樣式 👇 */
+        .lightbox-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.9); backdrop-blur: 5px; overflow: auto; align-items: center; justify-content: center; padding: 20px; }
+        .lightbox-content { display: block; margin: auto; max-width: 90%; max-height: 85%; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); object-fit: contain; }
+        .lightbox-close { position: absolute; top: 15px; right: 25px; color: #f1f5f9; font-size: 50px; font-weight: bold; cursor: pointer; transition: color 0.2s; line-height: 1; }
+        .lightbox-close:hover { color: #ffffff; }
+        .grid-item { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .grid-item:hover { transform: scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+    
     </style>
 </head>
 <body class="antialiased selection:bg-blue-100 selection:text-blue-900">
@@ -1908,7 +1918,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="5JSrvOyhPqaBblGepcWnE";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>                    
+</script>     
+
+<script>
+        function openLightbox(imageSrc) {
+            const modal = document.getElementById('lightboxModal');
+            const modalImg = document.getElementById('lightboxImage');
+            modal.style.display = 'flex';
+            modalImg.src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        window.onclick = function(event) {
+            const modal = document.getElementById('lightboxModal');
+            if (event.target === modal) { closeLightbox(); }
+        }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') { closeLightbox(); }
+        });
+    </script>
+    
     </body>
 
 </html>
