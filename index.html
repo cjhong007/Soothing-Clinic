@@ -537,18 +537,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     </section>
-    <section id="environment" class="py-20">
+<section id="environment" class="py-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-slate-800">舒適放鬆的空間</h2>
                 <p class="text-slate-500 mt-2">溫馨、隱密、專業，讓您卸下心防的療癒場域</p>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 delay-200">
-                <div class="glass-card p-2 rounded-2xl hover:scale-[1.02] transition duration-300"><img src="images/clinic-01.jpg" alt="環境1" class="w-full h-64 object-cover rounded-xl"></div>
-                <div class="glass-card p-2 rounded-2xl hover:scale-[1.02] transition duration-300"><img src="images/clinic-02.jpg" alt="環境1" class="w-full h-64 object-cover rounded-xl"></div>
-                <div class="glass-card p-2 rounded-2xl hover:scale-[1.02] transition duration-300"><img src="images/clinic-04.jpg" alt="環境4" class="w-full h-64 object-cover rounded-xl"></div>
-                <div class="glass-card p-2 rounded-2xl hover:scale-[1.02] transition duration-300"><img src="images/clinic-05.jpg" alt="環境5" class="w-full h-64 object-cover rounded-xl"></div>
+                
+                <div class="glass-card cursor-pointer p-2 rounded-2xl hover:scale-[1.02] transition duration-300" 
+                     onclick="openLightbox('images/clinic-01.jpg')">
+                    <img src="images/clinic-01.jpg" alt="環境1" class="w-full h-64 object-cover rounded-xl">
+                </div>
+                
+                <div class="glass-card cursor-pointer p-2 rounded-2xl hover:scale-[1.02] transition duration-300" 
+                     onclick="openLightbox('images/clinic-02.jpg')">
+                    <img src="images/clinic-02.jpg" alt="環境1" class="w-full h-64 object-cover rounded-xl">
+                </div>
+                
+                <div class="glass-card cursor-pointer p-2 rounded-2xl hover:scale-[1.02] transition duration-300" 
+                     onclick="openLightbox('images/clinic-04.jpg')">
+                    <img src="images/clinic-04.jpg" alt="環境4" class="w-full h-64 object-cover rounded-xl">
+                </div>
+                
+                <div class="glass-card cursor-pointer p-2 rounded-2xl hover:scale-[1.02] transition duration-300" 
+                     onclick="openLightbox('images/clinic-05.jpg')">
+                    <img src="images/clinic-05.jpg" alt="環境5" class="w-full h-64 object-cover rounded-xl">
+                </div>
+                
+                </div>
+
+            <div id="lightboxModal" class="lightbox-modal">
+                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <img class="lightbox-content" id="lightboxImage">
             </div>
+
         </div>
     </section>
 
