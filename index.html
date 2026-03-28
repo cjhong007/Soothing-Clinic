@@ -49,27 +49,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .animate-blob { animation: blob 10s infinite; }
         .animation-delay-2000 { animation-delay: 2s; }
 
-/* 放大後的圖片本體 (加入放大鏡游標與動畫) */
-        .lightbox-content {
-            display: block;
-            margin: auto;
-            max-width: 90%; 
-            max-height: 85%; 
-            border-radius: 8px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            object-fit: contain; 
-            cursor: zoom-in; /* 👇 滑鼠會變成放大鏡圖示 */
-            transition: transform 0.3s ease; /* 👇 加入平滑縮放動畫 */
-        }
-
-        /* 👇 新增：點擊後的二段放大狀態 👇 */
-        .lightbox-content.zoomed {
-            transform: scale(2); /* 放大兩倍 (200%) */
-            cursor: zoom-out; /* 滑鼠變成縮小圖示 */
-        }
-
-        /* 關閉按鈕 (✕) 保持不變 */
-        .lightbox-close { ... (保留原本的即可) ... }
+/* 👇 Lightbox 放大模組樣式 👇 */
+        .lightbox-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.9); backdrop-blur: 5px; overflow: auto; align-items: center; justify-content: center; padding: 20px; }
+        .lightbox-content { display: block; margin: auto; max-width: 90%; max-height: 85%; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.3); object-fit: contain; }
+        .lightbox-close { position: absolute; top: 15px; right: 25px; color: #f1f5f9; font-size: 50px; font-weight: bold; cursor: pointer; transition: color 0.2s; line-height: 1; }
+        .lightbox-close:hover { color: #ffffff; }
+        .grid-item { cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .grid-item:hover { transform: scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
     
     </style>
@@ -582,10 +568,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 
                 </div>
 
-     <div id="lightboxModal" class="lightbox-modal">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img class="lightbox-content" id="lightboxImage" onclick="toggleZoom(event)">
-    </div>
+            <div id="lightboxModal" class="lightbox-modal">
+                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <img class="lightbox-content" id="lightboxImage">
+            </div>
 
         </div>
     </section>
@@ -1959,62 +1945,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>     
 
 <script>
-        // ==========================================
-        // 開啟 Lightbox 
-        // ==========================================
         function openLightbox(imageSrc) {
             const modal = document.getElementById('lightboxModal');
             const modalImg = document.getElementById('lightboxImage');
-            
-            modal.style.display = 'flex'; 
-            modalImg.src = imageSrc; 
-            modalImg.classList.remove('zoomed'); // 💡 確保每次打開時都是預設大小
-            
+            modal.style.display = 'flex';
+            modalImg.src = imageSrc;
             document.body.style.overflow = 'hidden';
         }
-
-        // ==========================================
-        // 關閉 Lightbox
-        // ==========================================
         function closeLightbox() {
             const modal = document.getElementById('lightboxModal');
-            const modalImg = document.getElementById('lightboxImage');
-            
-            modal.style.display = 'none'; 
-            modalImg.classList.remove('zoomed'); // 💡 關閉時重置大小
-            
+            modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-
-        // ==========================================
-        // 💡 新增：二段式點擊放大 / 縮小
-        // ==========================================
-        function toggleZoom(event) {
-            event.stopPropagation(); // 防止點擊圖片時觸發到背景的關閉指令
-            const img = document.getElementById('lightboxImage');
-            img.classList.toggle('zoomed'); // 切換放大/縮小狀態
-        }
-
-        // ==========================================
-        // 點擊背景暗處或按 ESC 關閉
-        // ==========================================
         window.onclick = function(event) {
             const modal = document.getElementById('lightboxModal');
-            if (event.target === modal) {
-                closeLightbox();
-            }
+            if (event.target === modal) { closeLightbox(); }
         }
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeLightbox();
-            }
+            if (event.key === 'Escape') { closeLightbox(); }
         });
     </script>
     
     </body>
 
 </html>
-
 
 
 
