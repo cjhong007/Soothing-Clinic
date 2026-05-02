@@ -2004,25 +2004,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             transition: display 0.3s ease-out;
         }
     </style>
-    <script>
+<script>
         document.addEventListener('DOMContentLoaded', () => {
+            // ==========================================
+            // 1. 文章過濾系統邏輯
+            // ==========================================
             const filterBtns = document.querySelectorAll('.filter-btn');
             const articles = document.querySelectorAll('.article-card');
             const searchInput = document.getElementById('article-search');
 
-            // 核心過濾功能：同時判斷「分類」與「搜尋關鍵字」
             function filterArticles(category, searchTerm) {
                 articles.forEach(article => {
-                    // 檢查是否符合分類
                     const matchesCategory = category === 'all' || article.getAttribute('data-category') === category;
-                    // 檢查是否符合搜尋字詞 (將文章標題與摘要轉小寫比對)
                     const textContent = article.textContent.toLowerCase();
                     const matchesSearch = textContent.includes(searchTerm.toLowerCase());
 
-                    // 只有同時符合分類與搜尋條件才顯示
                     if (matchesCategory && matchesSearch) {
                         article.style.display = 'flex';
-                        article.style.animation = 'none'; // 重置動畫
+                        article.style.animation = 'none'; 
                         setTimeout(() => {
                             article.style.animation = 'fadeInScale 0.4s ease forwards';
                         }, 10);
@@ -2032,54 +2031,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 });
             }
 
-            // 1. 分類按鈕點擊事件
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // 重置按鈕樣式
                     filterBtns.forEach(b => {
                         b.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
                         b.classList.add('bg-white', 'text-slate-600', 'shadow-sm');
                     });
-                    // 設定當前點擊按鈕樣式
                     btn.classList.remove('bg-white', 'text-slate-600', 'shadow-sm');
                     btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
 
                     const targetCategory = btn.getAttribute('data-target');
-                    const currentSearch = searchInput.value; // 取得目前的搜尋字詞
+                    const currentSearch = searchInput ? searchInput.value : ''; 
                     filterArticles(targetCategory, currentSearch);
                 });
             });
 
-// 3. 手機版漢堡選單切換邏輯 (加強版)
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const activeBtn = document.querySelector('.filter-btn.bg-blue-600');
+                    const targetCategory = activeBtn ? activeBtn.getAttribute('data-target') : 'all';
+                    const currentSearch = e.target.value;
+                    filterArticles(targetCategory, currentSearch);
+                });
+            }
+
+            // ==========================================
+            // 2. 手機版漢堡選單切換與自動收合邏輯
+            // ==========================================
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            // 注意：我們把選擇器改為選取「所有在 mobile-menu 裡面的超連結」
+            // 選取所有選單內的超連結
             const mobileLinks = document.querySelectorAll('#mobile-menu a');
 
             if (mobileMenuBtn && mobileMenu) {
-                // 點擊漢堡按鈕，切換顯示/隱藏
+                // 點擊漢堡按鈕，展開/收合選單
                 mobileMenuBtn.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
                 });
 
-                // 點擊任何一個選項後，強制把選單收起來
+                // 點擊任何連結後，強制收合選單 (包含您說的"重要文獻")
                 mobileLinks.forEach(link => {
                     link.addEventListener('click', () => {
-                        // 確保選單真的被隱藏
                         mobileMenu.classList.add('hidden');
                     });
-                });
-            }
-            
-            // 2. 搜尋框輸入事件
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    // 找出目前被選取的分類按鈕
-                    const activeBtn = document.querySelector('.filter-btn.bg-blue-600');
-                    const targetCategory = activeBtn ? activeBtn.getAttribute('data-target') : 'all';
-                    const currentSearch = e.target.value;
-                    
-                    filterArticles(targetCategory, currentSearch);
                 });
             }
         });
