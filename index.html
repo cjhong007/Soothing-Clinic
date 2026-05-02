@@ -2050,10 +2050,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 });
             });
 
-// 3. 手機版漢堡選單切換邏輯
+// 3. 手機版漢堡選單切換邏輯 (加強版)
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
+            // 注意：我們把選擇器改為選取「所有在 mobile-menu 裡面的超連結」
+            const mobileLinks = document.querySelectorAll('#mobile-menu a');
 
             if (mobileMenuBtn && mobileMenu) {
                 // 點擊漢堡按鈕，切換顯示/隱藏
@@ -2061,9 +2062,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     mobileMenu.classList.toggle('hidden');
                 });
 
-                // 點擊任何一個選項後，自動把選單收起來
+                // 點擊任何一個選項後，強制把選單收起來
                 mobileLinks.forEach(link => {
                     link.addEventListener('click', () => {
+                        // 確保選單真的被隱藏
                         mobileMenu.classList.add('hidden');
                     });
                 });
