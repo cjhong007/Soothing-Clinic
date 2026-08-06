@@ -220,7 +220,6 @@
             };
 
 // ==========================================
-// ==========================================
 // 自動更新時段選單的函數 (包含特定日期調整)
 // ==========================================
 function updateAvailableSlots() {
@@ -249,22 +248,7 @@ function updateAvailableSlots() {
         return;
     }
 
-    // (2) 9/29(二) 特別看診：開放「上午診」與「晚上診」
-   // if (selectedDateStr === '2026-09-29') {
-    //    const specialSlots = [
-    //        { value: '上午診', text: '上午診 (09:00 - 12:00)' },
-    //        { value: '晚上診', text: '晚上診 (5:00 - 8:00)' }
-    //    ];
-    //    specialSlots.forEach(slot => {
-    //        const option = document.createElement('option');
-    //        option.value = slot.value;
-    //        option.text = slot.text;
-    //        timeSlotSelect.appendChild(option);
-    //    });
-    //    return;
-  //  }
-
-    // (3) 9/5(六), 9/12(六), 9/19(六) 特別看診：開放「上午診」
+    // (2) 9/5(六), 9/12(六), 9/19(六) 特別看診：開放「上午診」
     if (['2026-09-05', '2026-09-12', '2026-09-19'].includes(selectedDateStr)) {
         const option = document.createElement('option');
         option.value = '上午診';
@@ -296,8 +280,7 @@ function updateAvailableSlots() {
             timeSlotSelect.appendChild(option);
         });
     }
-}
-            
+}            
             // 監聽日期改變，同時綁定 input 和 change 以相容各廠牌手機
             dateInput.addEventListener('input', updateAvailableSlots);
             dateInput.addEventListener('change', updateAvailableSlots);
