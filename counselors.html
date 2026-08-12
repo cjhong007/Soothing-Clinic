@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理師團隊 | 舒眠身心醫學診所</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #fdfbf7 0%, #eef7ff 100%);
+            color: #475569;
+        }
+        .eng-font { font-family: 'Montserrat', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- 導覽列 (與首頁相同，但將「心理師團隊」設為 active 狀態) -->
+    <nav class="fixed w-full z-50 bg-white/95 shadow-sm border-b border-slate-100">
+        <div class="max-w-[1400px] mx-auto px-3 sm:px-4 xl:px-6">
+            <div class="flex justify-between items-center py-3 sm:py-4">
+                <div class="flex flex-col shrink-0 pr-2 sm:pr-4">
+                    <a href="index.html" class="font-bold text-lg sm:text-xl tracking-wide text-slate-800 whitespace-nowrap">舒眠身心醫學診所</a>
+                    <span class="hidden sm:block text-[10px] xl:text-xs text-blue-500 font-medium tracking-wider eng-font whitespace-nowrap">SOOTHING SLEEP & MIND CLINIC</span>
+                </div>
+                
+                <div class="hidden xl:flex space-x-2 2xl:space-x-4 text-sm font-medium text-slate-600 items-center shrink-0">
+                    <a href="index.html" class="hover:text-blue-600 transition whitespace-nowrap">回首頁</a>
+                    <a href="counselors.html" class="text-indigo-600 font-bold border-b-2 border-indigo-600 pb-1 whitespace-nowrap">心理師團隊</a>
+                    <a href="index.html#booking" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-6 py-2 rounded-full shadow-lg hover:shadow-xl transition transform duration-300 whitespace-nowrap ml-4">線上預約</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 標題區塊 -->
+    <header class="pt-32 pb-12 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-indigo-500 font-bold tracking-wider text-sm eng-font uppercase">Counseling Team</span>
+            <h1 class="text-3xl md:text-5xl font-bold text-slate-800 mt-2 mb-4">心理師團隊</h1>
+            <div class="w-16 h-1 bg-indigo-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto">
+                我們提供專業、溫暖且保密的心理諮商空間。<br>陪伴您慢慢整理感受、關係與需要，找到屬於自己的步調。
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pb-24">
+        
+        <!-- ========================================== -->
+        <!-- 1. 心理師列表 (未來有新心理師加在這裡) -->
+        <!-- ========================================== -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-20">
+            
+            <!-- 卡片：徐涵瑜 -->
+            <a href="#counselor-hsu" class="glass-card rounded-2xl p-8 text-center hover:shadow-xl hover:-translate-y-2 transition transform duration-300 border-t-4 border-indigo-400 group">
+                <!-- 無照片替代方案：姓氏圓形圖示 -->
+                <div class="w-20 h-20 mx-auto bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center text-3xl font-bold mb-5 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
+                    徐
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-1">徐涵瑜</h3>
+                <p class="text-indigo-600 font-medium text-sm">諮商心理師</p>
+                <div class="mt-4 text-slate-400 text-sm flex items-center justify-center gap-1 group-hover:text-indigo-500 transition-colors">
+                    查看詳細介紹 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+            </a>
+
+            <!-- 預留空位卡片 (未來可複製上方區塊取代此處) -->
+            <!-- 
+            <a href="#counselor-new" class="...">...</a> 
+            -->
+        </div>
+
+
+        <!-- ========================================== -->
+        <!-- 2. 心理師詳細介紹區塊 -->
+        <!-- ========================================== -->
+        <div class="space-y-16">
+            
+            <!-- 詳細介紹：徐涵瑜 -->
+            <!-- scroll-mt-24 確保點擊連結跳下來時，不會被上方的導覽列遮住 -->
+            <section id="counselor-hsu" class="glass-card rounded-3xl p-8 md:p-12 scroll-mt-24">
+                
+                <!-- 姓名與名言 (無照片版排版) -->
+                <div class="border-b border-slate-100 pb-10 mb-10">
+                    <div class="text-center mb-10">
+                        <h3 class="text-3xl font-bold text-slate-800 mb-2">徐涵瑜 <span class="text-xl font-medium text-slate-500">諮商心理師</span></h3>
+                        <p class="text-indigo-500 font-medium eng-font tracking-wide">Han-Yu Hsu, Counseling Psychologist</p>
+                    </div>
+
+                    <div class="max-w-2xl mx-auto p-8 bg-indigo-50/70 rounded-2xl border border-indigo-100 relative text-center shadow-sm">
+                        <span class="absolute top-2 left-4 text-6xl text-indigo-200 font-serif opacity-50">"</span>
+                        <p class="text-indigo-900 font-medium text-xl md:text-2xl leading-relaxed relative z-10 px-4">
+                            生命有時不需要急著變好，<br>而是需要有人陪你一起走。
+                        </p>
+                        <span class="absolute -bottom-4 right-4 text-6xl text-indigo-200 font-serif opacity-50">"</span>
+                    </div>
+                </div>
+
+                <!-- 經歷介紹與專長領域 -->
+                <div class="flex flex-col lg:flex-row gap-12">
+                    
+                    <!-- 左側：簡介文章 -->
+                    <div class="w-full lg:w-1/2">
+                        <h2 class="text-2xl font-bold mb-6 text-slate-800 border-l-4 border-indigo-500 pl-4">專業溫暖的心理支持</h2>
+                        <div class="space-y-5 text-lg leading-relaxed text-slate-600 text-justify">
+                            <p>每個人在不同的生命階段，都可能遇見一些不容易獨自整理的時刻。可能是焦慮、低落與壓力累積，也可能來自人際、親密或家庭關係的拉扯；有時則是疾病、失落、照顧責任或生命轉折，讓原本熟悉的生活突然變得不一樣。</p>
+                            
+                            <p>徐心理師重視每一種情緒與反應背後的脈絡與意義。在諮商中，比起急著改變或要求自己趕快變好，更希望陪你理解正在發生什麼，慢慢整理感受、關係與需要，找到適合自己的因應方式。</p>
+                            
+                            <p>除了情緒、壓力與關係議題外，徐心理師長期投入醫療心理與長期照顧領域，具有癌症與重大疾病、安寧緩和、失落哀傷、失智症家庭及照顧者支持等實務經驗，也提供特殊需求者及其家庭相關的心理支持。</p>
+                            
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 text-slate-700 font-medium mt-6">
+                                無論此刻困擾你的是生活中的情緒與關係，或一段較為艱難的生命經驗，都可以從理解自己開始。在一段安全、穩定而不被評價的關係裡，一起找到屬於自己的步調與方向。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右側：專長領域 -->
+                    <div class="w-full lg:w-1/2">
+                        <h2 class="text-2xl font-bold mb-6 text-slate-800 border-l-4 border-indigo-500 pl-4">專長領域</h2>
+                        <div class="grid grid-cols-1 gap-4 text-slate-600">
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-indigo-600 mb-1 flex items-center gap-2">
+                                    <span class="bg-indigo-100 text-indigo-600 p-1.5 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></span>
+                                    情緒與壓力調適
+                                </h4>
+                                <p class="text-sm pl-10 text-slate-500">焦慮、憂鬱、情緒困擾與壓力調適</p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-indigo-600 mb-1 flex items-center gap-2">
+                                    <span class="bg-indigo-100 text-indigo-600 p-1.5 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg></span>
+                                    人際與家庭關係
+                                </h4>
+                                <p class="text-sm pl-10 text-slate-500">人際互動、親密關係、家庭關係與溝通</p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-indigo-600 mb-1 flex items-center gap-2">
+                                    <span class="bg-indigo-100 text-indigo-600 p-1.5 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg></span>
+                                    醫療與長照心理
+                                </h4>
+                                <p class="text-sm pl-10 text-slate-500">癌症與重大疾病心理適應、失智症與長期照顧、照顧者心理支持</p>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-indigo-600 mb-1 flex items-center gap-2">
+                                    <span class="bg-indigo-100 text-indigo-600 p-1.5 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg></span>
+                                    安寧與失落哀傷
+                                </h4>
+                                <p class="text-sm pl-10 text-slate-500">安寧緩和、生命末期心理支持、失落與哀傷</p>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition duration-300">
+                                <h4 class="font-bold text-indigo-600 mb-1 flex items-center gap-2">
+                                    <span class="bg-indigo-100 text-indigo-600 p-1.5 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg></span>
+                                    特殊教育
+                                </h4>
+                                <p class="text-sm pl-10 text-slate-500">特殊需求者及其家庭之心理支持</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 預留未來其他心理師的詳細介紹區塊 -->
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+        <p>© 2026 Soothing Sleep & Mind Clinic. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
