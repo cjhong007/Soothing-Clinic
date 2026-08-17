@@ -247,9 +247,19 @@ function updateAvailableSlots() {
         timeSlotSelect.disabled = true;
         return;
     }
-
+    if (selectedDateStr === '2026-11-28') {
+        timeSlotSelect.innerHTML = '<option value="">【選舉投票日】診所休診，請重選日期</option>';
+        timeSlotSelect.disabled = true;
+        return;
+    }
+    if (selectedDateStr === '2026-12-12') {
+        timeSlotSelect.innerHTML = '<option value="">診所休診，請重選日期</option>';
+        timeSlotSelect.disabled = true;
+        return;
+    }
     // (2) 9/5(六), 9/12(六), 9/19(六) 特別看診：開放「上午診」
-    if (['2026-09-05', '2026-09-12', '2026-09-19'].includes(selectedDateStr)) {
+    if (['2026-09-05', '2026-09-12', '2026-09-19', '2026-11-14', '2026-11-21', 
+        '2026-12-05', '2026-12-19'].includes(selectedDateStr)) {
         const option = document.createElement('option');
         option.value = '上午診';
         option.text = '上午診 (09:00 - 12:00)';
