@@ -241,7 +241,7 @@ function updateAvailableSlots() {
     // 1. 特殊日期/例外日期處理 (最高優先順序)
     // ------------------------------------------
     
-    // (1) 中秋連假休診：9/25(五), 9/28(一)
+    // (1) 【中秋連假】診所休診
     if (selectedDateStr === '2026-09-25' || selectedDateStr === '2026-09-28') {
         timeSlotSelect.innerHTML = '<option value="">【中秋連假】診所休診，請重選日期</option>';
         timeSlotSelect.disabled = true;
@@ -257,8 +257,8 @@ function updateAvailableSlots() {
         timeSlotSelect.disabled = true;
         return;
     }
-    // (2) 9/5(六), 9/12(六), 9/19(六) 特別看診：開放「上午診」
-    if (['2026-09-05', '2026-09-12', '2026-09-19', '2026-11-14', '2026-11-21', 
+    // 開放「上午診」的週六，過年前過年後的週六有看診：
+    if (['2027-01-09', '2027-01-23', '2027-01-30', '2027-02-13', '2026-11-14', '2026-11-21', 
         '2026-12-05', '2026-12-19'].includes(selectedDateStr)) {
         const option = document.createElement('option');
         option.value = '上午診';
