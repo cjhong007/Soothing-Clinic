@@ -252,8 +252,15 @@ function updateAvailableSlots() {
         timeSlotSelect.disabled = true;
         return;
     }
+    if (selectedDateStr === '2026-12-21') {
+        timeSlotSelect.innerHTML = '<option value="">【醫師請假】診所全日休診，請重選日期</option>';
+        timeSlotSelect.disabled = true;
+        return;
+    }
+
+    
     if (selectedDateStr === '2026-12-12') {
-        timeSlotSelect.innerHTML = '<option value="">診所休診，請重選日期</option>';
+        timeSlotSelect.innerHTML = '<option value=""> 【週六隔週休診】診所休診，請重選日期</option>';
         timeSlotSelect.disabled = true;
         return;
     }
